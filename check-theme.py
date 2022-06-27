@@ -13,7 +13,10 @@ has_wrong_colors = False
 
 with open(palette_path, 'r') as palette_file:
     palette = palette_file.read().split('\n')
-    print('palette:', palette)
+
+    print('Color palette:')
+    for color in palette:
+        print(' ↳', color)
 
     for path, dirs, files in os.walk(file_path):
         dirs[:] = [d for d in dirs if d not in ignore_dirs]
@@ -30,9 +33,9 @@ with open(palette_path, 'r') as palette_file:
                         
                         for color in colors:
                             if color in wrong_colors:
-                                print(color, '\033[91m❌\033[0m')
+                                print(' ↳', color, '\033[91m❌\033[0m')
                             else:
-                                print(color, '\033[92m✔️\033[0m')
+                                print(' ↳', color, '\033[92m✔️\033[0m')
 
                         if len(wrong_colors) > 0:
                             has_wrong_colors = True
@@ -50,3 +53,6 @@ with open(palette_path, 'r') as palette_file:
 if has_wrong_colors:
     print('\n\033[91m' + 'Found wrong colors, see above...' + '\033[0m')
     raise Exception('Found wrong colors')
+else:
+    print('\n\033[92m' + 'Successfully checked all colors!' + '\033[0m')
+    exit(0)
