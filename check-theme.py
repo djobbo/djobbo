@@ -30,10 +30,15 @@ with open(palette_path, 'r') as palette_file:
                         if len(wrong_colors) > 0:
                             has_wrong_colors = True
 
-                            print(f'Found \033[91m{len(wrong_colors)}\033[0m wrong colors')
+                            print('\033[91m' + 'Error' + '\033[0m', f'- Found \033[91m{len(wrong_colors)}\033[90m/{len(colors)}\033[0m wrong colors')
                             
-                            for color in wrong_colors:
-                                print(f'\033[90m{color}\033[0m')
+                            for color in colors:
+                                if color in wrong_colors:
+                                    print(f'\033[90m{color}\033[0m')
+                                else:
+                                    print(f'\033[92m{color}\033[0m')
+                        else:
+                            print('\033[92m' + 'OK' + '\033[0m')
                     else:
                         print('\033[93m' + 'Skipped' + '\033[0m', '- No colors found' )
                     break
