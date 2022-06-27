@@ -56,7 +56,7 @@ libpcre2-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev
 
 meson --buildtype=release . build
 
-ninja -C build
+sudo ninja -C build
 
 sudo ninja -C build install
 
@@ -74,6 +74,12 @@ sudo apt install build-essential libxft-dev libharfbuzz-dev
 
 git clone https://git.suckless.org/st ~/.aki/.tmp/st
 
+wget https://st.suckless.org/patches/scrollback/st-scrollback-0.8.5.diff -O ~/.aki/.tmp/st/st-scrollback-0.8.5.diff
+
+cd ~/.aki/.tmp/st
+
+patch -p1 < st-scrollback-0.8.5.diff
+
 cd ~/.aki/.tmp/st
 
 mv ~/.aki/.tmp/st/config.h ~/.aki/.tmp/st/config.h.bak
@@ -86,3 +92,7 @@ sudo make clean install
 sudo apt install maim
 
 sudo apt install xclip
+
+### rofi (window switcher) ###
+
+sudo apt-get install rofi

@@ -40,9 +40,9 @@ with open(palette_path, 'r') as palette_file:
                         if len(wrong_colors) > 0:
                             has_wrong_colors = True
 
-                            print('\033[91m' + 'Error' + '\033[0m', f'- Found \033[91m{len(wrong_colors)}\033[90m/{len(colors)}\033[0m wrong colors')    
+                            print('\033[91m' + 'Error' + '\033[0m', f'- Found \033[91m{len(wrong_colors)}\033[90m/{len(colors)}\033[0m out of sync colors.')    
                         else:
-                            print('\033[92m' + 'OK' + '\033[0m', f'- Matched \033[92m{len(colors)}\033[90m/{len(colors)}\033[0m colors')
+                            print('\033[92m' + 'OK' + '\033[0m', f'- Matched \033[92m{len(colors)}\033[90m/{len(colors)}\033[0m colors.')
                         
                     else:
                         print('\033[93m' + 'Skipped' + '\033[0m', '- No colors found' )
@@ -51,8 +51,8 @@ with open(palette_path, 'r') as palette_file:
                 print('\033[93m' + 'Skipped' + '\033[0m', '- Not a text file' )
 
 if has_wrong_colors:
-    print('\n\033[91m' + 'Found wrong colors, see above...' + '\033[0m')
-    raise Exception('Found wrong colors')
+    print('\n\033[91m' + 'Found out of sync colors, see above...' + '\033[0m')
+    raise Exception('Out of sync colors')
 else:
     print('\n\033[92m' + 'Successfully checked all colors!' + '\033[0m')
     exit(0)
