@@ -84,3 +84,9 @@ mv ~/.aki/.tmp/st/config.h ~/.aki/.tmp/st/config.h.bak
 cp ~/.aki/.config/st/config.h ~/.aki/.tmp/st/config.h
 
 sudo make clean install
+
+### maim (screenshot) ###
+
+sudo apt install maim
+
+sudo apt install xclip

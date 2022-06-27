@@ -186,3 +186,13 @@ client.background           #2f343f
 exec_always --no-startup-id picom --experimental-backends -cb --config ~/.aki/.config/picom/picom.conf
 exec --no-startup-id feh --bg-scale ~/.aki/images/your-name.png
 exec --no-startup-id polybar main_bar --config=~/.aki/.config/polybar/config.ini
+
+# Screenshots
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+
+## Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
