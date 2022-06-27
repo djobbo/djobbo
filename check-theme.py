@@ -25,20 +25,22 @@ with open(palette_path, 'r') as palette_file:
                     colors = re.findall(color_regex, f.read())
                     if len(colors) > 0:
                         print(f'Found {len(colors)} colors')
-                        
+                                
                         wrong_colors=list(filter(lambda x: x not in palette, colors))
+                        
+                        for color in colors:
+                            if color in wrong_colors:
+                                print(color, '\033[91m❌\033[0m')
+                            else:
+                                print(color, '\033[92m✔️\033[0m')
+
                         if len(wrong_colors) > 0:
                             has_wrong_colors = True
 
-                            print('\033[91m' + 'Error' + '\033[0m', f'- Found \033[91m{len(wrong_colors)}\033[90m/{len(colors)}\033[0m wrong colors')
-                            
-                            for color in colors:
-                                if color in wrong_colors:
-                                    print(f'\033[90m{color}\033[0m')
-                                else:
-                                    print(f'\033[92m{color}\033[0m')
+                            print('\033[91m' + 'Error' + '\033[0m', f'- Found \033[91m{len(wrong_colors)}\033[90m/{len(colors)}\033[0m wrong colors')    
                         else:
-                            print('\033[92m' + 'OK' + '\033[0m')
+                            print('\033[92m' + 'OK' + '\033[0m', f'- Matched \033[92m{len(colors)}\033[90m/{len(colors)}\033[0m colors')
+                        
                     else:
                         print('\033[93m' + 'Skipped' + '\033[0m', '- No colors found' )
                     break
@@ -46,5 +48,5 @@ with open(palette_path, 'r') as palette_file:
                 print('\033[93m' + 'Skipped' + '\033[0m', '- Not a text file' )
 
 if has_wrong_colors:
-    print('\n\033[91m' + 'Found wrong colors, see above' + '\033[0m')
+    print('\n\033[91m' + 'Found wrong colors, see above...' + '\033[0m')
     raise Exception('Found wrong colors')

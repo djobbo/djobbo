@@ -12,10 +12,6 @@ load_colors() {
   eval reset_colors='%f%k'
 }
 
-prompt_sep() {
-  echo -n "$reset_colors › "
-}
-
 prompt_user() {
     echo -n $yellow
     echo -n "%n@%m"
@@ -36,9 +32,9 @@ prompt_git() {
 
   zstyle ':vcs_info:*' enable git
   zstyle ':vcs_info:git:*' check-for-changes true
-  zstyle ':vcs_info:git:*' stagedstr "$green✚"
+  zstyle ':vcs_info:git:*' stagedstr "$green➕"
   zstyle ':vcs_info:git:*' unstagedstr "$yellow●"
-  zstyle ':vcs_info:*' formats "$blue :: $reset_colors › $black(%s)$reset_colors %b%u%c"
+  zstyle ':vcs_info:*' formats "$magenta::$reset_colors%b%u%c"
   vcs_info
 
   echo -n ${vcs_info_msg_0_}$reset_colors
@@ -50,7 +46,7 @@ build_prompt() {
   prompt_user
   prompt_dir
   prompt_git
-  prompt_sep
+  echo -n "$reset_colors› "
 }
 
 PROMPT='$(build_prompt)'
