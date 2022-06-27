@@ -34,10 +34,6 @@ sudo ninja install
 
 sudo apt install feh
 
-### latte-dock ###
-
-sudo apt install latte-dock
-
 ### polybar ###
 
 sudo apt install polybar
