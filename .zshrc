@@ -2,7 +2,7 @@ export ZSH=~/.oh-my-zsh
 
 # Theme
 ZSH_THEME="aki"
-AKI_PATH="~/.aki"
+export AKI_PATH="$HOME/.aki"
 
 # Config
 HYPHEN_INSENSITIVE="true"
@@ -26,3 +26,5 @@ source $ZSH/oh-my-zsh.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -s "$AKI_PATH/.user.zshrc" ] && \. "$AKI_PATH/.user.zshrc"
