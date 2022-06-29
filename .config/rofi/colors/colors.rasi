@@ -5,6 +5,6 @@
     foreground:                 #ddc7a1;
     foreground-alt:             #1c1c1c;
     accent:                     #ea6962;
-    transparent:                #00000000;
+    transparent:                #10101000;
     text-color:                 @fg;
 }
