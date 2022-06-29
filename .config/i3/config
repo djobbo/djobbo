@@ -170,16 +170,16 @@ gaps outer 4
 gaps top 28
 
 # Window colors             border  backgr. text    indicator
-client.focused              #3a4551 #252c33 #e6eaef #1a1f24 
-client.focused_inactive     #1a1f24 #252c33 #e6eaef #1a1f24
-client.unfocused            #1a1f24 #252c33 #e6eaef #252c33
-client.urgent               #3a4551 #252c33 #e6eaef #3a4551
-client.placeholder          #3a4551 #252c33 #e6eaef #3a4551
-client.background           #252c33
+client.focused              #e78a4e #292828 #ddc7a1 #1c1c1c 
+client.focused_inactive     #bd6f3e #292828 #ddc7a1 #1c1c1c
+client.unfocused            #292828 #292828 #ddc7a1 #292828
+client.urgent               #ea6962 #292828 #ddc7a1 #32302f
+client.placeholder          #292828 #292828 #ddc7a1 #32302f
+client.background           #292828
 
 # startup programs
 exec_always --no-startup-id picom --experimental-backends -cb --config ~/.aki/.config/picom/picom.conf
-exec --no-startup-id feh --bg-scale ~/.aki/images/your-name.png
+exec --no-startup-id feh --bg-scale ~/.aki/images/aki.jpg
 exec --no-startup-id polybar main_bar --config=~/.aki/.config/polybar/config.ini
 
 # Screenshots

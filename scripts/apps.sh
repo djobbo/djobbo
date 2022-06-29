@@ -16,8 +16,16 @@ sudo apt install brave-browser
 
 ### VS Code ###
 
-mkdir ~/.aki/.tmp
+mkdir -p ~/.aki/.tmp
 
 wget -O ~/.aki/.tmp/vscode.deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 
 sudo dpkg -i ~/.aki/.tmp/vscode.deb
+
+### Lutris (Run windows apps) ###
+
+sudo add-apt-repository ppa:lutris-team/lutris
+
+sudo apt update
+
+sudo apt install lutris

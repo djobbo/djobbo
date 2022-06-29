@@ -42,6 +42,14 @@ apt-cache madison docker-ce
 
 sudo docker run hello-world
 
+sudo apt install docker-compose
+
+# Give user permission to use docker
+
+sudo groupadd docker
+
+sudo usermod -aG docker $USER
+
 ### Python 3 ###
 
 sudo apt-get install python3 python3-pip
