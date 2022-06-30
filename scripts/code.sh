@@ -14,6 +14,10 @@ nvm install node
 
 npm install -g pnpm yarn
 
+### Rust ###
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 ### Docker ###
 
 # https://docs.docker.com/engine/install/ubuntu/

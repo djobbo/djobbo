@@ -96,3 +96,20 @@ sudo apt install xclip
 ### rofi (window switcher) ###
 
 sudo apt-get install rofi
+
+### EWW ###
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+git clone https://github.com/elkowar/eww ~/.aki/.tmp/eww
+
+cd ~/.aki/.tmp/eww
+
+cargo build --release
+
+cd target/release
+
+chmod +x ./eww
+
+./eww daemon
+./eww open hello
