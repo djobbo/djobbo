@@ -1,5 +1,5 @@
 # Corehalla
-export COREHALLA_PATH="$HOME/projects/corehalla"
+export COREHALLA_PATH="/mnt/work/corehalla"
 alias ch="cd $COREHALLA_PATH"
 
 export RENO_PATH="$COREHALLA_PATH/.reno"
