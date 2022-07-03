@@ -1,3 +1,6 @@
 .tmp
 .user.zshrc
 .user.profile
+
+# binaries built from source
+.bin

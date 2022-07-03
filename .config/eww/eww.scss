@@ -1,0 +1,29 @@
+* {
+    all: unset; //Unsets everything so you can style everything from scratch
+}
+
+.workspace-btn {
+    button {
+        margin-top: 4px;
+        border-radius: 50%;
+        background-color: #3A3D3F;
+        padding: 4px;
+
+        box {
+            border-radius: 50%;
+            background-color: #8DB9E2;
+        }
+
+        &.active {
+            box {
+                background-color: #E7604E;
+            }
+        }
+
+        &:hover {
+            box {
+                background-color: #E7604E;
+            }
+        }
+    }
+}

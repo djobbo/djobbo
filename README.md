@@ -3,7 +3,7 @@
 -   **Vscode theme**  
     [Gruvbox Material Medium](https://github.com/sainnhe/gruvbox-material)
 
--   **Wallpaper** by [wallpaperaccess](https://wallpaperaccess.com)  
+-   **Wallpaper** Custom made
     ![wallpaper](/images/aki.jpg)
 
 - **Shell**

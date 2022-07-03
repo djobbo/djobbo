@@ -99,6 +99,8 @@ sudo apt-get install rofi
 
 ### EWW ###
 
+sudo apt-get install jq # JSON parser used in EWW widgets
+
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 source $HOME/.cargo/env
@@ -107,13 +109,10 @@ git clone https://github.com/elkowar/eww ~/.aki/.tmp/eww
 
 cd ~/.aki/.tmp/eww
 
-mkdir -p ~/.config/eww
-
 cargo build --release
 
-cd target/release
+mv target/release ~/aki/.bin/eww-release
 
-chmod +x ./eww
+chmod +x ~/aki/.bin/eww-release/eww
 
-./eww daemon
-./eww open hello
+~/aki/.bin/eww-release/eww daemon
