@@ -1,0 +1,10 @@
+[user]
+	email = hi@djobbo.com
+	name = Djobbo
+[credential]
+	helper = store
+[safe]
+	directory = /mnt/work
+	directory = /mnt/work/corehalla
+	directory = /mnt/work/klaxoon
+	directory = /mnt/work/github-city

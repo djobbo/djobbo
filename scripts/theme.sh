@@ -101,9 +101,13 @@ sudo apt-get install rofi
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+source $HOME/.cargo/env
+
 git clone https://github.com/elkowar/eww ~/.aki/.tmp/eww
 
 cd ~/.aki/.tmp/eww
+
+mkdir -p ~/.config/eww
 
 cargo build --release
 
