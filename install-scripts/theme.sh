@@ -99,11 +99,12 @@ sudo apt-get install rofi
 
 ### EWW ###
 
-sudo apt-get install jq # JSON parser used in EWW widgets
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 source $HOME/.cargo/env
+
+sudo apt-get install jq # JSON parser used in EWW widgets
 
 git clone https://github.com/elkowar/eww ~/.aki/.tmp/eww
 
