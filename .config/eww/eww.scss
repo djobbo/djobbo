@@ -2,26 +2,59 @@
     all: unset; //Unsets everything so you can style everything from scratch
 }
 
+.separator {
+    color: #8D8E8E;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.pill {
+    background-color: #2F3132;
+    padding: 4px 12px;
+    border-radius: 14px;
+}
+
+.bar {
+    padding: 4px 16px;
+    
+    &>.leftpart {
+        &>.icon {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        &>.arrow {
+            color: #E7604E;
+            padding: 0 12px;
+            font-weight: bold;
+        }
+
+        &>.window-title {
+            font-size: 14px;
+        }
+    }
+}
+
 .workspace-btn {
-    button {
-        margin-top: 4px;
+    &>button {
+        margin-bottom: 0px;
         border-radius: 50%;
         background-color: #3A3D3F;
-        padding: 4px;
+        padding: 8px;
 
-        box {
+        &>box {
             border-radius: 50%;
             background-color: #8DB9E2;
         }
 
         &.active {
-            box {
+            &>box {
                 background-color: #E7604E;
             }
         }
 
         &:hover {
-            box {
+            &>box {
                 background-color: #E7604E;
             }
         }

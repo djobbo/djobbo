@@ -11,11 +11,52 @@
   :reserve (struts :distance "0px" :side "top")
   :windowtype "dock"
   :wm-ignore false
+  (bar))
+
+(defwidget bar []
   (centerbox
+    :class "bar"
     :orientation "h"
-    window-title
+    :valign "center"
+    (leftpart)
     (workspaces)
-    workspace-index))
+    (rightpart)))
+
+(defwidget leftpart []
+  (box
+    :class "leftpart"
+    :orientation "horizontal"
+    :halign "start"
+    :valign "center"
+    :space-evenly false
+    (box :class "icon" "秋")
+    (box :class "arrow" ">")
+    (box
+      :class "window-title"
+      window-title)))
+
+(defwidget rightpart []
+  (box
+    :class "rightpart"
+    :orientation "horizontal"
+    :halign "end"
+    :valign "center"
+    :space-evenly false
+    :spacing 12
+    (pill
+      :content "(box
+        :orientation 'horizontal'
+        :spacing 8
+        :halign 'center'
+        :valign 'center'
+        :space-evenly false
+        (icon :icon './images/cpu.svg' :text '${round(EWW_CPU.avg, 0)}%')
+        (icon :icon './images/ram.svg' :text '${round(EWW_RAM.used_mem / 1024, 0)}Mb'))")
+    (separator)
+    (pill
+      :content "(icon :icon './images/spotify.svg' :text music)")
+    (separator)
+    time))
 
 (defwidget greeter [?text name]
   (box
@@ -33,8 +74,8 @@
     (button
       :onclick "i3 workspace ${index}"
       :class {workspace-index == index ? "active" : ""}
-      :width 20
-      :height 20
+      :width 28
+      :height 28
       (box))))
 
 (defwidget workspaces []
@@ -43,7 +84,7 @@
     :orientation "h"
     :space-evenly true
     :halign "center"
-    :spacing 6
+    :spacing -2
     (workspace-btn :index "1")
     (workspace-btn :index "2")
     (workspace-btn :index "3")
@@ -51,11 +92,47 @@
     (workspace-btn :index "5")
     (workspace-btn :index "6")))
 
+(defwidget icon [icon text]
+  (box
+    :orientation "horizontal"
+    :spacing 8
+    :halign "center"
+    :valign "center"
+    :space-evenly false
+    (image
+      :path icon
+      :class "icon"
+      :width 12
+      :height 12)
+      text))
+
+(defwidget pill [content]
+  (box
+    :class "pill"
+    :space-evenly false
+    (literal :content content)))
+    
+(defwidget separator []
+  (box
+    :class "separator"
+    "•"))
+
+
 (deflisten workspace-index
   :initial "1"
   `i3-msg -t subscribe -m '[ "workspace" ]' -r | stdbuf -oL jq 'select(.change == "focus") | .current.num'`
 )
 
 (deflisten window-title
+  :initial "Aki"
+  `i3-msg -t subscribe -m '[ "window" ]' -r | stdbuf -oL jq '.container.name' | stdbuf -oL sed 's/^"//;s/"$//' | stdbuf -oL cut -b 1-64`)
+
+(defpoll time :interval "8s"
+  `date "+%H:%M %b %d, %Y"`)
+
+(deflisten music
   :initial ""
-  `i3-msg -t subscribe -m '[ "window" ]' -r | stdbuf -oL jq '.container.name' | stdbuf -oL sed 's/^"//;s/"$//'`)
+  `playerctl --follow metadata --format "{{ title }} - {{ artist }}" | stdbuf -oL cut -b 1-32 || true`)
+
+; (defpoll volume :interval "1s"
+;   "scripts/getvol")

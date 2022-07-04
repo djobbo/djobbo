@@ -166,7 +166,7 @@ bindsym $mod+r mode "resize"
 for_window [class=".*"] border pixel 6
 
 gaps inner 12
-gaps outer 4
+gaps outer 0
 
 # Window colors             border  backgr. text    indicator
 client.focused              #e78a4e #292828 #ddc7a1 #1c1c1c 

@@ -105,6 +105,8 @@ source $HOME/.cargo/env
 
 sudo apt-get install jq # JSON parser used in EWW widgets
 
+sudo apt-get install playerctl # Get song info from Spotify
+
 git clone https://github.com/elkowar/eww ~/.aki/.tmp/eww
 
 cd ~/.aki/.tmp/eww
