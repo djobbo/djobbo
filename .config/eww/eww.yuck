@@ -15,9 +15,7 @@
     :orientation "h"
     window-title
     (workspaces)
-    (greeter
-      :text "Say hellodddddd!"
-      :name "Tim")))
+    workspace-index))
 
 (defwidget greeter [?text name]
   (box
@@ -55,7 +53,7 @@
 
 (deflisten workspace-index
   :initial "1"
-  `i3-msg -t subscribe -m '[ "workspace" ]' -r | stdbuf -oL jq '.current.num'` ; Bugged when old workspace is empty (i.e. no windows)
+  `i3-msg -t subscribe -m '[ "workspace" ]' -r | stdbuf -oL jq 'select(.change == "focus") | .current.num'`
 )
 
 (deflisten window-title
