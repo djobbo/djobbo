@@ -53,7 +53,11 @@
         (icon :icon './images/cpu.svg' :text '${round(EWW_CPU.avg, 0)}%')
         (icon :icon './images/ram.svg' :text '${round(EWW_RAM.used_mem / 1024, 0)}Mb'))")
     (separator)
-    (icon :icon './images/spotify.svg' :text music)
+    (eventbox
+      :cursor "pointer"
+      (button
+        :onclick "i3 workspace 6"
+        (icon :icon './images/spotify.svg' :text music)))
     (pill
       :content "(media-player)")
     (separator)
@@ -141,7 +145,6 @@
     :class "separator"
     "•"))
 
-
 (deflisten workspace-index
   :initial "1"
   `i3-msg -t subscribe -m '[ "workspace" ]' -r | stdbuf -oL jq 'select(.change == "focus") | .current.num'`
@@ -149,14 +152,14 @@
 
 (deflisten window-title
   :initial "Aki"
-  `i3-msg -t subscribe -m '[ "window" ]' -r | stdbuf -oL jq '.container.name' | stdbuf -oL sed 's/^"//;s/"$//' | stdbuf -oL cut -b 1-64`)
+  `i3-msg -t subscribe -m '[ "window" ]' -r | stdbuf -oL jq '.container.name' | stdbuf -oL sed 's/^"//;s/"$//' | stdbuf -oL cut -b 1-96`)
 
 (defpoll time :interval "8s"
   `date "+%H:%M %b %d, %Y"`)
 
 (deflisten music
   :initial ""
-  `playerctl --follow metadata --format "{{ title }} - {{ artist }}" | stdbuf -oL cut -b 1-32 || true`)
+  `playerctl --player=spotify --follow metadata --format "{{ title }} - {{ artist }}" | stdbuf -oL cut -b 1-42 || true`)
 
 ; (defpoll volume :interval "1s"
 ;   "scripts/getvol")

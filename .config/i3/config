@@ -134,7 +134,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-msg exit"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -169,22 +169,23 @@ gaps inner 12
 gaps outer 0
 
 # Window colors             border  backgr. text    indicator
-client.focused              #e78a4e #292828 #ddc7a1 #1c1c1c 
-client.focused_inactive     #bd6f3e #292828 #ddc7a1 #1c1c1c
-client.unfocused            #292828 #292828 #ddc7a1 #292828
-client.urgent               #ea6962 #292828 #ddc7a1 #32302f
-client.placeholder          #292828 #292828 #ddc7a1 #32302f
-client.background           #292828
+client.focused              #E7604E #2A2B2C #ddc7a1 #2F3132 
+client.focused_inactive     #8D8E8E #2A2B2C #ddc7a1 #2F3132
+client.unfocused            #2A2B2C #2A2B2C #ddc7a1 #2A2B2C
+client.urgent               #E7604E #2A2B2C #ddc7a1 #3A3D3F
+client.placeholder          #2A2B2C #2A2B2C #ddc7a1 #3A3D3F
+client.background           #2A2B2C
 
 # startup programs
 exec_always --no-startup-id picom --experimental-backends -cb --config ~/.aki/.config/picom/picom.conf
-exec --no-startup-id eww daemon && eww open bar
+exec --no-startup-id sh -c 'eww daemon && eww open bar || true'
 exec --no-startup-id feh --bg-scale ~/.aki/images/aki.jpg
 
 # Startup windows
-exec --no-startup-id i3-msg 'workspace 3; exec discord;'
-exec --no-startup-id i3-msg 'workspace 4; exec spotify;'
-exec --no-startup-id i3-msg 'workspace 5; open'
+exec --no-startup-id sh -c 'sleep 1; i3-msg "workspace 5; exec discord;"'
+exec --no-startup-id sh -c 'sleep 2; i3-msg "workspace 6; exec spotify;"'
+exec --no-startup-id sh -c 'sleep 3; i3-msg "workspace 2; exec firefox;"'
+exec --no-startup-id sh -c 'sleep 4; i3-msg "workspace 1;"'
 
 # Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"

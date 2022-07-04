@@ -117,8 +117,8 @@ static const char *colorname[] = {
 
 	[255] = 0,
 
-	"#ddc7a1", /* default foreground colour */
-	"#292828", /* default background colour */
+	"#8D8E8E", /* default foreground colour */
+	"#2A2B2C", /* default background colour */
 	"#c18f41", /* orange */
 	"#d8a657", /* bright orange */
 };
