@@ -53,8 +53,9 @@
         (icon :icon './images/cpu.svg' :text '${round(EWW_CPU.avg, 0)}%')
         (icon :icon './images/ram.svg' :text '${round(EWW_RAM.used_mem / 1024, 0)}Mb'))")
     (separator)
+    (icon :icon './images/spotify.svg' :text music)
     (pill
-      :content "(icon :icon './images/spotify.svg' :text music)")
+      :content "(media-player)")
     (separator)
     time))
 
@@ -92,10 +93,10 @@
     (workspace-btn :index "5")
     (workspace-btn :index "6")))
 
-(defwidget icon [icon text]
+(defwidget icon [icon ?text]
   (box
     :orientation "horizontal"
-    :spacing 8
+    :spacing {text != "" ? 8 : 0}
     :halign "center"
     :valign "center"
     :space-evenly false
@@ -111,7 +112,30 @@
     :class "pill"
     :space-evenly false
     (literal :content content)))
-    
+
+(defwidget media-player []
+  (box
+    :orientation "horizontal"
+    :spacing 8
+    :halign "center"
+    :valign "center"
+    :space-evenly false
+    (eventbox
+      :cursor "pointer"
+      (button
+        :onclick "playerctl previous --player=spotify"
+        (icon :icon "./images/previous.svg")))
+    (eventbox
+      :cursor "pointer"
+      (button
+        :onclick "playerctl play-pause --player=spotify"
+        (icon :icon "./images/play.svg")))
+    (eventbox
+      :cursor "pointer"
+      (button
+        :onclick "playerctl next --player=spotify"
+        (icon :icon "./images/next.svg")))))
+
 (defwidget separator []
   (box
     :class "separator"
