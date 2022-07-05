@@ -100,10 +100,11 @@ set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+
+# assign apps to workspaces.
+assign [class="firefox"] $ws2
+assign [class="discord"] $ws5
+assign [class="spotify"] $ws6
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -112,10 +113,6 @@ bindsym $mod+3 workspace number $ws3
 bindsym $mod+4 workspace number $ws4
 bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -124,10 +121,6 @@ bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -178,14 +171,14 @@ client.background           #2A2B2C
 
 # startup programs
 exec_always --no-startup-id picom --experimental-backends -cb --config ~/.aki/.config/picom/picom.conf
-exec --no-startup-id sh -c 'eww daemon && eww open bar || true'
-exec --no-startup-id feh --bg-scale ~/.aki/images/aki.jpg
-
-# Startup windows
-exec --no-startup-id sh -c 'sleep 1; i3-msg "workspace 5; exec discord;"'
-exec --no-startup-id sh -c 'sleep 2; i3-msg "workspace 6; exec spotify;"'
-exec --no-startup-id sh -c 'sleep 3; i3-msg "workspace 2; exec firefox;"'
-exec --no-startup-id sh -c 'sleep 4; i3-msg "workspace 1;"'
+exec --no-startup-id firefox --class=firefox # ws1
+exec --no-startup-id discord --class=discord # ws5
+exec --no-startup-id spotify --class=spotify # ws6
+exec_always --no-startup-id \
+        ~/.aki/.bin/eww-release/eww daemon && \
+        ~/.aki/.bin/eww-release/eww close-all && \
+        ~/.aki/.bin/eww-release/eww open bar && \
+        feh --bg-scale ~/.aki/images/aki.jpg
 
 # Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
