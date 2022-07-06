@@ -1,10 +1,10 @@
  {
-    background:                 #292828;
-    background-alt:             #32302f;
-    background-alt2:            #bd6f3e;
-    foreground:                 #ddc7a1;
-    foreground-alt:             #1c1c1c;
-    accent:                     #ea6962;
-    transparent:                #10101000;
+    background:                 #21252B;
+    background-alt:             #383E4A;
+    background-alt2:            #E5C07B;
+    foreground:                 #F5F5F5;
+    foreground-alt:             #808080;
+    accent:                     #E06C75;
+    transparent:                #282C3400;
     text-color:                 @fg;
 }

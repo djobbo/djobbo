@@ -21,7 +21,7 @@ bgray=%F{15}
 reset=%f
 
 prompt_user() {
-  echo -n $byellow%n$gray@%m$reset
+  echo -n $bmagenta%n$bblack@%m$reset
 }
 
 prompt_dir() {
@@ -55,4 +55,4 @@ neofetch \
   --separator " ->" \
   --colors 11 15 0 12 5 7 # title @ underline subtitle colon info
 
-export PS1='$(build_prompt)'
+export PROMPT='$(build_prompt)'

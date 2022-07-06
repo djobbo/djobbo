@@ -162,12 +162,12 @@ gaps inner 12
 gaps outer 0
 
 # Window colors             border  backgr. text    indicator
-client.focused              #E7604E #2A2B2C #ddc7a1 #2F3132 
-client.focused_inactive     #8D8E8E #2A2B2C #ddc7a1 #2F3132
-client.unfocused            #2A2B2C #2A2B2C #ddc7a1 #2A2B2C
-client.urgent               #E7604E #2A2B2C #ddc7a1 #3A3D3F
-client.placeholder          #2A2B2C #2A2B2C #ddc7a1 #3A3D3F
-client.background           #2A2B2C
+client.focused              #E05252 #282C34 #F5F5F5 #2C313A 
+client.focused_inactive     #D0D0D0 #282C34 #F5F5F5 #2C313A
+client.unfocused            #282C34 #282C34 #F5F5F5 #282C34
+client.urgent               #E05252 #282C34 #F5F5F5 #383E4A
+client.placeholder          #282C34 #282C34 #F5F5F5 #383E4A
+client.background           #282C34
 
 # startup programs
 exec_always --no-startup-id picom --experimental-backends -cb --config ~/.aki/.config/picom/picom.conf
