@@ -105,8 +105,6 @@ def update_theme(**kwargs):
     palette = read_palette(palette_path)
     palette_update_map = read_palette_update_map(palette_update_map_path) if not check_only else {}
 
-    print(palette, palette_update_map, ignored_dirs)
-
     remaining_colors = []
 
     for path, dirs, files in os.walk(file_path):
