@@ -31,3 +31,5 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="$AKI_PATH/.bin:$PATH"
 export PATH="$AKI_PATH/.bin/eww-release:$PATH"
+
+export PATH="$HOME/.spicetify:$PATH"
