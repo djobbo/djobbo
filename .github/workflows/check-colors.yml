@@ -16,4 +16,4 @@ jobs:
               with:
                   python-version: '3.x'
             - name: Run script
-              run: python check-theme.py
+              run: python update-theme.py --check-only
