@@ -81,13 +81,13 @@ def update_colors_in_file(file_path, palette, palette_update_map, **kwargs):
             remaining_colors.append(color)
             continue
 
-        updated_color = palette_update_map.get(color.upper())
+        updated_color = color.upper() if check_color(palette, color.upper()) else palette_update_map.get(color.upper())
         if updated_color and COLOR_PATTERN.match(updated_color) and updated_color in palette:
             log(' ↳', color, '=>', updated_color, '\033[93m✔️\033[0m')
             content = content.replace(color, updated_color)
         else:
             log(' ↳', color, '\033[91m❌\033[0m')
-            remaining_colors.append(color)
+            remaining_colors.append(color.upper())
 
     with open(file_path, 'w') as file:
         file.write(content)
