@@ -25,7 +25,7 @@
         }
 
         &>.arrow {
-            color: #E05252;
+            color: #E06C75;
             padding: 0 12px;
             font-weight: bold;
         }
@@ -50,13 +50,13 @@
 
         &.active {
             &>box {
-                background-color: #E05252;
+                background-color: #E06C75;
             }
         }
 
         &:hover {
             &>box {
-                background-color: #E05252;
+                background-color: #E06C75;
             }
         }
     }

@@ -33,3 +33,10 @@ export PATH="$AKI_PATH/.bin:$PATH"
 export PATH="$AKI_PATH/.bin/eww-release:$PATH"
 
 export PATH="$HOME/.spicetify:$PATH"
+
+# bun completions
+[ -s "/home/djobbo/.bun/_bun" ] && source "/home/djobbo/.bun/_bun"
+
+# Bun
+export BUN_INSTALL="/home/djobbo/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
