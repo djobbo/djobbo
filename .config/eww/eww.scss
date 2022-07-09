@@ -3,60 +3,60 @@
 }
 
 .separator {
-    color: #D0D0D0;
+    color: #d0d0d0;
     font-size: 16px;
     font-weight: bold;
 }
 
 .pill {
-    background-color: #2C313A;
+    background-color: #2c313a;
     padding: 4px 12px;
     border-radius: 14px;
 }
 
 .bar {
     padding: 4px 16px;
-    color: #D0D0D0;
-    
-    &>.leftpart {
-        &>.icon {
+    color: #d0d0d0;
+
+    & > .leftpart {
+        & > .icon {
             font-size: 16px;
             font-weight: bold;
         }
 
-        &>.arrow {
-            color: #E06C75;
+        & > .arrow {
+            color: #e06c75;
             padding: 0 12px;
             font-weight: bold;
         }
 
-        &>.window-title {
+        & > .window-title {
             font-size: 14px;
         }
     }
 }
 
 .workspace-btn {
-    &>button {
+    & > button {
         margin-bottom: 0px;
         border-radius: 50%;
-        background-color: #383E4A;
+        background-color: #383e4a;
         padding: 8px;
 
-        &>box {
+        & > box {
             border-radius: 50%;
-            background-color: #D0D0D0;
+            background-color: #d0d0d0;
         }
 
         &.active {
-            &>box {
-                background-color: #E06C75;
+            & > box {
+                background-color: #e06c75;
             }
         }
 
         &:hover {
-            &>box {
-                background-color: #E06C75;
+            & > box {
+                background-color: #e06c75;
             }
         }
     }
