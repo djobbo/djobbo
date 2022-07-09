@@ -3,20 +3,20 @@
 }
 
 .separator {
-    color: #d0d0d0;
+    color: #D0D0D0;
     font-size: 16px;
     font-weight: bold;
 }
 
 .pill {
-    background-color: #2c313a;
+    background-color: #2C313A;
     padding: 4px 12px;
     border-radius: 14px;
 }
 
 .bar {
     padding: 4px 16px;
-    color: #d0d0d0;
+    color: #D0D0D0;
 
     & > .leftpart {
         & > .icon {
@@ -25,7 +25,7 @@
         }
 
         & > .arrow {
-            color: #e06c75;
+            color: #E06C75;
             padding: 0 12px;
             font-weight: bold;
         }
@@ -40,23 +40,23 @@
     & > button {
         margin-bottom: 0px;
         border-radius: 50%;
-        background-color: #383e4a;
+        background-color: #383E4A;
         padding: 8px;
 
         & > box {
             border-radius: 50%;
-            background-color: #d0d0d0;
+            background-color: #D0D0D0;
         }
 
         &.active {
             & > box {
-                background-color: #e06c75;
+                background-color: #E06C75;
             }
         }
 
         &:hover {
             & > box {
-                background-color: #e06c75;
+                background-color: #E06C75;
             }
         }
     }
