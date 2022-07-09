@@ -1,0 +1,16 @@
+{
+    "BetterNsfwTag": true,
+    "BetterRoleColors": true,
+    "GuildProfile": true,
+    "PluginRepo": true,
+    "ReadAllNotificationsButton": true,
+    "ServerCounter": true,
+    "ServerDetails": false,
+    "ShowBadgesInChat": true,
+    "ShowConnections": true,
+    "ShowHiddenChannels": true,
+    "TopRoleEverywhere": false,
+    "ZeresPluginLibrary": true,
+    "BDFDB": true,
+    "DoubleClickToEdit": true
+}

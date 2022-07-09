@@ -146,9 +146,9 @@ def update_theme(**kwargs):
             if os.path.exists(palette_update_map_path):
                 os.rename(palette_update_map_path, bak_path)
 
-            new_palette_update_map = {}
+            new_palette_update_map = palette_update_map.copy()
             for color in remaining_colors:
-                new_palette_update_map[color] = ""
+                new_palette_update_map[color] = palette_update_map.get(color) or ""
             
             with open(palette_update_map_path, 'w') as palette_update_file:
                 palette_update_file.write(json.dumps(new_palette_update_map, indent=4, sort_keys=True))
