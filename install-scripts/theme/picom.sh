@@ -19,3 +19,5 @@ meson --buildtype=release . build
 sudo ninja -C build
 
 sudo ninja -C build install
+
+rm -rf $AKI_PATH/.tmp/picom
