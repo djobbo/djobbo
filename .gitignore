@@ -8,3 +8,5 @@
 palette.log
 palette.update.json
 palette.update.json.bak
+
+nohup.out
