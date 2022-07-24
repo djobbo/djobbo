@@ -6,6 +6,8 @@ wget -O ~/.aki/.tmp/discord.deb "https://discord.com/api/download?platform=linux
 
 sudo dpkg -i ~/.aki/.tmp/discord.deb
 
+rm ~/.aki/.tmp/discord.deb
+
 git clone https://github.com/BetterDiscord/BetterDiscord.git ~/.aki/.tmp/BetterDiscord
 
 cd ~/.aki/.tmp/BetterDiscord

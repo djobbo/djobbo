@@ -2,7 +2,7 @@
  * @name BDFDB
  * @author DevilBro
  * @authorId 278543574059057154
- * @version 2.4.3
+ * @version 2.4.5
  * @description Required Library for DevilBro's Plugins
  * @invite Jx3TjNS
  * @donate https://www.paypal.me/MircoWittrien
@@ -19,7 +19,7 @@ module.exports = (_ => {
 		"info": {
 			"name": "BDFDB",
 			"author": "DevilBro",
-			"version": "2.4.3",
+			"version": "2.4.5",
 			"description": "Required Library for DevilBro's Plugins"
 		},
 		"rawUrl": "https://mwittrien.github.io/BetterDiscordAddons/Library/0BDFDB.plugin.js"
@@ -172,7 +172,7 @@ module.exports = (_ => {
 			name = BDFDB.name;
 			version = BDFDB.version;
 		}
-		console[type](...[[name && `%c[${name}]`, version && `%c(v${version})`].filter(n => n).join(" "), name && "color: #61AFEF; font-weight: 700;", version && "color: #666; font-weight: 600; font-size: 11px;", [config.strings].flat(10).filter(n => n).join(" ").trim()].filter(n => n));
+		console[type](...[[name && `%c[${name}]`, version && `%c(v${version})`].filter(n => n).join(" "), name && "color: #3a71c1; font-weight: 700;", version && "color: #666; font-weight: 600; font-size: 11px;", [config.strings].flat(10).filter(n => n).join(" ").trim()].filter(n => n));
 	};
 	BDFDB.LogUtils.log = function (strings, config = {}) {
 		Internal.console("log", Object.assign({}, config, {name: typeof config == "string" ? config : config.name, strings}));
@@ -4597,50 +4597,50 @@ module.exports = (_ => {
 			while (id.length < 6) id += generationChars[Math.floor(Math.random() * generationChars.length)];
 			return id;
 		};
-		BDFDB.disCN = new Proxy(DiscordClasses, {
+		BDFDB.disCN = new Proxy({}, {
 			get: function (list, item) {
 				return Internal.getDiscordClass(item, false).replace("#", "");
 			}
 		});
-		BDFDB.disCNS = new Proxy(DiscordClasses, {
+		BDFDB.disCNS = new Proxy({}, {
 			get: function (list, item) {
 				return Internal.getDiscordClass(item, false).replace("#", "") + " ";
 			}
 		});
-		BDFDB.disCNC = new Proxy(DiscordClasses, {
+		BDFDB.disCNC = new Proxy({}, {
 			get: function (list, item) {
 				return Internal.getDiscordClass(item, false).replace("#", "") + ",";
 			}
 		});
-		BDFDB.dotCN = new Proxy(DiscordClasses, {
+		BDFDB.dotCN = new Proxy({}, {
 			get: function (list, item) {
 				let className = Internal.getDiscordClass(item, true);
 				return (className.indexOf("#") == 0 ? "" : ".") + className;
 			}
 		});
-		BDFDB.dotCNS = new Proxy(DiscordClasses, {
+		BDFDB.dotCNS = new Proxy({}, {
 			get: function (list, item) {
 				let className = Internal.getDiscordClass(item, true);
 				return (className.indexOf("#") == 0 ? "" : ".") + className + " ";
 			}
 		});
-		BDFDB.dotCNC = new Proxy(DiscordClasses, {
+		BDFDB.dotCNC = new Proxy({}, {
 			get: function (list, item) {
 				let className = Internal.getDiscordClass(item, true);
 				return (className.indexOf("#") == 0 ? "" : ".") + className + ",";
 			}
 		});
-		BDFDB.notCN = new Proxy(DiscordClasses, {
+		BDFDB.notCN = new Proxy({}, {
 			get: function (list, item) {
 				return `:not(.${Internal.getDiscordClass(item, true).split(".")[0]})`;
 			}
 		});
-		BDFDB.notCNS = new Proxy(DiscordClasses, {
+		BDFDB.notCNS = new Proxy({}, {
 			get: function (list, item) {
 				return `:not(.${Internal.getDiscordClass(item, true).split(".")[0]}) `;
 			}
 		});
-		BDFDB.notCNC = new Proxy(DiscordClasses, {
+		BDFDB.notCNC = new Proxy({}, {
 			get: function (list, item) {
 				return `:not(.${Internal.getDiscordClass(item, true).split(".")[0]}),`;
 			}
@@ -4803,7 +4803,7 @@ module.exports = (_ => {
 				let item = BDFDB.ReactUtils.createElement(Internal.LibraryComponents.Clickable, Object.assign({
 					className: BDFDB.DOMUtils.formatClassName(BDFDB.disCN.menuitem, (this.props.label || this.props.subtext) && BDFDB.disCN.menulabelcontainer, color && (isCustomColor ? BDFDB.disCN.menucolorcustom : BDFDB.disCN[`menu${color}`]), this.props.disabled && BDFDB.disCN.menudisabled, focused && BDFDB.disCN.menufocused),
 					style: {
-						color: isCustomColor ? ((focused || this.state.hovered) ? (BDFDB.ColorUtils.isBright(color) ? "#21252B" : "#FFFFFF") : color) : (this.state.hovered ? "#FFFFFF" : null),
+						color: isCustomColor ? ((focused || this.state.hovered) ? (BDFDB.ColorUtils.isBright(color) ? "#000000" : "#ffffff") : color) : (this.state.hovered ? "#ffffff" : null),
 						background: isCustomColor && (focused || this.state.hovered) && color
 					},
 					onClick: this.props.disabled ? null : e => {
@@ -5401,7 +5401,7 @@ module.exports = (_ => {
 					let hslFormat = this.props.alpha ? "HSLA" : "HSL";
 					let hexRegex = this.props.alpha ? /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i : /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
 					
-					let selectedColor = BDFDB.ColorUtils.convert(this.state.isGradient ? this.props.color[this.state.selectedGradientCursor] : this.props.color, hslFormat) || BDFDB.ColorUtils.convert("#21252BFF", hslFormat);
+					let selectedColor = BDFDB.ColorUtils.convert(this.state.isGradient ? this.props.color[this.state.selectedGradientCursor] : this.props.color, hslFormat) || BDFDB.ColorUtils.convert("#000000FF", hslFormat);
 					let currentGradient = (this.state.isGradient ? Object.entries(this.props.color, hslFormat) : [[0, selectedColor], [1, selectedColor]]);
 					
 					let [h, s, l] = BDFDB.ColorUtils.convert(selectedColor, "HSLCOMP");
@@ -5571,7 +5571,7 @@ module.exports = (_ => {
 														let rects = BDFDB.DOMUtils.getRects(event.target);
 														let pos = BDFDB.NumberUtils.mapRange([rects.left, rects.left + rects.width], [0.01, 0.99], event.clientX);
 														if (Object.keys(this.props.color).indexOf(pos) == -1) {
-															this.props.color[pos] = BDFDB.ColorUtils.convert("#21252BFF", hslFormat);
+															this.props.color[pos] = BDFDB.ColorUtils.convert("#000000FF", hslFormat);
 															this.state.selectedGradientCursor = pos;
 															this.handleColorChange();
 														}
@@ -6609,8 +6609,11 @@ module.exports = (_ => {
 						onContextMenu: this.handleContextMenu.bind(this),
 						children: [
 							!this.props.noCircle ? BDFDB.ReactUtils.createElement("div", {
-								className: BDFDB.disCN.userpopoutrolecircle,
-								style: {backgroundColor: color}
+								className: BDFDB.disCN.userpopoutroleremovebutton,
+								children: BDFDB.ReactUtils.createElement("span", {
+									className: BDFDB.disCN.userpopoutrolecircle,
+									style: {backgroundColor: color}
+								})
 							}) : null,
 							BDFDB.ReactUtils.createElement("div", {
 								className: BDFDB.disCN.userpopoutrolename,
@@ -8578,7 +8581,6 @@ module.exports = (_ => {
 								}
 							}
 							while (removedTypes.length) delete PluginStores.chunkObserver[removedTypes.pop()];
-							
 							let found = false, funcString = exports && exports.default && typeof exports.default == "function" && exports.default.toString();
 							if (funcString && funcString.indexOf(".page") > -1 && funcString.indexOf(".section") > -1 && funcString.indexOf(".objectType") > -1) {
 								const returnValue = exports.default({});

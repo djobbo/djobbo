@@ -2,7 +2,7 @@
 
 ### EWW ###
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 source $HOME/.cargo/env
 
@@ -10,14 +10,24 @@ sudo apt-get install jq # JSON parser used in EWW widgets
 
 sudo apt-get install playerctl # Get song info from Spotify
 
-git clone https://github.com/elkowar/eww ~/.aki/.tmp/eww
+mkdir -p $AKI_PATH/.tmp
 
-cd ~/.aki/.tmp/eww
+git clone https://github.com/elkowar/eww $AKI_PATH/.tmp/eww || true
+
+cd $AKI_PATH/.tmp/eww
+
+git pull
 
 cargo build --release
 
-mv target/release ~/aki/.bin/eww-release
+mkdir -p $AKI_PATH/.bin
 
-chmod +x ~/aki/.bin/eww-release/eww
+mv target/release/eww $AKI_PATH/.bin/eww
 
-~/aki/.bin/eww-release/eww daemon
+chmod +x $AKI_PATH/.bin/eww
+
+sudo ln -s $AKI_PATH/.bin/eww /usr/bin || true
+
+rm -rf $AKI_PATH/.tmp/eww
+
+eww daemon

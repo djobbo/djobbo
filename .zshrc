@@ -29,14 +29,18 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -s "$AKI_PATH/.user.zshrc" ] && source $AKI_PATH/.user.zshrc
 
-export PATH="$AKI_PATH/.bin:$PATH"
-export PATH="$AKI_PATH/.bin/eww-release:$PATH"
-
 export PATH="$HOME/.spicetify:$PATH"
 
 # bun completions
-[ -s "/home/djobbo/.bun/_bun" ] && source "/home/djobbo/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # Bun
-export BUN_INSTALL="/home/djobbo/.bun"
+export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+# bun completions
+[ -s "/home/djobbo/.bun/_bun" ] && source "/home/djobbo/.bun/_bun"

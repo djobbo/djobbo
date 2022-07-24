@@ -175,9 +175,9 @@ exec --no-startup-id firefox --class=firefox # ws1
 exec --no-startup-id discord --class=discord # ws5
 exec --no-startup-id spotify --class=spotify # ws6
 exec_always --no-startup-id \
-        ~/.aki/.bin/eww-release/eww daemon && \
-        ~/.aki/.bin/eww-release/eww close-all && \
-        ~/.aki/.bin/eww-release/eww open bar && \
+        eww daemon && \
+        eww close-all && \
+        eww open bar && \
         feh --bg-scale ~/.aki/images/aki.jpg
 
 # Screenshots

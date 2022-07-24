@@ -55,4 +55,6 @@ neofetch \
   --separator " ->" \
   --colors 11 15 0 12 5 7 # title @ underline subtitle colon info
 
+export LS_COLORS='di=1;4;34';
+
 export PROMPT='$(build_prompt)'

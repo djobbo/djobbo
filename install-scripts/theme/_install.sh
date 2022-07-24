@@ -23,3 +23,9 @@ sudo apt-get install -y maim xclip
 sudo apt-get install -y rofi
 
 ### EWW ###
+
+### Kitty ###
+
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+
+ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin || true

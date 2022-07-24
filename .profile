@@ -25,6 +25,6 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-. "$HOME/.cargo/env"
 
 [ -s "$HOME/.aki/.user.profile" ] && \. "$HOME/.aki/.user.profile"  # Load user specific profile
+. "$HOME/.cargo/env"
