@@ -137,7 +137,9 @@ def update_theme(**kwargs):
     if has_remaining_colors:
         log('\n\033[91m' + f'Found {len(remaining_colors)} out of sync colors, see above...' + '\033[0m')
         
-        if not check_only:
+        if check_only:
+            log('You can run this script locally without --check-only to try and fix them.')
+        else:
             # copy old update map to .bak file
 
             bak_path = palette_update_map_path + '.bak'
