@@ -165,5 +165,5 @@ update_theme(
     palette_path=f'{file_path}/palette.txt',
     palette_update_map_path=f'{file_path}/palette.update.json',
     ignored_dirs=['.git', '.tmp', 'node_modules', '.next', '.bin'],
-    ignored_files=['palette.update.json', 'palette.txt', 'palette.update.json.bak']
+    ignored_files=['palette.update.json', 'palette.txt', 'palette.update.json.bak', 'palette.log', 'nohup.out']
 )
