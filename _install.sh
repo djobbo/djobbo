@@ -14,3 +14,6 @@ ln -s $AKI_PATH/.config/i3/config ~/.config/i3/config || true
 ln -s $AKI_PATH/.config/rofi ~/.config/rofi || true
 ln -s $AKI_PATH/.config/eww ~/.config || true
 ln -s $AKI_PATH/.config/qtile ~/.config || true
+
+# TODO: Godot auto install is not yet setup
+sudo ln -s $AKI_PATH/.bin/godot /usr/bin || true
