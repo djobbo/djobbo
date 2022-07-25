@@ -13,3 +13,5 @@
 	directory = /mnt/work/gh-actions-js
 [init]
 	defaultBranch = main
+[help]
+	autocorrect = 5
