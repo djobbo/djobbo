@@ -12,5 +12,14 @@
     "TopRoleEverywhere": false,
     "ZeresPluginLibrary": true,
     "BDFDB": true,
-    "DoubleClickToEdit": true
+    "DoubleClickToEdit": true,
+    "BetterSearchPage": true,
+    "BlurNSFW": true,
+    "CallTimeCounter": true,
+    "ChannelDms": true,
+    "ChannelsPreview": true,
+    "GuildAndFriendRemovalAlerts": true,
+    "NoSpotifyPause": true,
+    "MessageLoggerV2": true,
+    "XenoLib": false
 }

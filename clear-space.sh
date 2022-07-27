@@ -10,3 +10,4 @@ sudo journalctl --vacuum-size=250M
 
 # Show largest files/folders
 # sudo du -sh /
+# sudo du -a / | sort -n -r | head -n 20

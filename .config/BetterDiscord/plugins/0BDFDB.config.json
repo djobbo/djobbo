@@ -1,6 +1,7 @@
 {
 	"all": {
 		"changeLogs": {
+			"BetterSearchPage": "1.2.0",
 			"ShowBadgesInChat": "1.9.0",
 			"ShowConnections": "1.0.9"
 		},

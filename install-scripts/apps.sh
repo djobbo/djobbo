@@ -25,3 +25,6 @@ sudo chmod a+wr /usr/share/spotify/Apps -R
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
 curl -fsSL https://raw.githubusercontent.com/NYRI4/Comfy-spicetify/main/install.sh | sh
+
+### OBS ###
+sudo apt install obs-studio
