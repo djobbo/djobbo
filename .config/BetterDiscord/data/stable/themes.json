@@ -1,4 +1,5 @@
 {
-    "Aki": false,
-    "No Lag": true
+    "Aki": true,
+    "No Lag": true,
+    "Nocturnal": false
 }
