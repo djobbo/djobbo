@@ -4,7 +4,7 @@
     "GuildProfile": true,
     "PluginRepo": true,
     "ReadAllNotificationsButton": true,
-    "ServerCounter": true,
+    "ServerCounter": false,
     "ServerDetails": false,
     "ShowBadgesInChat": true,
     "ShowConnections": true,
@@ -21,5 +21,5 @@
     "GuildAndFriendRemovalAlerts": true,
     "NoSpotifyPause": true,
     "MessageLoggerV2": true,
-    "XenoLib": false
+    "XenoLib": true
 }

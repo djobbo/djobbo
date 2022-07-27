@@ -1,7 +1,7 @@
 {
     "general": {
         "emotes": true,
-        "publicServers": true,
+        "publicServers": false,
         "voiceDisconnect": true,
         "showToasts": true,
         "mediaKeys": false

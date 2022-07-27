@@ -17,6 +17,18 @@
     box-sizing: border-box;
 }
 
+/* Horizontal Server List */
+@import url("https://discordstyles.github.io/HorizontalServerList/dist/HorizontalServerList.css");
+
+/* Bottom HorizontalServerList. Simply remove the comments surrounding the @import to enable it. */
+/* @import url("https://discordstyles.github.io/Addons/bottomhsl.css"); */
+
+:root {
+  --HSL-server-icon-size: 40px;  /* Size of the server icons | DEFAULT: 40px */
+  --HSL-server-spacing: 10px;  /* Spacing between each server icon | DEFAULT: 10px */
+  --HSL-server-direction: column; /* Direct of the server list. | Options: column, column-reverse | DEFAULT: column */
+}
+
 .theme-dark {
     --header-primary: #F5F5F5;
     --header-secondary: #D0D0D0;
@@ -180,4 +192,18 @@
     --android-navigation-bar-background: #21252B;
 
     --brand-experiment: #282C34;
+}
+
+.bd-guild *[class*="blobContainer-"] svg {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.bd-guild *[class*="blobContainer-"] {
+    transition: 0.25s all ease;
+}
+
+
+.bd-guild:hover *[class*="blobContainer-"] {
+    transform: scale(1.1) rotate(-2.5deg);
 }

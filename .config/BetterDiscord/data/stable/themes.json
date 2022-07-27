@@ -1,5 +1,6 @@
 {
     "Aki": true,
-    "No Lag": true,
-    "Nocturnal": false
+    "No Lag": false,
+    "Nocturnal": false,
+    "Horizontal Server List": true
 }
