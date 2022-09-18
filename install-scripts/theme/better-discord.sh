@@ -16,7 +16,7 @@ ln -s $AKI_PATH/.config/discord/settings.json ~/.config/discord || true
 # Launch discord 1 time before injection for it to be successful
 nohup discord &
 discord_pid=$!
-sleep 5s
+sleep 7s
 kill -KILL $discord_pid
 
 git clone https://github.com/BetterDiscord/BetterDiscord.git ~/.aki/.tmp/BetterDiscord

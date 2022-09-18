@@ -9,3 +9,5 @@ palette.log
 palette.update.json.bak
 
 nohup.out
+
+node_modules/
