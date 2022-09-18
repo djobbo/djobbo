@@ -3,7 +3,7 @@
         "notifications": {
             "position": "topRight",
             "backdrop": true,
-            "backdropColor": "#3e4346",
+            "backdropColor": "#383E4A",
             "timeoutReset": true
         },
         "addons": {

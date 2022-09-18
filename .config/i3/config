@@ -40,7 +40,8 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id "rofi -modi window,drun,run -show drun"
+bindsym $mod+d exec --no-startup-id "rofi -show drun -show-icons"
+bindsym $mod+Tab exec --no-startup-id "rofi -show window -show-icons"
 
 # change focus
 bindsym $mod+j focus left
@@ -169,11 +170,14 @@ client.urgent               #E05252 #282C34 #F5F5F5 #383E4A
 client.placeholder          #282C34 #282C34 #F5F5F5 #383E4A
 client.background           #282C34
 
-# startup programs
+# Startup programs
 exec_always --no-startup-id picom --experimental-backends -cb --config ~/.aki/.config/picom/picom.conf
 exec --no-startup-id firefox --class=firefox # ws1
 exec --no-startup-id discord --class=discord # ws5
 exec --no-startup-id spotify --class=spotify # ws6
+for_window [class="spotify"] move to workspace $ws6
+
+# Wallpaper
 exec_always --no-startup-id \
         eww daemon && \
         eww close-all && \
@@ -186,6 +190,6 @@ bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow)
 bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
 
 # Clipboard Screenshots
-bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+bindsym Ctrl+Print exec --no-startup-id "maim | xclip -selection clipboard -t image/png"
+bindsym Ctrl+$mod+Print exec --no-startup-id "maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png"
+bindsym Ctrl+Shift+Print exec --no-startup-id "maim --select | xclip -selection clipboard -t image/png"

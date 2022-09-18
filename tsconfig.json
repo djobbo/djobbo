@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "NodeNext",
+        "allowSyntheticDefaultImports": true
+    },
+    "include": ["_install.zx.ts", "scripts/**/*"],
+    "exclude": ["node_modules"]
+}

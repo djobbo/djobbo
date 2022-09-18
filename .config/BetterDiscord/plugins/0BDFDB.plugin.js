@@ -172,7 +172,7 @@ module.exports = (_ => {
 			name = BDFDB.name;
 			version = BDFDB.version;
 		}
-		console[type](...[[name && `%c[${name}]`, version && `%c(v${version})`].filter(n => n).join(" "), name && "color: #3a71c1; font-weight: 700;", version && "color: #666; font-weight: 600; font-size: 11px;", [config.strings].flat(10).filter(n => n).join(" ").trim()].filter(n => n));
+		console[type](...[[name && `%c[${name}]`, version && `%c(v${version})`].filter(n => n).join(" "), name && "color: #61AFEF; font-weight: 700;", version && "color: #666; font-weight: 600; font-size: 11px;", [config.strings].flat(10).filter(n => n).join(" ").trim()].filter(n => n));
 	};
 	BDFDB.LogUtils.log = function (strings, config = {}) {
 		Internal.console("log", Object.assign({}, config, {name: typeof config == "string" ? config : config.name, strings}));
@@ -4804,7 +4804,7 @@ module.exports = (_ => {
 				let item = BDFDB.ReactUtils.createElement(Internal.LibraryComponents.Clickable, Object.assign({
 					className: BDFDB.DOMUtils.formatClassName(BDFDB.disCN.menuitem, (this.props.label || this.props.subtext) && BDFDB.disCN.menulabelcontainer, color && (isCustomColor ? BDFDB.disCN.menucolorcustom : BDFDB.disCN[`menu${color}`]), this.props.disabled && BDFDB.disCN.menudisabled, focused && BDFDB.disCN.menufocused),
 					style: {
-						color: isCustomColor ? ((focused || this.state.hovered) ? (BDFDB.ColorUtils.isBright(color) ? "#000000" : "#ffffff") : color) : (this.state.hovered ? "#ffffff" : null),
+						color: isCustomColor ? ((focused || this.state.hovered) ? (BDFDB.ColorUtils.isBright(color) ? "#21252B" : "#FFFFFF") : color) : (this.state.hovered ? "#FFFFFF" : null),
 						background: isCustomColor && (focused || this.state.hovered) && color
 					},
 					onClick: this.props.disabled ? null : e => {
@@ -5402,7 +5402,7 @@ module.exports = (_ => {
 					let hslFormat = this.props.alpha ? "HSLA" : "HSL";
 					let hexRegex = this.props.alpha ? /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i : /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
 					
-					let selectedColor = BDFDB.ColorUtils.convert(this.state.isGradient ? this.props.color[this.state.selectedGradientCursor] : this.props.color, hslFormat) || BDFDB.ColorUtils.convert("#000000FF", hslFormat);
+					let selectedColor = BDFDB.ColorUtils.convert(this.state.isGradient ? this.props.color[this.state.selectedGradientCursor] : this.props.color, hslFormat) || BDFDB.ColorUtils.convert("#21252BFF", hslFormat);
 					let currentGradient = (this.state.isGradient ? Object.entries(this.props.color, hslFormat) : [[0, selectedColor], [1, selectedColor]]);
 					
 					let [h, s, l] = BDFDB.ColorUtils.convert(selectedColor, "HSLCOMP");
@@ -5572,7 +5572,7 @@ module.exports = (_ => {
 														let rects = BDFDB.DOMUtils.getRects(event.target);
 														let pos = BDFDB.NumberUtils.mapRange([rects.left, rects.left + rects.width], [0.01, 0.99], event.clientX);
 														if (Object.keys(this.props.color).indexOf(pos) == -1) {
-															this.props.color[pos] = BDFDB.ColorUtils.convert("#000000FF", hslFormat);
+															this.props.color[pos] = BDFDB.ColorUtils.convert("#21252BFF", hslFormat);
 															this.state.selectedGradientCursor = pos;
 															this.handleColorChange();
 														}

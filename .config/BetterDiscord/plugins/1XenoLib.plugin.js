@@ -142,9 +142,9 @@ module.exports = (() => {
             name: 'Background color',
             id: 'backdropColor',
             type: 'color',
-            value: '#3e4346',
+            value: '#383E4A',
             options: {
-              defaultColor: '#3e4346'
+              defaultColor: '#383E4A'
             }
           },
           {
@@ -461,7 +461,7 @@ module.exports = (() => {
       .xenoLib-notification-content {
         padding: 12px;
         overflow: hidden;
-        background: #474747;
+        background: #383E4A;
         pointer-events: all;
         position: relative;
         width: 20vw;
@@ -530,7 +530,7 @@ module.exports = (() => {
         margin: 6px;
         border-radius: 3px;
         opacity: .6;
-        background-color: #72767d;
+        background-color: #808080;
         cursor: pointer;
         overflow: hidden;
         text-indent: -999em;
@@ -1574,21 +1574,21 @@ module.exports = (() => {
           progress: -1,
           channelId: undefined,
           timeout: 3500,
-          color: '#2196f3',
+          color: '#61AFEF',
           onLeave: DiscordConstants.NOOP
         };
         const utils = {
           success(content, options = {}) {
-            return this.show(content, { color: '#43b581', ...options });
+            return this.show(content, { color: '#98C379', ...options });
           },
           info(content, options = {}) {
-            return this.show(content, { color: '#4a90e2', ...options });
+            return this.show(content, { color: '#61AFEF', ...options });
           },
           warning(content, options = {}) {
-            return this.show(content, { color: '#ffa600', ...options });
+            return this.show(content, { color: '#E5C07B', ...options });
           },
           danger(content, options = {}) {
-            return this.show(content, { color: '#f04747', ...options });
+            return this.show(content, { color: '#E06C75', ...options });
           },
           error(content, options = {}) {
             return this.danger(content, options);
@@ -1676,21 +1676,21 @@ module.exports = (() => {
           progress: -1,
           channelId: undefined,
           timeout: 3500,
-          color: '#2196f3',
+          color: '#61AFEF',
           onLeave: DiscordConstants.NOOP
         };
         const utils = {
           success(content, options = {}) {
-            return this.show(content, { color: '#43b581', ...options });
+            return this.show(content, { color: '#98C379', ...options });
           },
           info(content, options = {}) {
-            return this.show(content, { color: '#4a90e2', ...options });
+            return this.show(content, { color: '#61AFEF', ...options });
           },
           warning(content, options = {}) {
-            return this.show(content, { color: '#ffa600', ...options });
+            return this.show(content, { color: '#E5C07B', ...options });
           },
           danger(content, options = {}) {
-            return this.show(content, { color: '#f04747', ...options });
+            return this.show(content, { color: '#E06C75', ...options });
           },
           error(content, options = {}) {
             return this.danger(content, options);
@@ -2052,7 +2052,7 @@ module.exports = (() => {
                       },
                       CloseButton
                     ),
-                    this.state.counter > 1 && BadgesModule.NumberBadge({ count: this.state.counter, className: 'xenLib-notification-counter', color: '#2196f3' }),
+                    this.state.counter > 1 && BadgesModule.NumberBadge({ count: this.state.counter, className: 'xenLib-notification-counter', color: '#61AFEF' }),
                     this.state.contentParsed
                   )
                 )

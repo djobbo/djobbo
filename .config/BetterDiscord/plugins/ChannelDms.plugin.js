@@ -665,7 +665,7 @@ function buildPlugin([BasePlugin, PluginApi]) {
 				if (unreadCount < 1) return null;
 				return unreadbadge_React.createElement(Badges.NumberBadge, {
 					count: unreadCount,
-					color: "#ed4245"
+					color: "#E06C75"
 				});
 			}
 			function useSubscribe(store) {
