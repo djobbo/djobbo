@@ -4,8 +4,6 @@ import { $, chalk } from "zx"
 import { HOME, replaceHomeDirWithTilde } from "./homeDir.js"
 import { logError, logSuccess } from "./log.js"
 
-$.verbose = false
-
 export type SymlinkConfig = string | [target: string, link: string]
 
 const ln = async (target: string, link: string) => $`ln -s ${target} ${link}`

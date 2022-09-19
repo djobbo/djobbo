@@ -2,34 +2,49 @@
 
 import { $, chalk } from "zx"
 import { dirname, join } from "path"
-import { replaceHomeDirWithTilde } from "./scripts/util/homeDir.js"
+import { HOME, replaceHomeDirWithTilde } from "./scripts/util/homeDir.js"
 import { createSymlinks, SymlinkConfig } from "./scripts/util/symlinks.js"
-import { logBoxed, logSuccess, logError, newLine } from "./scripts/util/log.js"
-
-$.verbose = false
+import { logH2, logSuccess, logError, newLine } from "./scripts/util/log.js"
+import { upgradePackages } from "./scripts/util/upgrade.js"
 
 const [, filename, ...args] = process.argv
 
+$.verbose = args.includes("--verbose")
+
 const installDir = dirname(filename)
 
-// Create .bin folder if it doesn't exist
-logBoxed(`Creating ${chalk.blue(".bin")} folder`)
-const binDir = join(installDir, ".bin")
-try {
-    await $`mkdir -p ${binDir}`
-    logSuccess(`Created folder ${chalk.blue(replaceHomeDirWithTilde(binDir))}`)
-} catch {
-    logError(
-        `Failed to create ${chalk.blue(
-            replaceHomeDirWithTilde(binDir),
-        )}  folder`,
-    )
+const createFolder = async (path: string) => {
+    try {
+        await $`mkdir -p ${path}`
+        logSuccess(
+            `Created folder ${chalk.blue(replaceHomeDirWithTilde(path))}`,
+        )
+    } catch {
+        logError(
+            `Failed to create ${chalk.blue(
+                replaceHomeDirWithTilde(path),
+            )}  folder`,
+        )
+    }
 }
+
+logH2("Creating folders")
+// Create .bin folder if it doesn't exist
+const binDir = join(installDir, ".bin")
+await createFolder(binDir)
+
+// Create .tmp folder if it doesn't exist
+const tmpDir = join(installDir, ".tmp")
+await createFolder(tmpDir)
+
+// Create ~/.fonts folder if it doesn't exist
+const fontsDir = join(HOME, ".fonts")
+await createFolder(fontsDir)
 
 newLine()
 
 // Configure symlinks
-logBoxed("Configuring root symlinks")
+logH2("Configuring root symlinks")
 const symlinks: SymlinkConfig[] = [
     ".profile",
     ".zshrc",
@@ -40,4 +55,24 @@ const symlinks: SymlinkConfig[] = [
     // ".config/eww",
 ]
 
-createSymlinks(installDir)(symlinks)
+await createSymlinks(installDir)(symlinks)
+
+newLine()
+
+await upgradePackages()
+
+const fonts = await import("./scripts/install/fonts.js")
+await fonts.install({ tmpDir, fontsDir })
+
+newLine()
+
+// Install apps
+logH2("Installing apps")
+const python = await import("./scripts/install/python.js")
+await python.install({})
+
+const vscode = await import("./scripts/install/vscode.js")
+await vscode.install({ tmpDir })
+
+const spotify = await import("./scripts/install/spotify.js")
+await spotify.install({ installSpicetify: true })

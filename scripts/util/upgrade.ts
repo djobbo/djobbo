@@ -1,10 +1,30 @@
 import { $ } from "zx"
+import { logError, logInfo, logSuccess, newLine } from "./log.js"
 
 export const updatePackages = async () => {
-    await $`sudo nala update`
+    logInfo("Updating packages")
+
+    try {
+        await $`sudo nala update`
+        logSuccess("Updated packages")
+    } catch {
+        logError("Failed to update packages")
+    }
+
+    newLine()
 }
 
 export const upgradePackages = async () => {
     await updatePackages()
-    await $`sudo nala upgrade`
+
+    logInfo("Upgrading packages")
+
+    try {
+        await $`sudo nala upgrade`
+        logSuccess("Upgraded packages")
+    } catch {
+        logError("Failed to upgrade packages")
+    }
+
+    newLine()
 }

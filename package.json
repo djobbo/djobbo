@@ -12,7 +12,11 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@types/cli-progress": "^3.11.0",
         "@types/node": "^18.7.18",
+        "cli-progress": "^3.11.2",
+        "cli-spinners": "^2.7.0",
+        "ora": "^6.1.2",
         "strip-ansi": "^7.0.1",
         "ts-node": "^10.9.1",
         "tsconfig-paths": "^4.1.0",
