@@ -2,6 +2,8 @@
 
 ### EWW ###
 
+### --- first install --- ###
+
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 source $HOME/.cargo/env
@@ -13,6 +15,8 @@ sudo apt-get install playerctl # Get song info from Spotify
 mkdir -p $AKI_PATH/.tmp
 
 git clone https://github.com/elkowar/eww $AKI_PATH/.tmp/eww || true
+
+### --- update --- ###
 
 cd $AKI_PATH/.tmp/eww
 

@@ -16,6 +16,7 @@
 	directory = /mnt/work/webpack-custom-hmr
 	directory = /mnt/work/mvs_bot
 	directory = /mnt/work/bhfr-channels
+	directory = /mnt/work/eww
 [init]
 	defaultBranch = main
 [help]

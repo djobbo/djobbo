@@ -5,7 +5,7 @@ import { dirname, join } from "path"
 import { HOME, replaceHomeDirWithTilde } from "./scripts/util/homeDir.js"
 import { createSymlinks, SymlinkConfig } from "./scripts/util/symlinks.js"
 import { logH2, logSuccess, logError, newLine } from "./scripts/util/log.js"
-import { upgradePackages } from "./scripts/util/upgrade.js"
+import { nala } from "./scripts/util/nala.js"
 
 const [, filename, ...args] = process.argv
 
@@ -53,26 +53,27 @@ const symlinks: SymlinkConfig[] = [
     // ".config/i3/config",
     // ".config/rofi",
     // ".config/eww",
+    // ".config/awesome",
 ]
 
 await createSymlinks(installDir)(symlinks)
 
 newLine()
 
-await upgradePackages()
+await nala(["wmctrl"], { upgrade: true })
 
-const fonts = await import("./scripts/install/fonts.js")
-await fonts.install({ tmpDir, fontsDir })
+// const fonts = await import("./scripts/install/fonts.js")
+// await fonts.install({ tmpDir, fontsDir })
 
-newLine()
+// newLine()
 
-// Install apps
-logH2("Installing apps")
-const python = await import("./scripts/install/python.js")
-await python.install({})
+// // Install apps
+// logH2("Installing apps")
+// const python = await import("./scripts/install/python.js")
+// await python.install({})
 
-const vscode = await import("./scripts/install/vscode.js")
-await vscode.install({ tmpDir })
+// const vscode = await import("./scripts/install/vscode.js")
+// await vscode.install({ tmpDir })
 
-const spotify = await import("./scripts/install/spotify.js")
-await spotify.install({ installSpicetify: true })
+// const spotify = await import("./scripts/install/spotify.js")
+// await spotify.install({ installSpicetify: true })

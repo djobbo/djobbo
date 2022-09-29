@@ -30,6 +30,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# Disable focus follows mouse
+focus_follows_mouse no
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -157,18 +160,17 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-for_window [class=".*"] border pixel 6
+for_window [class=".*"] border pixel 1
 
 gaps inner 12
 gaps outer 0
 
 # Window colors             border  backgr. text    indicator
-client.focused              #E05252 #282C34 #F5F5F5 #2C313A 
-client.focused_inactive     #D0D0D0 #282C34 #F5F5F5 #2C313A
-client.unfocused            #282C34 #282C34 #F5F5F5 #282C34
-client.urgent               #E05252 #282C34 #F5F5F5 #383E4A
-client.placeholder          #282C34 #282C34 #F5F5F5 #383E4A
-client.background           #282C34
+client.focused              #E06C75 #D7DAE0 #F5F5F5 #2C313A 
+client.focused_inactive     #D0D0D0 #5A6375 #F5F5F5 #2C313A
+client.unfocused            #282C34 #5A6375 #F5F5F5 #282C34
+client.urgent               #E06C75 #5A6375 #F5F5F5 #383E4A
+client.background           #181A1F
 
 # Startup programs
 exec_always --no-startup-id picom --experimental-backends -cb --config ~/.aki/.config/picom/picom.conf

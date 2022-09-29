@@ -61,3 +61,26 @@
         }
     }
 }
+
+.workspaces-container {
+    padding: 4px 0px;
+}
+
+.workspace-display {
+    background-color: #2C313A;
+    padding: 4px;
+    border-radius: 8px;
+    min-width: 96px;
+    min-height: 54px;
+    font-size: 10px;
+}
+
+.window-display {
+    border: 1px solid #383E4A;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.window-display.focused {
+    border: 1px solid #E06C75;
+}
