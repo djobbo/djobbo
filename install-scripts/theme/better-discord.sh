@@ -1,6 +1,6 @@
 #! /bin/bash
 
-sudo apt-get remove discord -y || true
+# sudo nala remove discord -y || true
 
 mkdir -p ~/.aki/.tmp
 
@@ -13,24 +13,26 @@ rm ~/.aki/.tmp/discord.deb
 mkdir -p ~/.config/discord
 ln -s $AKI_PATH/.config/discord/settings.json ~/.config/discord || true
 
-# Launch discord 1 time before injection for it to be successful
-nohup discord &
-discord_pid=$!
-sleep 7s
-kill -KILL $discord_pid
+# Try to install better discord when it'll be stable
 
-git clone https://github.com/BetterDiscord/BetterDiscord.git ~/.aki/.tmp/BetterDiscord
+# # Launch discord 1 time before injection for it to be successful
+# nohup discord &
+# discord_pid=$!
+# sleep 7s
+# kill -KILL $discord_pid
 
-cd ~/.aki/.tmp/BetterDiscord
+# git clone https://github.com/BetterDiscord/BetterDiscord.git ~/.aki/.tmp/BetterDiscord
 
-# build works on node v16.x
-nvm install 16
-nvm use 16
+# cd ~/.aki/.tmp/BetterDiscord
 
-npm install
+# # build works on node v16.x
+# nvm install 16
+# nvm use 16
 
-npm run build
+# npm install
 
-npm run inject
+# npm run build
 
-ln -s $AKI_PATH/.config/BetterDiscord ~/.config || true
+# npm run inject
+
+# ln -s $AKI_PATH/.config/BetterDiscord ~/.config || true
