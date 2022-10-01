@@ -181,10 +181,6 @@ exec --no-startup-id spotify --class=spotify # ws6
 for_window [class="spotify"] move to workspace $ws6
 
 # Wallpaper
-# exec_always --no-startup-id \
-#         eww daemon && \
-#         eww close-all && \
-#         eww open bar && \
 exec_always --no-startup-id feh --bg-scale ~/.aki/images/wallpaper.jpg
 
 # Screenshots
