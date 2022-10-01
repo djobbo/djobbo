@@ -9,7 +9,7 @@ export const Workspaces = () => {
     }
 
     return (
-        <div className="flex px-1 py-2 gap-2">
+        <div className="flex py-2 gap-2">
             {workspaces.map((w) => (
                 <NodeDisplay node={w} key={w.id} />
             ))}

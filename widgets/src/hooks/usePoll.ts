@@ -6,11 +6,14 @@ export const usePoll = (
     command: string,
     interval: number = 1000,
     defaultValue: string = "",
+    callback?: (value: string) => void,
 ) => {
     const [output, setOutput] = useState(defaultValue)
 
     useInterval(async () => {
-        setOutput(await window.aki.exec(command))
+        const data = await window.aki.exec(command)
+        setOutput(data)
+        callback?.(data)
     }, interval)
 
     return output

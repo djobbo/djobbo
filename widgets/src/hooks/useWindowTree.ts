@@ -72,7 +72,7 @@ const parseI3Tree = ({
 }
 
 export const useWindowTree = () => {
-    const treeStr = usePoll("i3-msg -t get_tree", 50)
+    const treeStr = usePoll("i3-msg -t get_tree", 100)
 
     if (!treeStr) {
         return null
