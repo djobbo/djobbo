@@ -15,7 +15,7 @@
     "license": "ISC",
     "devDependencies": {
         "@types/cli-progress": "^3.11.0",
-        "@types/node": "^18.7.23",
+        "@types/node": "^18.8.0",
         "cli-progress": "^3.11.2",
         "cli-spinners": "^2.7.0",
         "ora": "^6.1.2",
