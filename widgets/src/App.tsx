@@ -10,26 +10,13 @@ function App() {
     })
 
     return (
-        <Widget
-            name="bar"
-            alwaysOnTop
-            frame={false}
-            transparent
-            focusable={false}
-            x={0}
-            y={0}
-            width={1920}
-            height={48}
-            // showDevTools
-        >
-            <div className="flex items-center justify-between px-2">
-                <Workspaces />
-                <div className="flex items-center gap-4">
-                    <SpotifyPlayer />
-                    <SystemMonitor />
-                </div>
+        <div className="flex items-center justify-between px-2">
+            <Workspaces />
+            <div className="flex items-center gap-4">
+                <SpotifyPlayer />
+                <SystemMonitor />
             </div>
-        </Widget>
+        </div>
     )
 }
 

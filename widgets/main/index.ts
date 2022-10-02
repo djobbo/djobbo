@@ -33,11 +33,6 @@ const prepare = () => {
         })
 
         child.stdout?.on("data", (data) => {
-            // webContents
-            //     .getAllWebContents()
-            //     .forEach((w) =>
-            //         w.send(`listen-output`, command, data.toString().trim()),
-            //     )
             dispatch(`listen-output`, command, data.toString().trim())
         })
     })
@@ -86,26 +81,6 @@ const prepare = () => {
         },
     )
 
-    ipcMain.handle(
-        "window:create",
-        (
-            event,
-            widgetPath: string,
-            options: Electron.BrowserWindowConstructorOptions,
-            showDevTools: boolean,
-        ) => {
-            const win = createWindow(widgetPath, options, showDevTools)
-            console.log("open", win.id, widgetPath)
-            return win.id
-        },
-    )
-
-    ipcMain.handle("window:close", (event, id: number) => {
-        console.log("close", id)
-        const win = BrowserWindow.fromId(id)
-        win?.close()
-    })
-
     createWindow("", {
         alwaysOnTop: true,
         frame: false,
@@ -113,8 +88,8 @@ const prepare = () => {
         focusable: false,
         x: 0,
         y: 0,
-        width: 0,
-        height: 0,
+        width: 1920,
+        height: 48,
     })
 }
 

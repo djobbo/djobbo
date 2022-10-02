@@ -45,22 +45,6 @@ const api = {
             ipcRenderer.off("shortcut:pressed", handler)
         }
     },
-    createWindow: async (
-        widgetPath: string,
-        options: Electron.BrowserWindowConstructorOptions,
-        showDevTools: boolean,
-    ) => {
-        const id = await ipcRenderer.invoke(
-            "window:create",
-            widgetPath,
-            options,
-            showDevTools,
-        )
-
-        return () => {
-            ipcRenderer.invoke("window:close", id)
-        }
-    },
 } as const
 
 export type ElectronAPI = typeof api
