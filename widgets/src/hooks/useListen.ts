@@ -8,7 +8,7 @@ export const useListen = (
     const [output, setOutput] = useState(defaultValue)
 
     useEffect(() => {
-        window.aki.listenTo(command)
+        const stopListening = window.aki.listenTo(command)
 
         const cleanup = window.aki.handleListen(command, (data) => {
             setOutput(data)
@@ -16,8 +16,8 @@ export const useListen = (
         })
 
         return () => {
-            window.aki.stopListening(command)
             cleanup()
+            stopListening()
         }
     }, [])
 

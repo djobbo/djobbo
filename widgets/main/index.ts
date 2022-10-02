@@ -1,4 +1,10 @@
-import { app, BrowserWindow, ipcMain, globalShortcut } from "electron"
+import {
+    app,
+    BrowserWindow,
+    ipcMain,
+    globalShortcut,
+    webContents,
+} from "electron"
 import { ChildProcess, exec, execSync } from "node:child_process"
 import os from "os"
 
@@ -11,22 +17,11 @@ const processListeners = new Map<
     { child: ChildProcess; count: number }
 >()
 
-const createWindow = () => {
-    const win = new BrowserWindow({
-        alwaysOnTop: true,
-        frame: false,
-        transparent: true,
-        focusable: false,
-        x: 0,
-        y: 0,
-        width: 1920,
-        height: 48,
-        webPreferences: {
-            nodeIntegration: true,
-            preload: path.join(__dirname, "preload.js"),
-        },
-    })
+const dispatch = <T extends unknown[]>(channel: string, ...args: T) => {
+    webContents.getAllWebContents().forEach((w) => w.send(channel, ...args))
+}
 
+const prepare = () => {
     ipcMain.on("listen", (event, command: string) => {
         const listener = processListeners.get(command)
 
@@ -38,11 +33,12 @@ const createWindow = () => {
         })
 
         child.stdout?.on("data", (data) => {
-            win.webContents.send(
-                `listen-output`,
-                command,
-                data.toString().trim(),
-            )
+            // webContents
+            //     .getAllWebContents()
+            //     .forEach((w) =>
+            //         w.send(`listen-output`, command, data.toString().trim()),
+            //     )
+            dispatch(`listen-output`, command, data.toString().trim())
         })
     })
 
@@ -78,8 +74,7 @@ const createWindow = () => {
         "shortcut:register",
         (event, shortcut: Electron.Accelerator) => {
             globalShortcut.register(shortcut, () => {
-                console.log("shortcut pressed", shortcut)
-                win.webContents.send("shortcut:pressed", shortcut)
+                dispatch("shortcut:pressed", shortcut)
             })
         },
     )
@@ -87,31 +82,85 @@ const createWindow = () => {
     ipcMain.handle(
         "shortcut:remove",
         (event, shortcut: Electron.Accelerator) => {
-            console.log("removing shortcut", shortcut)
             globalShortcut.unregister(shortcut)
         },
     )
 
+    ipcMain.handle(
+        "window:create",
+        (
+            event,
+            widgetPath: string,
+            options: Electron.BrowserWindowConstructorOptions,
+            showDevTools: boolean,
+        ) => {
+            const win = createWindow(widgetPath, options, showDevTools)
+            console.log("open", win.id, widgetPath)
+            return win.id
+        },
+    )
+
+    ipcMain.handle("window:close", (event, id: number) => {
+        console.log("close", id)
+        const win = BrowserWindow.fromId(id)
+        win?.close()
+    })
+
+    createWindow("", {
+        alwaysOnTop: true,
+        frame: false,
+        transparent: true,
+        focusable: false,
+        x: 0,
+        y: 0,
+        width: 0,
+        height: 0,
+    })
+}
+
+const createWindow = (
+    widgetPath: string,
+    options: Electron.BrowserWindowConstructorOptions = {
+        alwaysOnTop: true,
+        frame: false,
+        transparent: true,
+        focusable: false,
+        x: 0,
+        y: 0,
+        width: 1920,
+        height: 48,
+    },
+    showDevTools: boolean = false,
+) => {
+    const win = new BrowserWindow({
+        ...options,
+        ...{
+            webPreferences: {
+                nodeIntegration: true,
+                preload: path.join(__dirname, "preload.js"),
+            },
+        },
+    })
+
     if (IS_DEV) {
-        win.loadURL("http://localhost:3000")
-        win.webContents.openDevTools({ mode: "detach" })
+        win.loadURL(`http://localhost:3000/${widgetPath}`)
+
+        if (showDevTools) {
+            win.webContents.openDevTools({ mode: "detach" })
+        }
     } else {
         win.loadURL(
             `file://${path.join(__dirname, "..", "dist", "index.html")}`,
         )
     }
+
+    return win
 }
 
-app.whenReady().then(createWindow)
+app.whenReady().then(prepare)
 
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") {
         app.quit()
-    }
-})
-
-app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow()
     }
 })

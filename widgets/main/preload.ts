@@ -2,9 +2,13 @@ import { contextBridge, ipcRenderer, IpcRendererEvent } from "electron"
 import type os from "os"
 
 const api = {
-    listenTo: (command: string) => ipcRenderer.send("listen", command),
-    stopListening: (command: string) =>
-        ipcRenderer.send("stop-listening", command),
+    listenTo: (command: string) => {
+        ipcRenderer.send("listen", command)
+
+        return () => {
+            ipcRenderer.send("stop-listening", command)
+        }
+    },
     handleListen: (command: string, callback: (data: string) => void) => {
         const handler = (
             event: IpcRendererEvent,
@@ -39,6 +43,22 @@ const api = {
 
         return () => {
             ipcRenderer.off("shortcut:pressed", handler)
+        }
+    },
+    createWindow: async (
+        widgetPath: string,
+        options: Electron.BrowserWindowConstructorOptions,
+        showDevTools: boolean,
+    ) => {
+        const id = await ipcRenderer.invoke(
+            "window:create",
+            widgetPath,
+            options,
+            showDevTools,
+        )
+
+        return () => {
+            ipcRenderer.invoke("window:close", id)
         }
     },
 } as const

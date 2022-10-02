@@ -15,7 +15,7 @@
     "license": "ISC",
     "devDependencies": {
         "@types/cli-progress": "^3.11.0",
-        "@types/node": "^18.7.18",
+        "@types/node": "^18.7.23",
         "cli-progress": "^3.11.2",
         "cli-spinners": "^2.7.0",
         "ora": "^6.1.2",
@@ -23,7 +23,7 @@
         "ts-node": "^10.9.1",
         "tsconfig-paths": "^4.1.0",
         "turbo": "^1.5.5",
-        "typescript": "^4.8.3",
+        "typescript": "^4.8.4",
         "zx": "^7.0.8"
     }
 }
