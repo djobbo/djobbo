@@ -1,5 +1,5 @@
 import { useState } from "react"
-import type os from "os"
+import type os from "node:os"
 import { useInterval } from "./useInterval"
 
 export const useCPU = () => {

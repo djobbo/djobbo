@@ -5,8 +5,15 @@ import {
     globalShortcut,
     webContents,
 } from "electron"
-import { ChildProcess, exec, execSync } from "node:child_process"
-import os from "os"
+import {
+    ChildProcess,
+    exec,
+    execSync,
+    ExecSyncOptionsWithStringEncoding,
+    spawn,
+    SpawnOptionsWithoutStdio,
+} from "node:child_process"
+import os from "node:os"
 
 import path from "path"
 
@@ -22,6 +29,10 @@ const dispatch = <T extends unknown[]>(channel: string, ...args: T) => {
 }
 
 const prepare = () => {
+    ipcMain.handle("log", (event, ...args) => {
+        console.log(...args)
+    })
+
     ipcMain.on("listen", (event, command: string) => {
         const listener = processListeners.get(command)
 
@@ -50,9 +61,29 @@ const prepare = () => {
         }
     })
 
-    ipcMain.handle("exec", (event, command: string) => {
-        return execSync(command).toString().trim()
-    })
+    ipcMain.handle(
+        "exec",
+        (
+            event,
+            command: string,
+            options?: ExecSyncOptionsWithStringEncoding,
+        ) => {
+            return execSync(command, options).toString().trim()
+        },
+    )
+
+    ipcMain.handle(
+        "spawn",
+        (
+            event,
+            command: string,
+            args: string[],
+            options?: SpawnOptionsWithoutStdio,
+        ) => {
+            const subprocess = spawn(command, args, options)
+            subprocess.unref()
+        },
+    )
 
     ipcMain.handle("cpu", () => {
         return os.cpus()
@@ -80,6 +111,33 @@ const prepare = () => {
             globalShortcut.unregister(shortcut)
         },
     )
+
+    ipcMain.handle(
+        "window:create",
+        (
+            event,
+            widgetPath: string,
+            options: Electron.BrowserWindowConstructorOptions,
+            showDevTools: boolean,
+        ) => {
+            const win = createWindow(widgetPath, options, showDevTools)
+            return win.id
+        },
+    )
+
+    ipcMain.handle("window:close", (event, id: number) => {
+        const win = BrowserWindow.fromId(id)
+        win?.close()
+    })
+
+    ipcMain.handle("window:close-self", (event) => {
+        const win = BrowserWindow.fromWebContents(event.sender)
+        win?.close()
+    })
+
+    ipcMain.handle("window:id", (event) => {
+        return event.sender.id
+    })
 
     createWindow("", {
         alwaysOnTop: true,
@@ -118,7 +176,7 @@ const createWindow = (
     })
 
     if (IS_DEV) {
-        win.loadURL(`http://localhost:3000/${widgetPath}`)
+        win.loadURL(`http://localhost:1103/${widgetPath}`)
 
         if (showDevTools) {
             win.webContents.openDevTools({ mode: "detach" })

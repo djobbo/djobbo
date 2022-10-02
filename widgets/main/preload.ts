@@ -1,7 +1,11 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from "electron"
-import type os from "os"
+import { SpawnOptionsWithoutStdio } from "node:child_process"
+import type os from "node:os"
 
 const api = {
+    log: (...args: unknown[]) => {
+        ipcRenderer.invoke("log", ...args)
+    },
     listenTo: (command: string) => {
         ipcRenderer.send("listen", command)
 
@@ -26,6 +30,13 @@ const api = {
     },
     exec: (command: string): Promise<string> =>
         ipcRenderer.invoke("exec", command),
+    spawn: (
+        command: string,
+        args: string[] = [],
+        options: SpawnOptionsWithoutStdio = {
+            detached: true,
+        },
+    ): Promise<string> => ipcRenderer.invoke("spawn", command, args, options),
     cpu: (): Promise<os.CpuInfo[]> => ipcRenderer.invoke("cpu"),
     memory: (): Promise<{ total: number; free: number }> =>
         ipcRenderer.invoke("memory"),
@@ -45,6 +56,25 @@ const api = {
             ipcRenderer.off("shortcut:pressed", handler)
         }
     },
+    createWindow: async (
+        widgetPath: string,
+        options: Electron.BrowserWindowConstructorOptions,
+        showDevTools: boolean,
+    ) => {
+        const id = await ipcRenderer.invoke(
+            "window:create",
+            widgetPath,
+            options,
+            showDevTools,
+        )
+
+        return () => {
+            ipcRenderer.invoke("window:close", id)
+        }
+    },
+    closeWindow: (id: number) => ipcRenderer.invoke("window:close", id),
+    getWindowId: () => ipcRenderer.invoke("window:id"),
+    closeCurrentWindow: () => ipcRenderer.invoke("window:close-self"),
 } as const
 
 export type ElectronAPI = typeof api

@@ -4,15 +4,18 @@
     "version": "0.0.0",
     "main": "dist/main.js",
     "scripts": {
-        "widgets:client:dev": "vite --port 3000",
+        "widgets:client:dev": "vite --port 1103",
         "widgets:client:build": "tsc && vite build",
         "esbuild-cjs": "esbuild main/index.ts --format=cjs --outfile=./dist/main.js && esbuild main/preload.ts --format=cjs --outfile=./dist/preload.js",
         "widgets:server:dev": "npm run esbuild-cjs && IS_IN_DEVELOPMENT=true electron .",
-        "widgets:server:build": "npm run esbuild-cjs && electron-packager --out=release ."
+        "widgets:server:build": "npm run esbuild-cjs && electron-packager --out=release .",
+        "ts:check": "tsc --noEmit"
     },
     "dependencies": {
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "react-icons": "^4.4.0",
+        "react-router-dom": "^6.4.1"
     },
     "devDependencies": {
         "@types/react": "^18.0.21",
