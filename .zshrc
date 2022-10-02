@@ -44,3 +44,4 @@ export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 # bun completions
 [ -s "/home/djobbo/.bun/_bun" ] && source "/home/djobbo/.bun/_bun"
+export PATH=$PATH:/home/djobbo/.spicetify

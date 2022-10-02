@@ -11,6 +11,12 @@
 	directory = /mnt/work/reaccord
 	directory = /mnt/work/purplet
 	directory = /mnt/work/gh-actions-js
+	directory = /mnt/work/queue-bot
+	directory = /mnt/data_2/.tmp/ungoogled-chromium-debian
+	directory = /mnt/work/webpack-custom-hmr
+	directory = /mnt/work/mvs_bot
+	directory = /mnt/work/bhfr-channels
+	directory = /mnt/work/eww
 [init]
 	defaultBranch = main
 [help]
