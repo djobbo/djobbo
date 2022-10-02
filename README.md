@@ -9,7 +9,7 @@
 -   Terminal: [kitty](https://github.com/kovidgoyal/kitty)
 -   Shell: zsh + [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
     > add a `.user.zshrc` file next to `.zshrc` to add user specific config to zsh
--   Bar: [Custom Made](https://github.com/djobbo/aki/widgets)
+-   Bar: [Custom Made](https://github.com/djobbo/aki/tree/master/widgets)
 -   Launcher: [Rofi](https://github.com/davatorium/rofi)
 -   Browser: Firefox
 -   Font: [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts)
