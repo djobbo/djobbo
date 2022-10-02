@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from "electron"
+import { app, BrowserWindow, ipcMain, globalShortcut } from "electron"
 import { ChildProcess, exec, execSync } from "node:child_process"
 import os from "os"
 
@@ -6,7 +6,10 @@ import path from "path"
 
 const IS_DEV = process.env.IS_IN_DEVELOPMENT || false
 
-const listeners = new Map<string, { child: ChildProcess; count: number }>()
+const processListeners = new Map<
+    string,
+    { child: ChildProcess; count: number }
+>()
 
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -25,11 +28,14 @@ const createWindow = () => {
     })
 
     ipcMain.on("listen", (event, command: string) => {
-        const listener = listeners.get(command)
+        const listener = processListeners.get(command)
 
         listener?.child.kill()
         const child = exec(command)
-        listeners.set(command, { child, count: (listener?.count ?? 0) + 1 })
+        processListeners.set(command, {
+            child,
+            count: (listener?.count ?? 0) + 1,
+        })
 
         child.stdout?.on("data", (data) => {
             win.webContents.send(
@@ -38,14 +44,10 @@ const createWindow = () => {
                 data.toString().trim(),
             )
         })
-
-        return () => {
-            child.kill()
-        }
     })
 
     ipcMain.on("stop-listening", (event, command: string) => {
-        const listener = listeners.get(command)
+        const listener = processListeners.get(command)
 
         if (!listener) return
 
@@ -53,7 +55,7 @@ const createWindow = () => {
 
         if (listener.count <= 0) {
             listener.child.kill()
-            listeners.delete(command)
+            processListeners.delete(command)
         }
     })
 
@@ -71,6 +73,24 @@ const createWindow = () => {
             free: os.freemem(),
         }
     })
+
+    ipcMain.handle(
+        "shortcut:register",
+        (event, shortcut: Electron.Accelerator) => {
+            globalShortcut.register(shortcut, () => {
+                console.log("shortcut pressed", shortcut)
+                win.webContents.send("shortcut:pressed", shortcut)
+            })
+        },
+    )
+
+    ipcMain.handle(
+        "shortcut:remove",
+        (event, shortcut: Electron.Accelerator) => {
+            console.log("removing shortcut", shortcut)
+            globalShortcut.unregister(shortcut)
+        },
+    )
 
     if (IS_DEV) {
         win.loadURL("http://localhost:3000")

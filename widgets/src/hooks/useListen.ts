@@ -10,13 +10,14 @@ export const useListen = (
     useEffect(() => {
         window.aki.listenTo(command)
 
-        window.aki.handleListen(command, (data) => {
+        const cleanup = window.aki.handleListen(command, (data) => {
             setOutput(data)
             callback?.(data)
         })
 
         return () => {
             window.aki.stopListening(command)
+            cleanup()
         }
     }, [])
 
