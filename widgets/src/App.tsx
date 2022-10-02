@@ -1,6 +1,5 @@
 import { SpotifyPlayer } from "./components/SpotifyPlayer"
 import { SystemMonitor } from "./components/SystemMonitor"
-import { Widget } from "./components/Widget"
 import { Workspaces } from "./components/Workspaces"
 import { useGlobalShortcut } from "./hooks/useGlobalShortcut"
 
