@@ -41,8 +41,8 @@ export const RadialToolbar = ({ items }: Props) => {
         () =>
             directions.findIndex(
                 (arr) =>
-                    arr[0] === +direction.right - +direction.left &&
-                    arr[1] === +direction.up - +direction.down,
+                    arr[0] === +direction.up - +direction.down &&
+                    arr[1] === +direction.right - +direction.left,
             ),
         [direction],
     )

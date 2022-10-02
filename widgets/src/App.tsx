@@ -6,21 +6,22 @@ import { useGlobalShortcut } from "./hooks/useGlobalShortcut"
 import { useEffect } from "react"
 import { PowerMenu } from "./components/PowerMenu"
 import { RadialToolbar } from "./components/RadialToolbar"
+import { SiObsstudio, SiDiscord, SiSpotify } from "react-icons/si"
+import { FaPowerOff, FaUserLock, FaTerminal } from "react-icons/fa"
 
 const AppSetup = () => {
     const { openWidget } = useWidgets()
 
     useGlobalShortcut("Meta+Space", () => {
+        // TODO: keep radial menu always open and just toggle visibility for better performance
         openWidget("radial_toolbar")
     })
 
     useEffect(() => {
         const closeBar = openWidget("bar")
-        // const closeRadialToolbar = openWidget("radial_toolbar")
 
         return () => {
             closeBar()
-            // closeRadialToolbar()
         }
     }, [])
 
@@ -73,44 +74,90 @@ function App() {
                         <RadialToolbar
                             items={[
                                 {
-                                    label: "Bucko",
-                                    img: "https://images.prismic.io/bucko/d652e489-7540-4a49-8715-02816d4095bb_bucko.png?auto=compress,format&rect=0,0,290,290&w=480&h=480",
-                                    activeFn: () => console.log("Bucko"),
+                                    label: "Power Menu",
+                                    icon: (
+                                        <div className="w-full h-full flex justify-center items-center">
+                                            <FaPowerOff
+                                                size={48}
+                                                fill="#D0D0D0"
+                                            />
+                                        </div>
+                                    ),
+                                    activeFn: () =>
+                                        window.aki.exec(`shutdown -h 0`),
                                 },
                                 {
                                     label: "Kitty",
-                                    img: "https://sw.kovidgoyal.net/kitty/_static/kitty.svg",
+                                    icon: (
+                                        <div className="w-full h-full flex justify-center items-center">
+                                            <FaTerminal
+                                                size={48}
+                                                fill="#D0D0D0"
+                                            />
+                                        </div>
+                                    ),
                                     activeFn: () => window.aki.spawn("kitty"),
                                 },
                                 {
-                                    label: "",
-                                    img: "",
-                                    activeFn: () => console.log("t"),
+                                    label: "Obs",
+                                    icon: (
+                                        <div className="w-full h-full flex justify-center items-center">
+                                            <SiObsstudio
+                                                size={48}
+                                                fill="#D0D0D0"
+                                            />
+                                        </div>
+                                    ),
+                                    activeFn: () => window.aki.spawn("obs"),
+                                },
+                                {
+                                    label: "Discord",
+                                    icon: (
+                                        <div className="w-full h-full flex justify-center items-center">
+                                            <SiDiscord
+                                                size={48}
+                                                fill="#61AFEF"
+                                            />
+                                        </div>
+                                    ),
+                                    activeFn: () =>
+                                        window.aki.exec("i3-msg workspace 5"),
+                                },
+                                {
+                                    label: "Spotify",
+                                    icon: (
+                                        <div className="w-full h-full flex justify-center items-center">
+                                            <SiSpotify
+                                                size={48}
+                                                fill="#98C379"
+                                            />
+                                        </div>
+                                    ),
+                                    activeFn: () =>
+                                        window.aki.exec("i3-msg workspace 6"),
                                 },
                                 {
                                     label: "",
-                                    img: "",
-                                    activeFn: () => console.log("tl"),
+                                    icon: <></>,
+                                    activeFn: () => {},
                                 },
                                 {
                                     label: "",
-                                    img: "",
-                                    activeFn: () => console.log("l"),
+                                    icon: <></>,
+                                    activeFn: () => {},
                                 },
                                 {
-                                    label: "",
-                                    img: "",
-                                    activeFn: () => console.log("bl"),
-                                },
-                                {
-                                    label: "",
-                                    img: "",
-                                    activeFn: () => console.log("b"),
-                                },
-                                {
-                                    label: "",
-                                    img: "",
-                                    activeFn: () => console.log("br"),
+                                    label: "Lockscreen",
+                                    icon: (
+                                        <div className="w-full h-full flex justify-center items-center">
+                                            <FaUserLock
+                                                size={48}
+                                                fill="#D0D0D0"
+                                            />
+                                        </div>
+                                    ),
+                                    activeFn: () =>
+                                        window.aki.exec(`i3-msg exit`),
                                 },
                             ]}
                         />

@@ -37,7 +37,7 @@ export const NodeDisplay = ({ node }: I3NodeDisplayProps) => {
                     ? {
                           border: node.fullscreen_mode
                               ? "1px solid #A8E4FE80"
-                              : "none",
+                              : "1px solid transparent",
                           borderRadius: "0.25rem",
                       }
                     : {}
