@@ -12,6 +12,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Aliases
 alias c="clear"
 alias aki="cd $AKI_PATH"
+alias gti="git"
 
 # Functions
 $ ld() { cd "$@" && ls --color=auto; }
