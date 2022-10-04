@@ -17,6 +17,7 @@
 	directory = /mnt/work/mvs_bot
 	directory = /mnt/work/bhfr-channels
 	directory = /mnt/work/eww
+	directory = /mnt/work/vscode
 [init]
 	defaultBranch = main
 [help]

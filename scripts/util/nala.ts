@@ -25,7 +25,7 @@ export const nala = async (packages: string[], { upgrade }: Options) => {
                 )}`,
             },
         )
-        logSuccess("Installed packages with Nala")
+        logSuccess(`Installed '${packages.join(", ")}' with Nala`)
     } catch {
         logError("Failed to install packages with Nala")
         throw new Error("Failed to install packages with Nala")

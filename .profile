@@ -27,4 +27,3 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 [ -s "$HOME/.aki/.user.profile" ] && \. "$HOME/.aki/.user.profile"  # Load user specific profile
-. "$HOME/.cargo/env"

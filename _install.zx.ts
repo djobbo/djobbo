@@ -60,20 +60,20 @@ await createSymlinks(installDir)(symlinks)
 
 newLine()
 
-await nala(["wmctrl"], { upgrade: true })
+// await nala(["wmctrl"], { upgrade: true })
 
 // const fonts = await import("./scripts/install/fonts.js")
 // await fonts.install({ tmpDir, fontsDir })
 
-// newLine()
+newLine()
 
 // // Install apps
 // logH2("Installing apps")
 // const python = await import("./scripts/install/python.js")
 // await python.install({})
 
-// const vscode = await import("./scripts/install/vscode.js")
-// await vscode.install({ tmpDir })
+const vscode = await import("./scripts/install/vscode.js")
+await vscode.install({ tmpDir, baseDir: installDir })
 
 // const spotify = await import("./scripts/install/spotify.js")
 // await spotify.install({ installSpicetify: true })
