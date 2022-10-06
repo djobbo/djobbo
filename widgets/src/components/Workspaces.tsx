@@ -11,7 +11,7 @@ export const Workspaces = () => {
 
     return (
         <LayoutGroup>
-            <div className="flex py-2 gap-2">
+            <div className="flex py-2 gap-1">
                 {workspaces.map((w) => (
                     <NodeDisplay node={w} key={w.id} />
                 ))}
