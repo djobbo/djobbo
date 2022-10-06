@@ -19,7 +19,7 @@ const AppSetup = () => {
     })
 
     useEffect(() => {
-        const closeBar = openWidget("bar", { showDevTools: true })
+        const closeBar = openWidget("bar")
 
         return () => {
             closeBar()
@@ -29,7 +29,7 @@ const AppSetup = () => {
     return null
 }
 
-function App() {
+export const App = () => {
     return (
         <WidgetsProvider
             widgets={[
@@ -187,5 +187,3 @@ function App() {
         </WidgetsProvider>
     )
 }
-
-export default App
