@@ -52,15 +52,23 @@ const symlinks: SymlinkConfig[] = [
     // ["theme/aki.zsh-theme", ".oh-my-zsh/custom/themes/aki.zsh-theme"],
     // ".config/i3/config",
     // ".config/rofi",
-    // ".config/eww",
-    // ".config/awesome",
 ]
 
-await createSymlinks(installDir)(symlinks)
+await createSymlinks({ installDir })(symlinks)
+await createSymlinks({ installDir, absolute: true, sudo: true })([
+    ["widgets/aki.sh", `${binDir}/aki`],
+])
+$`chmod +x ${join(binDir, "aki")}`
 
 newLine()
 
-// await nala(["wmctrl"], { upgrade: true })
+await nala(
+    [
+        "playerctl", // Music playback info & control
+        "amixer", // Volume info & control
+    ],
+    // { upgrade: true },
+)
 
 // const fonts = await import("./scripts/install/fonts.js")
 // await fonts.install({ tmpDir, fontsDir })
@@ -72,8 +80,8 @@ newLine()
 // const python = await import("./scripts/install/python.js")
 // await python.install({})
 
-const vscode = await import("./scripts/install/vscode.js")
-await vscode.install({ tmpDir, baseDir: installDir })
+// const vscode = await import("./scripts/install/vscode.js")
+// await vscode.install({ tmpDir, baseDir: installDir })
 
 // const spotify = await import("./scripts/install/spotify.js")
 // await spotify.install({ installSpicetify: true })

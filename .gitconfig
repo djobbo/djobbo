@@ -18,6 +18,7 @@
 	directory = /mnt/work/bhfr-channels
 	directory = /mnt/work/eww
 	directory = /mnt/work/vscode
+	directory = /mnt/work/picom
 [init]
 	defaultBranch = main
 [help]

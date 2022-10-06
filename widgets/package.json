@@ -2,16 +2,19 @@
     "name": "widgets",
     "private": true,
     "version": "0.0.0",
-    "main": "dist/main.js",
+    "main": "dist/index.js",
     "scripts": {
         "widgets:client:dev": "vite --port 1103",
         "widgets:client:build": "tsc && vite build",
-        "esbuild-cjs": "esbuild main/index.ts --format=cjs --outfile=./dist/main.js && esbuild main/preload.ts --format=cjs --outfile=./dist/preload.js",
-        "widgets:server:dev": "npm run esbuild-cjs && IS_IN_DEVELOPMENT=true electron .",
-        "widgets:server:build": "npm run esbuild-cjs && electron-packager --out=release .",
+        "widgets:main:compile": "esbuild `find main \\( -name '*.ts' \\)` --format=cjs --outdir=dist",
+        "widgets:main:dev": "nodemon --watch main -e js,ts --exec 'pnpm widgets:main:compile && IS_IN_DEVELOPMENT=true electron .'",
+        "widgets:main:build": "widgets:main:compile && electron-packager --out=release .",
         "ts:check": "tsc --noEmit"
     },
     "dependencies": {
+        "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
+        "framer-motion": "^7.5.2",
+        "nodemon": "^2.0.20",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-icons": "^4.4.0",

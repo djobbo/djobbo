@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { useInterval } from "./useInterval"
-import { usePoll } from "./usePoll"
 
 export const useMemory = () => {
     const [memory, setMemory] = useState({ total: 0, free: 0 })

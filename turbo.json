@@ -9,11 +9,15 @@
             "dependsOn": [],
             "outputs": ["widgets/dist/**"]
         },
-        "widgets:server:dev": {
+        "widgets:main:compile": {
             "dependsOn": [],
             "outputs": ["widgets/dist/**"]
         },
-        "widgets:server:build": {
+        "widgets:main:dev": {
+            "dependsOn": ["widgets:main:compile"],
+            "outputs": ["widgets/dist/**"]
+        },
+        "widgets:main:build": {
             "dependsOn": [],
             "outputs": ["widgets/dist/**"]
         }

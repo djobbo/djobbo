@@ -14,8 +14,8 @@ import {
     SpawnOptionsWithoutStdio,
 } from "node:child_process"
 import os from "node:os"
-
 import path from "path"
+import { startDaemon } from "./daemon"
 
 const IS_DEV = process.env.IS_IN_DEVELOPMENT || false
 
@@ -29,6 +29,8 @@ const dispatch = <T extends unknown[]>(channel: string, ...args: T) => {
 }
 
 const prepare = () => {
+    startDaemon()
+
     ipcMain.handle("log", (event, ...args) => {
         console.log(...args)
     })
@@ -146,8 +148,8 @@ const prepare = () => {
         focusable: false,
         x: 0,
         y: 0,
-        width: 1920,
-        height: 48,
+        width: 0,
+        height: 0,
     })
 }
 

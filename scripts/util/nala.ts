@@ -7,7 +7,7 @@ type Options = {
     upgrade?: boolean
 }
 
-export const nala = async (packages: string[], { upgrade }: Options) => {
+export const nala = async (packages: string[], { upgrade }: Options = {}) => {
     if (upgrade) {
         await upgradePackages()
     }

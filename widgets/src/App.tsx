@@ -8,6 +8,7 @@ import { PowerMenu } from "./components/PowerMenu"
 import { RadialToolbar } from "./components/RadialToolbar"
 import { SiObsstudio, SiDiscord, SiSpotify } from "react-icons/si"
 import { FaPowerOff, FaUserLock, FaTerminal } from "react-icons/fa"
+import { GiRecycle } from "react-icons/gi"
 
 const AppSetup = () => {
     const { openWidget } = useWidgets()
@@ -18,7 +19,7 @@ const AppSetup = () => {
     })
 
     useEffect(() => {
-        const closeBar = openWidget("bar")
+        const closeBar = openWidget("bar", { showDevTools: true })
 
         return () => {
             closeBar()
@@ -142,9 +143,16 @@ function App() {
                                     activeFn: () => {},
                                 },
                                 {
-                                    label: "",
-                                    icon: <></>,
-                                    activeFn: () => {},
+                                    label: "Reboot",
+                                    icon: (
+                                        <div className="w-full h-full flex justify-center items-center">
+                                            <GiRecycle
+                                                size={48}
+                                                fill="#D0D0D0"
+                                            />
+                                        </div>
+                                    ),
+                                    activeFn: () => window.aki.exec("reboot"),
                                 },
                                 {
                                     label: "Lockscreen",

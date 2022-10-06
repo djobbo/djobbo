@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import { usePoll } from "./usePoll"
 
 type I3WindowGeometry = {
@@ -36,6 +37,13 @@ type I3WindowTree = {
     sticky: boolean
     floating: string
     swallows: []
+    window_properties?: {
+        class: string
+        instance: string
+        machine: string
+        title: string
+        transient_for: null
+    }
 }
 
 const findWorkspaces = (tree: I3WindowTree): I3WindowTree[] => {
@@ -48,7 +56,13 @@ const findWorkspaces = (tree: I3WindowTree): I3WindowTree[] => {
 
 export type I3Node = Pick<
     I3WindowTree,
-    "type" | "id" | "name" | "focused" | "fullscreen_mode" | "orientation"
+    | "type"
+    | "id"
+    | "name"
+    | "focused"
+    | "fullscreen_mode"
+    | "orientation"
+    | "window_properties"
 > & { nodes: I3Node[] }
 
 const parseI3Tree = ({
@@ -59,6 +73,7 @@ const parseI3Tree = ({
     fullscreen_mode,
     orientation,
     nodes,
+    window_properties,
 }: I3WindowTree): I3Node => {
     return {
         type,
@@ -68,23 +83,25 @@ const parseI3Tree = ({
         fullscreen_mode,
         orientation,
         nodes: nodes.map(parseI3Tree),
+        window_properties,
     }
 }
 
 export const useWindowTree = () => {
     const treeStr = usePoll("i3-msg -t get_tree", 100)
 
-    if (!treeStr) {
-        return null
-    }
+    return useMemo(() => {
+        if (!treeStr) {
+            return null
+        }
+        const treeJson = JSON.parse(treeStr) as I3WindowTree
 
-    const treeJson = JSON.parse(treeStr) as I3WindowTree
+        const workspaces = findWorkspaces(treeJson)
 
-    const workspaces = findWorkspaces(treeJson)
+        const parsedI3Tree = workspaces
+            .filter((workspace) => workspace.name !== "__i3_scratch")
+            .map(parseI3Tree)
 
-    const parsedI3Tree = workspaces
-        .filter((workspace) => workspace.name !== "__i3_scratch")
-        .map(parseI3Tree)
-
-    return parsedI3Tree
+        return parsedI3Tree
+    }, [treeStr])
 }

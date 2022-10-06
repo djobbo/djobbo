@@ -6,10 +6,18 @@ import { logError, logSuccess } from "./log.js"
 
 export type SymlinkConfig = string | [target: string, link: string]
 
-const ln = async (target: string, link: string) => $`ln -s ${target} ${link}`
+const ln = async (target: string, link: string, sudo: boolean = false) =>
+    $`ln -s ${target} ${link}`
+
+type SymlinkOptions = {
+    installDir: string
+    absolute?: boolean
+    sudo?: boolean
+}
 
 export const createSymlink =
-    (installDir: string) => async (config: SymlinkConfig) => {
+    ({ installDir, absolute = false, sudo }: SymlinkOptions) =>
+    async (config: SymlinkConfig) => {
         let target: string, link: string, linkDisplay: string
 
         if (typeof config === "string") {
@@ -17,16 +25,26 @@ export const createSymlink =
             const shouldLinkParentDir = (await stat(config)).isDirectory()
 
             target = join(installDir, config)
-            link = join(HOME, shouldLinkParentDir ? join(config, "..") : config)
-            linkDisplay = join(HOME, config)
+            link = join(
+                absolute ? (config.startsWith("/") ? "" : "/") : HOME,
+                shouldLinkParentDir ? join(config, "..") : config,
+            )
+
+            linkDisplay = join(
+                absolute ? (config.startsWith("/") ? "" : "/") : HOME,
+                config,
+            )
         } else {
             target = join(installDir, config[0])
-            link = join(HOME, config[1])
+            link = join(
+                absolute ? (config[1].startsWith("/") ? "" : "/") : HOME,
+                config[1],
+            )
             linkDisplay = link
         }
 
         try {
-            await ln(target, link)
+            await ln(target, link, sudo)
             logSuccess(
                 `Created symlink ${chalk.blue(
                     replaceHomeDirWithTilde(linkDisplay),
@@ -45,5 +63,5 @@ export const createSymlink =
     }
 
 export const createSymlinks =
-    (installDir: string) => async (symlinks: SymlinkConfig[]) =>
-        await Promise.all(symlinks.map(createSymlink(installDir)))
+    (options: SymlinkOptions) => async (symlinks: SymlinkConfig[]) =>
+        await Promise.all(symlinks.map(createSymlink(options)))

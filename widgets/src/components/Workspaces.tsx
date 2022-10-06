@@ -1,3 +1,4 @@
+import { LayoutGroup } from "framer-motion"
 import { useWindowTree } from "../hooks/useWindowTree"
 import { NodeDisplay } from "./NodeDisplay"
 
@@ -9,10 +10,12 @@ export const Workspaces = () => {
     }
 
     return (
-        <div className="flex py-2 gap-2">
-            {workspaces.map((w) => (
-                <NodeDisplay node={w} key={w.id} />
-            ))}
-        </div>
+        <LayoutGroup>
+            <div className="flex py-2 gap-2">
+                {workspaces.map((w) => (
+                    <NodeDisplay node={w} key={w.id} />
+                ))}
+            </div>
+        </LayoutGroup>
     )
 }

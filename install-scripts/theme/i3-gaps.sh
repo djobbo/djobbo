@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Meson build system
-sudo apt-get install \
+sudo nala install \
 python3 python3-pip python3-setuptools \
 python3-wheel ninja-build
 
 sudo pip3 install meson
 
 # i3-gaps dependencies
-sudo apt-get install \
+sudo nala install \
 libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev \
 libxcb-util0-dev libxcb-icccm4-dev libyajl-dev \
 libstartup-notification0-dev libxcb-randr0-dev \

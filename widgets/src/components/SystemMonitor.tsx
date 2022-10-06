@@ -11,7 +11,7 @@ export const SystemMonitor = () => {
     const memory = useMemory()
     const cpu = useCPU()
     const date = usePoll(`date "+%H:%M %b %d, %Y"`, 1000, "")
-    const [volume, setVolume] = useVolume()
+    const [volume, setVolume, isVolumeControlActive] = useVolume()
     const { openWidget } = useWidgets()
 
     return (
@@ -33,12 +33,14 @@ export const SystemMonitor = () => {
             {date}
             <div className="flex items-center gap-1">
                 <input
+                    className="slider"
                     type="range"
                     min={0}
                     max={100}
                     step={2}
                     onChange={(e) => setVolume(e.target.valueAsNumber)}
                     value={volume}
+                    disabled={!isVolumeControlActive}
                 />
                 {!isNaN(volume) && (
                     <button onClick={() => setVolume(80)}>{volume}%</button>
