@@ -28,7 +28,7 @@ const WindowNodeDisplay = ({ node }: I3NodeDisplayProps) => {
     const buttonRef = useRef<HTMLButtonElement>(null)
 
     const Icon =
-        (node.window_properties &&
+        (node.window_properties?.class &&
             classToIcon.get(node.window_properties.class.toLowerCase())) ??
         FaRegQuestionCircle
 
