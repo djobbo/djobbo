@@ -38,7 +38,7 @@ type I3WindowTree = {
     floating: string
     swallows: []
     window_properties?: {
-        class: string
+        class?: string
         instance: string
         machine: string
         title: string

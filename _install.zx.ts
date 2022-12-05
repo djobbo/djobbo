@@ -62,13 +62,13 @@ $`chmod +x ${join(binDir, "aki")}`
 
 newLine()
 
-await nala(
-    [
-        "playerctl", // Music playback info & control
-        "amixer", // Volume info & control
-    ],
-    // { upgrade: true },
-)
+// await nala(
+//     [
+//         "playerctl", // Music playback info & control
+//         "amixer", // Volume info & control
+//     ],
+//     // { upgrade: true },
+// )
 
 // const fonts = await import("./scripts/install/fonts.js")
 // await fonts.install({ tmpDir, fontsDir })
@@ -76,12 +76,12 @@ await nala(
 newLine()
 
 // // Install apps
-// logH2("Installing apps")
+logH2("Installing apps")
 // const python = await import("./scripts/install/python.js")
 // await python.install({})
 
-// const vscode = await import("./scripts/install/vscode.js")
-// await vscode.install({ tmpDir, baseDir: installDir })
+const vscode = await import("./scripts/install/vscode.js")
+await vscode.install({ tmpDir, baseDir: installDir })
 
 // const spotify = await import("./scripts/install/spotify.js")
 // await spotify.install({ installSpicetify: true })

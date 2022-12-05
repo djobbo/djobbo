@@ -1,0 +1,93 @@
+---
+import Card from "./Card.astro"
+import {
+    SiHtml5,
+    SiCss3,
+    SiJavascript,
+    SiTypescript,
+    SiSass,
+    SiPython,
+    SiReact,
+    SiTailwindcss,
+    SiNodedotjs,
+    SiNextdotjs,
+    SiExpress,
+    SiVisualstudiocode,
+    SiFigma,
+    SiAdobephotoshop,
+    SiAdobeillustrator,
+    SiGit,
+    SiLinux,
+    SiJest,
+} from "react-icons/si"
+import { HiComputerDesktop } from "react-icons/hi2"
+import type { IconType } from "react-icons"
+import SectionTitle from "./SectionTitle.astro"
+
+type Tech = {
+    name: string
+    Icon: IconType
+}
+
+const stack: { name: string; stack: Tech[] }[] = [
+    {
+        name: "Languages",
+        stack: [
+            { name: "HTML5", Icon: SiHtml5 },
+            { name: "CSS3", Icon: SiCss3 },
+            { name: "JavaScript", Icon: SiJavascript },
+            { name: "TypeScript", Icon: SiTypescript },
+            { name: "Sass", Icon: SiSass },
+            { name: "Python", Icon: SiPython },
+        ],
+    },
+    {
+        name: "Libraries & Frameworks",
+        stack: [
+            { name: "React", Icon: SiReact },
+            { name: "Tailwind", Icon: SiTailwindcss },
+            { name: "Node.js", Icon: SiNodedotjs },
+            { name: "Next.js", Icon: SiNextdotjs },
+            { name: "Express", Icon: SiExpress },
+            { name: "Jest", Icon: SiJest },
+        ],
+    },
+    {
+        name: "Tools",
+        stack: [
+            { name: "VS Code", Icon: SiVisualstudiocode },
+            { name: "Figma", Icon: SiFigma },
+            { name: "Photoshop", Icon: SiAdobephotoshop },
+            { name: "Illustrator", Icon: SiAdobeillustrator },
+            { name: "Git", Icon: SiGit },
+            { name: "Linux", Icon: SiLinux },
+        ],
+    },
+]
+---
+
+<SectionTitle
+    id="stack"
+    title="Tech Stack"
+    Icon={HiComputerDesktop}
+    className="mb-4"
+/>
+<Card hollow className="w-full text-center">
+    <ul>
+        {
+            stack.map((category) => (
+                <li class="py-4">
+                    <span class="font-semibold">{category.name}</span>
+                    <ul class="flex flex-wrap mt-4 lg:mt-2">
+                        {category.stack.map(({ name, Icon }) => (
+                            <li class="group flex flex-col gap-2 items-center justify-center text-sm w-1/3 p-4 hover:text-primary">
+                                <Icon className="w-6 h-6 group-hover:-translate-y-1 transition" />
+                                <span class="whitespace-nowrap">{name}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </li>
+            ))
+        }
+    </ul>
+</Card>

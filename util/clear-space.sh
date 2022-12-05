@@ -12,8 +12,9 @@ sudo journalctl --vacuum-size=250M
 # sudo du -sh /
 # sudo du -a / | sort -n -r | head -n 20
 
-# Clear cache
+# Clear cache & logs
 npm cache clean --force
+sudo rm -rf ~/.npm/_logs
 yarn cache clean
 pnpm store prune
 

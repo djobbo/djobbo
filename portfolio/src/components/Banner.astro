@@ -1,0 +1,86 @@
+---
+import Avatar from "./Avatar.astro"
+import Card from "./Card.astro"
+import { SiLinkedin, SiGithub, SiGmail } from "react-icons/si"
+import type { IconType } from "react-icons"
+
+type Social = {
+    name: string
+    href: string
+    Icon: IconType
+}
+
+const socials: Social[] = [
+    {
+        name: "linkedin.com/in/djobbo",
+        href: "https://linkedin.com/in/djobbo",
+        Icon: SiLinkedin,
+    },
+    {
+        name: "github.com/djobbo",
+        href: "https://github.com/djobbo",
+        Icon: SiGithub,
+    },
+    {
+        name: "hi@djobbo.com",
+        href: "mailto:hi@djobbo.com",
+        Icon: SiGmail,
+    },
+]
+---
+
+<Card id="about-me" className="flex items-center justify-between">
+    <div class="group flex-1">
+        <div class="flex items-center gap-3">
+            <div class="flex items-center">
+                <Avatar src="/avatar.jpg" alt="avatar" />
+                <Avatar
+                    src="/logo.png"
+                    alt="avatar"
+                    className="-ml-6 group-hover:-ml-3 transition-all"
+                />
+            </div>
+            <span class="font-semibold text-base line-h">Djobbo Maiga</span>
+            <div class="flex items-center gap-1 text-xs text-text1">
+                <img
+                    src="/flags/fr.png"
+                    alt="French flag"
+                    class="w-3 h-3 rounded-full"
+                />
+                France
+            </div>
+        </div>
+        <div class="flex items-center gap-2 mt-2 text-sm">
+            {
+                ["Frontend", "Backend", "Logomarks", "UI"].map((skill, i) => (
+                    <>
+                        {i !== 0 && (
+                            <div class="bg-primary w-1 h-1 rotate-45" />
+                        )}
+                        <span class="flex items-center px-2 py-1 font-semibold text-text1 rounded-full">
+                            {skill}
+                        </span>
+                    </>
+                ))
+            }
+        </div>
+    </div>
+    <ul class="h-full text-sm flex flex-col justify-between text-end gap-3">
+        {
+            socials.map(({ name, href, Icon }) => (
+                <li>
+                    <a
+                        href={href}
+                        target="_blank"
+                        class="group flex items-center justify-end gap-3"
+                    >
+                        <span class="text-text1 group-hover:text-primary transition">
+                            {name}
+                        </span>
+                        <Icon className="w-5 h-5 group-hover:text-primary transition" />
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</Card>
