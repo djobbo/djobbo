@@ -1,19 +1,12 @@
-# 🗒️ Aki dotfiles
+# Hi there 👋, I'm Djobbo!
 
-> These are my personal dotfiles, made specifically for my setup. You can use/modify them freely. but you might need to make some modifications to suit your installation.
+![InfoBanner](/images/banner.png)
 
-## System Info
+## 💻 My Tech Stack
 
--   OS: Ubuntu 22.04 LTS
--   WM: [i3-gaps (Airblader Fork)](https://github.com/Airblader/i3)
--   Terminal: [kitty](https://github.com/kovidgoyal/kitty)
--   Shell: zsh + [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
-    > add a `.user.zshrc` file next to `.zshrc` to add user specific config to zsh
--   Bar: [Custom Made](https://github.com/djobbo/aki/tree/master/widgets)
--   Launcher: [Rofi](https://github.com/davatorium/rofi)
--   Browser: Firefox
--   Font: [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts)
--   Compositor: [Picom (Jonaburg fork)](https://github.com/jonaburg/picom)
--   Colorscheme: One Dark [Bimbo] ([VSCode Theme](https://marketplace.visualstudio.com/items?itemName=marioterron.one-dark-bimbo))
-
-<img src="./images/showcase.png" alt="showcase" width="75%"/>
+![TypeScript](https://img.shields.io/badge/TypeScript--007ACC?style=flat&logo=TypeScript&logoColor=white)
+![React](https://img.shields.io/badge/React--61DAFB?style=flat&logo=react&logoColor=white)
+![NextJS](https://img.shields.io/badge/Next.js--000000?style=flat&logo=next.js&logoColor=white)
+![NodeJS](https://img.shields.io/badge/Node.js--339933?style=flat&logo=node.js&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest--C21325?style=flat&logo=jest&logoColor=white)
+![Markdown](https://img.shields.io/badge/Markdown--000000?style=flat&logo=markdown&logoColor=white)

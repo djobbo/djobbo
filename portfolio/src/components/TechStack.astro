@@ -78,11 +78,11 @@ const stack: { name: string; stack: Tech[] }[] = [
             stack.map((category) => (
                 <li class="py-4">
                     <span class="font-semibold">{category.name}</span>
-                    <ul class="flex flex-wrap">
+                    <ul class="flex flex-wrap mt-4 lg:mt-2">
                         {category.stack.map(({ name, Icon }) => (
                             <li class="group flex flex-col gap-2 items-center justify-center text-sm w-1/3 p-4 hover:text-primary">
                                 <Icon className="w-6 h-6 group-hover:-translate-y-1 transition" />
-                                <span>{name}</span>
+                                <span class="whitespace-nowrap">{name}</span>
                             </li>
                         ))}
                     </ul>
