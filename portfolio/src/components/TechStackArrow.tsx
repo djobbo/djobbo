@@ -58,8 +58,7 @@ export const TechStackArrow = () => {
 
     if (!showArrow || !arrow) return null
 
-    const arrowBoundsWidth = arrow[1][0] - arrow[0][0]
-    const anchorOffset = arrowBoundsWidth / 2.5
+    const anchorOffset = arrow[1][0] > arrow[0][0] ? (arrow[1][0] - arrow[0][0]) / 2.5 : 96
     const path = `M${arrow[0][0]} ${arrow[0][1]} C${arrow[0][0] + anchorOffset} ${arrow[0][1]} ${arrow[1][0] - anchorOffset} ${arrow[1][1]} ${arrow[1][0]} ${arrow[1][1]}`
 
     return (
