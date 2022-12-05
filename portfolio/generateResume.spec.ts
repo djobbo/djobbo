@@ -36,7 +36,7 @@ test("generate resume", async ({ browser }) => {
     expect(data).toBeTruthy()
 })
 
-test("generates github readme banner", async ({ browser }) => {
+test("generate github readme banner", async ({ browser }) => {
     const browserContext = await browser.newContext({
         viewport: {
             width: 960,
