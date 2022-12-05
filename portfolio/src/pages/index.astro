@@ -1,0 +1,122 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Banner from "../components/Banner.astro"
+import TechStack from "../components/TechStack.astro"
+import Card from "../components/Card.astro"
+import LudopodLogo from "../logos/LudopodLogo.astro"
+import MegapixelArtLogo from "../logos/MegapixelArtLogo.astro"
+import MammothLogo from "../logos/MammothLogo.astro"
+import BuckoLogo from "../logos/BuckoLogo.astro"
+import CorehallaLogo from "../logos/CorehallaLogo.astro"
+import BulbLogo from "../logos/BulbLogo.astro"
+import MustacheLogo from "../logos/MustacheLogo.astro"
+import GimpedLogo from "../logos/GimpedLogo.astro"
+import Experiences from "../components/Experiences.astro"
+import SectionTitle from "../components/SectionTitle.astro"
+import { HiFlag, HiPuzzlePiece } from "react-icons/hi2"
+
+const logos = [
+    LudopodLogo,
+    MegapixelArtLogo,
+    MammothLogo,
+    BuckoLogo,
+    CorehallaLogo,
+    BulbLogo,
+    MustacheLogo,
+    GimpedLogo,
+]
+
+type Lang = {
+    id: string
+    name: string
+    level: string
+}
+
+const languages: Lang[] = [
+    { id: "fr", name: "Français", level: "Native" },
+    { id: "uk", name: "English", level: "Advanced" },
+    { id: "de", name: "Deutsch", level: "Rusty (A2)" },
+    { id: "ja", name: "日本語", level: "Beginner" },
+]
+---
+
+<Layout title="Djobbo - Portfolio">
+    <div class="flex gap-16">
+        <div>
+            <Banner />
+            <p class="my-10 leading-8">
+                <span class="text-4xl text-primary font-semibold block mb-1"
+                    >Hi there 👋,</span
+                >
+                I’m <span class="font-semibold">Djobbo</span>, a Fullstack
+                engineer with 4+ years of web development experience.
+                <br />
+                Currently focusing on Frontend and UI Design, I use <span
+                    class="font-semibold">React</span
+                >, <span class="font-semibold">Typescript</span>
+                and <span class="font-semibold">Tailwind</span> to build visually
+                appealing and accessible applications.
+                <br />
+                Over my programming career, I’ve used a variety of languages, frameworks
+                and tools such as <span class="font-semibold">NodeJS</span>,
+                <span class="font-semibold">NextJS</span>, <span
+                    class="font-semibold">Figma</span
+                >, <span class="font-semibold">Python</span> and <a
+                    href="#stack"
+                    class="font-semibold text-primary">more</a
+                >!
+            </p>
+            <p class="text-xs text-text1 text-end">
+                I also design logomarks, here is some of my work 🙌
+            </p>
+            <ul class="mt-4 flex items-center justify-between text-logofill">
+                {
+                    logos.map((Logo) => (
+                        <li>
+                            <Card
+                                hollow
+                                paddingClassName=""
+                                className="w-20 h-20 hover:text-text hover:border-primary transition"
+                            >
+                                <Logo />
+                            </Card>
+                        </li>
+                    ))
+                }
+            </ul>
+            <Experiences />
+        </div>
+        <div class="w-full max-w-xs mt-3">
+            <TechStack />
+            <SectionTitle
+                title="Languages"
+                Icon={HiFlag}
+                className="mt-8 mb-8"
+            />
+            <div class="flex items-center justify-between">
+                {
+                    languages.map(({ id, name, level }) => (
+                        <div class="group flex flex-col items-center justify-center">
+                            <img
+                                src={`/flags/${id}.png`}
+                                alt={name}
+                                class="w-12 h-12 rounded-full group-hover:scale-110 transition"
+                            />
+                            <span class="text-sm mt-2 group-hover:text-primary">
+                                {name}
+                            </span>
+                            <span class="text-xs text-text1 group-hover:text-primary">
+                                {level}
+                            </span>
+                        </div>
+                    ))
+                }
+            </div>
+            <SectionTitle
+                title="Hobbys"
+                Icon={HiPuzzlePiece}
+                className="mt-8 mb-4"
+            />
+        </div>
+    </div>
+</Layout>

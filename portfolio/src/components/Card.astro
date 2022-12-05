@@ -1,0 +1,31 @@
+---
+export type Props = {
+    hollow?: boolean
+    shadowOutline?: boolean
+    className?: string
+    paddingClassName?: string
+}
+
+const { hollow, className, paddingClassName } = Astro.props
+---
+
+<div
+    class:list={[
+        "relative rounded-lg z-1",
+        paddingClassName ?? "p-4",
+        {
+            "bg-bg1 card-shadow": !hollow,
+            "bg-transparent border border-dashed border-outline": hollow,
+            // "before:content-[''] before:absolute before:border-2 before:border-primary before:border-dashed before:rounded-lg before:inset-0 before:rotate-[3deg] before:-z-10":
+            //     shadowOutline,
+        },
+        className,
+    ]}
+>
+    <slot />
+</div>
+<style>
+    .card-shadow {
+        box-shadow: 1.25px 1.25px 2px 0.75px rgba(0, 0, 0, 0.04);
+    }
+</style>

@@ -1,0 +1,21 @@
+---
+import type { IconType } from "react-icons"
+
+export type Props = {
+    title: string
+    Icon?: IconType
+    className?: string
+}
+
+const { title, Icon, className } = Astro.props
+---
+
+<span
+    class:list={[
+        "font-semibold",
+        { "flex items-center gap-2": !!Icon },
+        className,
+    ]}
+>
+    {Icon && <Icon className="w-4 h-4" />}{title}
+</span>

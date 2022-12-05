@@ -1,41 +1,40 @@
-import { test, expect } from "@playwright/test"
-import { existsSync } from "node:fs"
-import { writeFile, rm } from "node:fs/promises"
+import { test, expect, ViewportSize } from "@playwright/test"
 
-const RESUME_PATH = "public/resume.pdf"
-const MARGIN_X = "0.4in"
-const MARGIN_Y = "0.2in"
+const resumePath = "public/resume"
+const margin = { x: "0.4in", y: "0.2in" } as const
+const pageFormat = "A4"
+const pageScale = 0.65
+const viewport: ViewportSize = {
+    width: 2480,
+    height: 3508,
+}
 
 test("generate resume", async ({ browser }) => {
     const browserContext = await browser.newContext({
-        viewport: {
-            width: 2480,
-            height: 3508,
-        },
+        viewport,
     })
 
     const page = await browserContext.newPage()
 
-    await page.goto("/resume")
+    await page.goto("/")
 
+    // Generate image preview
+    await page.screenshot({ path: `${resumePath}.png` })
+
+    // Generate PDF
     const data = await page.pdf({
-        format: "A4",
-        scale: 0.65,
+        format: pageFormat,
+        scale: pageScale,
         margin: {
-            top: MARGIN_Y,
-            left: MARGIN_X,
-            right: MARGIN_X,
-            bottom: MARGIN_Y,
+            top: margin.y,
+            left: margin.x,
+            right: margin.x,
+            bottom: margin.y,
         },
+        path: `${resumePath}.pdf`,
     })
 
     await browser.close()
 
     expect(data).toBeTruthy()
-
-    if (existsSync(RESUME_PATH)) {
-        await rm(RESUME_PATH)
-    }
-
-    await writeFile(RESUME_PATH, data)
 })

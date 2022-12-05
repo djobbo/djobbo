@@ -11,7 +11,7 @@ export const Header = ({ navLinks }: HeaderProps) => {
     const { currentSection } = useScrollSections()
 
     return (
-        <header className="sticky top-0 bg-darkVar1 z-10 flex justify-between items-center h-20 py-0 px-8">
+        <header className="sticky top-0 bg-darkVar1 z-50 flex justify-between items-center h-20 py-0 px-8">
             <Link href="/#">
                 <a>
                     <svg
