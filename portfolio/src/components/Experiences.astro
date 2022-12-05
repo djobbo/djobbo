@@ -3,6 +3,7 @@ import SectionTitle from "../components/SectionTitle.astro"
 import { HiBriefcase, HiLink } from "react-icons/hi2/index.js"
 import Card from "./Card.astro"
 import Avatar from "./Avatar.astro"
+import ExperienceTags from "./ExperienceTags.astro"
 
 type Experience = {
     company: string
@@ -31,15 +32,7 @@ const experiences: Experience[] = [
         logo: "Corehalla.png",
         tags: ["Open Source", "Personal Project"],
         date: "2018 - Present",
-        stack: [
-            "React",
-            "NextJS",
-            "Tailwind",
-            "Supabase",
-            "Prisma",
-            "Express",
-            "Figma",
-        ],
+        stack: ["React", "NextJS", "Tailwind", "Supabase"],
     },
     {
         company: "BuckoGraphics",
@@ -59,7 +52,7 @@ const experiences: Experience[] = [
         stack: ["Unity", "C#", "Cinema 4D", "Photoshop"],
     },
     {
-        company: "Étoile Alençonnaise",
+        company: "ÉtoileAlençonnaise",
         title: "Men's Artistic Gymnastics Coach",
         logo: "EtoileAlencon.png",
         tags: ["Volontary Work"],
@@ -79,14 +72,23 @@ const experiences: Experience[] = [
             ({ company, title, logo, tags, date, stack, link }, i) => (
                 <div
                     class:list={[
-                        "flex items-center justify-between p-4",
+                        "relative flex flex-col sm:flex-row sm:items-center sm:justify-between p-4",
                         {
                             "border-t border-outline": i !== 0,
                         },
                     ]}
                 >
+                    {link && (
+                        <a
+                            href={link.href}
+                            target="_blank"
+                            class="absolute top-0 right-0 p-4 text-text1 block sm:hidden"
+                        >
+                            <HiLink className="w-4 h-4" />
+                        </a>
+                    )}
                     <div>
-                        <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-2 mb-1">
                             <Avatar
                                 src={`companies/${logo}`}
                                 alt="company"
@@ -95,19 +97,17 @@ const experiences: Experience[] = [
                             <div>
                                 <p class="before:content-['@'] before:text-text1 font-semibold text-lg flex items-center">
                                     {company}
-                                    <span class="pl-2 inline-flex gap-2 text-xs font-normal text-text1">
-                                        {tags.map((tag) => (
-                                            <span class="border border-outline px-1 py-0.5 rounded-md">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </span>
+                                    <ExperienceTags
+                                        tags={tags}
+                                        className="pl-2"
+                                        displayClassName="hidden sm:flex"
+                                    />
                                 </p>
                                 <p class="text-text1 text-sm">{title}</p>
                             </div>
                         </div>
                         {!!stack && (
-                            <ul class="flex items-center mt-2">
+                            <ul class="flex items-center mt-1 sm:mt-2 -ml-2">
                                 {stack.map((tech, i) => (
                                     <>
                                         {i !== 0 && (
@@ -121,11 +121,11 @@ const experiences: Experience[] = [
                             </ul>
                         )}
                     </div>
-                    <div class="text-xs text-text1 text-end">
+                    <div class="mt-1 sm:mt-0 text-xs text-text1 text-end flex flex-col whitespace-nowrap items-start sm:items-end">
                         <span>{date}</span>
                         {link && (
                             <a
-                                class="flex gap-1 items-center justify-end hover:text-text mt-0.5"
+                                class="hidden sm:flex gap-1 items-center justify-end hover:text-text mt-0.5"
                                 href={link.href}
                                 target="_blank"
                             >
@@ -134,6 +134,11 @@ const experiences: Experience[] = [
                             </a>
                         )}
                     </div>
+                    <ExperienceTags
+                        tags={tags}
+                        className="mt-2"
+                        displayClassName="flex sm:hidden"
+                    />
                 </div>
             ),
         )

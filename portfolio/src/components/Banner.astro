@@ -29,9 +29,12 @@ const socials: Social[] = [
 ]
 ---
 
-<Card id="about-me" className="flex items-center justify-between">
+<Card
+    id="about-me"
+    className="flex flex-col gap-y-4 sm:flex-row items-center justify-between"
+>
     <div class="group flex-1">
-        <div class="flex items-center gap-3">
+        <div class="flex flex-col sm:flex-row items-center gap-3">
             <div class="flex items-center">
                 <Avatar src="/avatar.jpg" alt="avatar" />
                 <Avatar
@@ -50,7 +53,7 @@ const socials: Social[] = [
                 France
             </div>
         </div>
-        <div class="flex items-center gap-2 mt-2 text-sm">
+        <div class="flex items-center sm:gap-2 mt-2 text-sm">
             {
                 ["Frontend", "Backend", "Logomarks", "UI"].map((skill, i) => (
                     <>
@@ -65,7 +68,9 @@ const socials: Social[] = [
             }
         </div>
     </div>
-    <ul class="h-full text-sm flex flex-col justify-between text-end gap-3">
+    <ul
+        class="h-full text-sm flex sm:flex-col justify-between text-end gap-6 sm:gap-3"
+    >
         {
             socials.map(({ name, href, Icon }) => (
                 <li>
@@ -74,10 +79,10 @@ const socials: Social[] = [
                         target="_blank"
                         class="group flex items-center justify-end gap-3"
                     >
-                        <span class="text-text1 group-hover:text-primary transition">
+                        <span class="hidden sm:block text-text1 group-hover:text-primary transition">
                             {name}
                         </span>
-                        <Icon className="w-5 h-5 group-hover:text-primary transition" />
+                        <Icon className="w-6 h-6 sm:w-5 sm:h-5 group-hover:text-primary transition" />
                     </a>
                 </li>
             ))

@@ -1,0 +1,16 @@
+---
+export type Props = {
+    className?: string
+    dashed?: boolean
+}
+
+const { className, dashed } = Astro.props
+---
+
+<hr
+    class:list={[
+        "bg-transparent border-outline",
+        { "border-dashed": !!dashed },
+        className,
+    ]}
+/>

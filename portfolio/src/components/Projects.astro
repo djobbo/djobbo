@@ -1,0 +1,52 @@
+---
+import Project, { Project as ProjectType } from "./Project.astro"
+
+const projects: ProjectType[] = [
+    {
+        title: "Corehalla",
+        description:
+            "Website to track the stats of millions of Brawlhalla players.",
+        image: "/projects/corehalla.jpg",
+        stack: [
+            "React",
+            "NextJS",
+            "Tailwind",
+            "Supabase",
+            "Prisma",
+            "Express",
+            "Figma",
+        ],
+        featured: true,
+    },
+    {
+        title: "Reaccord",
+        description:
+            "Custom React renderer that lets you write Discord bots with React.",
+        image: "/projects/reaccord.png",
+        stack: ["React", "NodeJS", "Typescript", "DiscordJS"],
+        featured: true,
+    },
+    {
+        title: "Portfolio",
+        description:
+            "My portfolio website, Resume and Linux dotfiles, with custom widgets.",
+        image: "/projects/portfolio.jpg",
+        stack: [
+            "Astro",
+            "React",
+            "Tailwind",
+            "Figma",
+            "Typescript",
+            "Electron",
+            "Vite",
+        ],
+    },
+]
+---
+
+<h2 id="projects" class="text-2xl mt-12 mb-8 text-center font-semibold">
+    Latest projects 👨‍💻
+</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {projects.map((project) => <Project {project} />)}
+</div>

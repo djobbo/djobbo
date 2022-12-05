@@ -1,0 +1,25 @@
+---
+export type Props = {
+    tags: string[]
+    className?: string
+    displayClassName?: string
+}
+
+const { tags, className, displayClassName } = Astro.props
+---
+
+<span
+    class:list={[
+        displayClassName ?? "inline-flex",
+        "gap-2 text-xs font-normal text-text1",
+        className,
+    ]}
+>
+    {
+        tags.map((tag) => (
+            <span class="border border-outline px-1 py-0.5 rounded-md">
+                {tag}
+            </span>
+        ))
+    }
+</span>

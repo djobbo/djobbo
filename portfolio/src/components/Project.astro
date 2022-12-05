@@ -1,0 +1,41 @@
+---
+import Card from "./Card.astro"
+
+export type Project = {
+    title: string
+    description: string
+    image: string
+    stack: string[]
+    featured?: boolean
+}
+
+export type Props = {
+    project: Project
+}
+
+const {
+    project: { title, description, image, stack, featured },
+} = Astro.props
+---
+
+<Card
+    className={`border border-transparent hover:border-secondary transition ${
+        featured ? "border border-primary" : ""
+    }`}
+>
+    <h3 class="font-semibold text-xl">{title}</h3>
+    <img
+        src={image}
+        alt={title}
+        class="w-full aspect-video rounded border border-outline object-cover object-center mt-2"
+    />
+    <p class="mt-2">{description}</p>
+
+    <ul class="flex gap-1 flex-wrap text-xs uppercase text-text1 mt-2">
+        {
+            stack.map((tech) => (
+                <li class="border border-outline px-1 rounded">{tech}</li>
+            ))
+        }
+    </ul>
+</Card>
