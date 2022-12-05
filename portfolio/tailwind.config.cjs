@@ -12,6 +12,7 @@ module.exports = {
                 outline: "#DDDDDF",
                 logofill: "#8B898F",
                 primary: "#5D51DE",
+                secondary: "#ffb800",
             },
         },
     },

@@ -14,6 +14,7 @@ import GimpedLogo from "../logos/GimpedLogo.astro"
 import Experiences from "../components/Experiences.astro"
 import SectionTitle from "../components/SectionTitle.astro"
 import { HiFlag, HiPuzzlePiece } from "react-icons/hi2"
+import Landing from "../components/Landing.astro"
 
 const logos = [
     LudopodLogo,
@@ -35,12 +36,13 @@ type Lang = {
 const languages: Lang[] = [
     { id: "fr", name: "Français", level: "Native" },
     { id: "uk", name: "English", level: "Advanced" },
-    { id: "de", name: "Deutsch", level: "Rusty (A2)" },
+    { id: "de", name: "Deutsch", level: "Rusty A2" },
     { id: "ja", name: "日本語", level: "Beginner" },
 ]
 ---
 
 <Layout title="Djobbo - Portfolio">
+    <Landing />
     <div class="flex gap-16">
         <div>
             <Banner />
@@ -57,7 +59,7 @@ const languages: Lang[] = [
                 and <span class="font-semibold">Tailwind</span> to build visually
                 appealing and accessible applications.
                 <br />
-                Over my programming career, I’ve used a variety of languages, frameworks
+                Over my programming journey, I’ve used a variety of languages, frameworks
                 and tools such as <span class="font-semibold">NodeJS</span>,
                 <span class="font-semibold">NextJS</span>, <span
                     class="font-semibold">Figma</span
@@ -76,7 +78,7 @@ const languages: Lang[] = [
                             <Card
                                 hollow
                                 paddingClassName=""
-                                className="w-20 h-20 hover:text-text hover:border-primary transition"
+                                className="group w-20 h-20 hover:text-text hover:border-primary transition"
                             >
                                 <Logo />
                             </Card>

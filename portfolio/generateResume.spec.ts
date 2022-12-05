@@ -18,9 +18,6 @@ test("generate resume", async ({ browser }) => {
 
     await page.goto("/")
 
-    // Generate image preview
-    await page.screenshot({ path: `${resumePath}.png` })
-
     // Generate PDF
     const data = await page.pdf({
         format: pageFormat,

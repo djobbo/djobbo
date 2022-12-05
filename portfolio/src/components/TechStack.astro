@@ -12,13 +12,13 @@ import {
     SiNodedotjs,
     SiNextdotjs,
     SiExpress,
-    SiCastro,
     SiVisualstudiocode,
     SiFigma,
     SiAdobephotoshop,
     SiAdobeillustrator,
     SiGit,
     SiLinux,
+    SiJest,
 } from "react-icons/si"
 import { HiComputerDesktop } from "react-icons/hi2"
 import type { IconType } from "react-icons"
@@ -49,13 +49,7 @@ const stack: { name: string; stack: Tech[] }[] = [
             { name: "Node.js", Icon: SiNodedotjs },
             { name: "Next.js", Icon: SiNextdotjs },
             { name: "Express", Icon: SiExpress },
-            {
-                name: "Astro",
-                // @ts-expect-error
-                Icon: ({ className }: { className: string }) => {
-                    return SiCastro({ className: `${className} text-primary` })
-                },
-            },
+            { name: "Jest", Icon: SiJest },
         ],
     },
     {
@@ -72,7 +66,12 @@ const stack: { name: string; stack: Tech[] }[] = [
 ]
 ---
 
-<SectionTitle title="Tech Stack" Icon={HiComputerDesktop} className="mb-4" />
+<SectionTitle
+    id="stack"
+    title="Tech Stack"
+    Icon={HiComputerDesktop}
+    className="mb-4"
+/>
 <Card hollow className="w-full text-center">
     <ul>
         {
