@@ -1,0 +1,31 @@
+---
+export type Props = {
+    className?: string
+    dotClassName?: string
+    nx?: number
+    ny?: number
+}
+
+const { className, dotClassName, nx = 20, ny = 10 } = Astro.props
+---
+
+<svg
+    width={nx * 60}
+    height={ny * 60}
+    viewBox={`0 0 ${nx * 60} ${ny * 60}`}
+    xmlns="http://www.w3.org/2000/svg"
+    class:list={["w-full", className]}
+>
+    {
+        Array.from({ length: ny }, (_, y) =>
+            Array.from({ length: nx }, (_, x) => (
+                <circle
+                    cx={x * 60 + 30}
+                    cy={y * 60 + 30}
+                    class={dotClassName}
+                    r="6"
+                />
+            )),
+        )
+    }
+</svg>

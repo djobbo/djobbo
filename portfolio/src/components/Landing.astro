@@ -1,9 +1,24 @@
+---
+import Dots from "./Dots.astro"
+---
+
 <div
-    class="print-hidden w-full h-[40vh] min-h-[400px] flex flex-col justify-center items-center"
+    class="relative print-hidden w-full h-[40vh] min-h-[400px] flex flex-col justify-center items-center z-10"
 >
+    <Dots
+        className="print-hidden absolute top-0 left-0 right-0 -z-10"
+        dotClassName="fill-bg2"
+        nx={12}
+        ny={6}
+    />
     <h1 class="text-4xl sm:text-5xl lg:text-7xl text-center">
-        Let’s create <span class="text-transparent bg-clip-text bg-secondary">
-            memorable
+        Let’s create <span
+            class:list={[
+                "relative text-transparent bg-clip-text bg-secondary",
+                "after:content-['unforgettable'] after:absolute bottom-0 right-0",
+            ]}
+        >
+            d'inoubliables*
         </span><br />user experiences.
     </h1>
     <div class="flex flex-col sm:flex-row gap-x-8 gap-y-4 mt-12">
@@ -15,10 +30,13 @@
         <a
             href="/resume.pdf"
             target="_blank"
-            class="w-48 py-4 border border-outline text-center">Resume</a
+            class="w-48 py-4 border border-outline text-center bg-bg">Resume</a
         >
     </div>
 </div>
+<p class="text-end text-text1 text-xs pb-8">
+    *<span class="font-semibold">unforgettable</span> in French
+</p>
 <a
     href="#about-me"
     class="print-hidden flex flex-col items-center gap-2 pb-8 cursor-default"
