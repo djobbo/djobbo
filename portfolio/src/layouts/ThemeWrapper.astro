@@ -1,4 +1,28 @@
 <div id="theme-wrapper" class="theme-wrapper">
+    <script is:inline>
+        const checkIsNightMode = () => {
+            const persistedColorPreference =
+                window.localStorage.getItem("isNightMode")
+
+            if (persistedColorPreference) {
+                return persistedColorPreference === "true"
+            }
+
+            const mql = window.matchMedia("(prefers-color-scheme: dark)")
+            const hasMediaQueryPreference = typeof mql.matches === "boolean"
+            if (hasMediaQueryPreference) {
+                return mql.matches
+            }
+
+            return false
+        }
+
+        const isNightMode = checkIsNightMode()
+        const themeWrapper = document.querySelector("#theme-wrapper")
+        themeWrapper.classList.toggle("dark", isNightMode)
+        document.documentElement.classList.toggle("dark", isNightMode)
+        localStorage.setItem("isNightMode", isNightMode)
+    </script>
     <slot />
 </div>
 <style is:global>
@@ -44,7 +68,7 @@
         pointer-events: none;
     }
 
-    .theme-wrapper.in-transition * {
+    .theme-wrapper.in-transition *:not(.keep-transition) {
         transition: none !important;
     }
 
