@@ -1,7 +1,7 @@
 {
-    "name": "@example/basics",
+    "name": "portfolio",
     "type": "module",
-    "version": "0.0.1",
+    "version": "0.0.0",
     "private": true,
     "scripts": {
         "dev": "astro dev --port 1104",
@@ -10,7 +10,8 @@
         "preview": "astro preview",
         "astro": "astro",
         "cv:dev": "astro dev",
-        "resume:gen": "PORT=1104 playwright test"
+        "resume:gen": "PORT=1104 playwright test generateResume.spec.ts",
+        "gh-banner:gen": "PORT=1104 playwright test generateGithubBanner.spec.ts"
     },
     "dependencies": {
         "@astrojs/react": "^1.2.2",
@@ -22,9 +23,11 @@
         "react": "^18.0.0",
         "react-dom": "^18.0.0",
         "react-icons": "^4.7.1",
-        "tailwindcss": "^3.0.24"
+        "tailwindcss": "^3.0.24",
+        "twemoji": "^14.0.2"
     },
     "devDependencies": {
-        "@playwright/test": "^1.28.1"
+        "@playwright/test": "^1.28.1",
+        "@types/twemoji": "^13.1.2"
     }
 }

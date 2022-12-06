@@ -1,4 +1,5 @@
 ---
+import Emoji from "./Emoji.astro"
 import Project, { Project as ProjectType } from "./Project.astro"
 
 const projects: ProjectType[] = [
@@ -21,31 +22,48 @@ const projects: ProjectType[] = [
     {
         title: "Reaccord",
         description:
-            "Custom React renderer that lets you write Discord bots with React.",
+            "Custom React renderer that lets you write Discord bots with React & JSX.",
         image: "/projects/reaccord.png",
-        stack: ["React", "NodeJS", "Typescript", "DiscordJS"],
+        stack: ["React", "NodeJS", "Typescript", "DiscordJS", "Webpack"],
         featured: true,
     },
     {
         title: "Portfolio",
-        description:
-            "My portfolio website, Resume and Linux dotfiles, with custom widgets.",
+        description: "My current portfolio website and Resume.",
         image: "/projects/portfolio.jpg",
+        stack: ["Astro", "React", "Tailwind", "Figma", "Playwright"],
+    },
+    {
+        title: "BuckoGraphics",
+        description: "Design startup I'm building with a friend.",
+        image: "/projects/bucko.jpg",
         stack: [
-            "Astro",
             "React",
+            "NextJS",
             "Tailwind",
             "Figma",
-            "Typescript",
-            "Electron",
-            "Vite",
+            "Photoshop",
+            "Illustrator",
         ],
+    },
+    {
+        title: "Dotfiles",
+        description:
+            "My Ubuntu configuration, including custom widgets built with Electron.",
+        image: "/projects/dotfiles.png",
+        stack: ["Linux", "Bash", "Zsh", "Typescript", "Electron", "Vite"],
+    },
+    {
+        title: "Brawlhalla French League",
+        description: "Brawlhalla French League news website",
+        image: "/projects/bfl.jpg",
+        stack: ["React", "NextJS", "SCSS", "Figma", "Contentful CMS"],
     },
 ]
 ---
 
 <h2 id="projects" class="text-2xl mt-12 mb-8 text-center font-semibold">
-    Latest projects 👨‍💻
+    Latest projects <Emoji emoji="🚀" />
 </h2>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
     {projects.map((project) => <Project {project} />)}

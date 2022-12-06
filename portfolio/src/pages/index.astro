@@ -18,6 +18,7 @@ import Landing from "../components/Landing.astro"
 import { TechStackArrow } from "../components/TechStackArrow"
 import Projects from "../components/Projects.astro"
 import Separator from "../components/Separator.astro"
+import Emoji from "../components/Emoji.astro"
 
 const logos = [
     LudopodLogo,
@@ -50,10 +51,12 @@ const languages: Lang[] = [
         <div>
             <Banner />
             <p class="my-10 leading-8 text-sm md:text-base md:leading-8">
-                <span class="text-4xl text-primary font-semibold block mb-1"
-                    >Hi there <span class="inline-block waving-hand">👋</span
-                    >,</span
-                >
+                <span class="flex text-4xl text-primary font-semibold mb-1"
+                    >Hi there <Emoji
+                        emoji="👋"
+                        className="inline-block waving-hand ml-1"
+                    />,
+                </span>
                 I’m <span class="font-semibold">Djobbo</span>, a Fullstack
                 engineer with 4+ years of web development experience.
                 <br />
@@ -74,7 +77,9 @@ const languages: Lang[] = [
                 >!
             </p>
             <p class="text-xs text-text1 text-center sm:text-end">
-                I also design logomarks, here is some of my work 🙌
+                I also design logomarks, here is some of my work <span
+                    class="inline-block">🙌</span
+                >
             </p>
             <ul
                 class="mt-4 grid grid-cols-4 justify-items-center sm:flex sm:justify-between text-logofill flex-wrap md:flex-nowrap gap-y-4"

@@ -23,7 +23,7 @@ test("generate resume", async ({ browser }) => {
     // Generate PDF
     const data = await page.pdf({
         format: 'A4',
-        scale: 0.52,
+        scale: 0.51,
         margin: {
             top: margin.y,
             left: margin.x,
@@ -31,33 +31,6 @@ test("generate resume", async ({ browser }) => {
             bottom: margin.y,
         },
         path: `${resumePath}.pdf`,
-    })
-
-    expect(data).toBeTruthy()
-})
-
-test("generate github readme banner", async ({ browser }) => {
-    const browserContext = await browser.newContext({
-        viewport: {
-            width: 960,
-            height: 600,
-        },
-    })
-
-    const page = await browserContext.newPage()
-
-    await page.goto("/banner")
-
-    const container = await page.$("#banner-container")
-
-    expect(container).toBeTruthy()
-
-    const data = await container?.screenshot({
-        omitBackground: true,
-        type: "png",
-        path: `../images/banner.png`,
-        scale: 'device',
-        caret: 'hide',
     })
 
     expect(data).toBeTruthy()

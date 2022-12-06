@@ -13,6 +13,7 @@ type Experience = {
     tags: string[]
     date: string
     stack?: string[]
+    logoClassName?: string
 }
 
 const experiences: Experience[] = [
@@ -42,6 +43,7 @@ const experiences: Experience[] = [
         tags: ["Personal Project"],
         date: "2020 - Present",
         stack: ["Figma", "Illustrator", "Photoshop"],
+        logoClassName: "bg-light-bg",
     },
     {
         company: "Ludopod",
@@ -50,6 +52,7 @@ const experiences: Experience[] = [
         tags: ["Personal Project"],
         date: "2016 - 2018",
         stack: ["Unity", "C#", "Cinema 4D", "Photoshop"],
+        logoClassName: "bg-light-bg",
     },
     {
         company: "ÉtoileAlençonnaise",
@@ -69,7 +72,19 @@ const experiences: Experience[] = [
 <Card paddingClassName="p-0" shadowOutline>
     {
         experiences.map(
-            ({ company, title, logo, tags, date, stack, link }, i) => (
+            (
+                {
+                    company,
+                    title,
+                    logo,
+                    tags,
+                    date,
+                    stack,
+                    link,
+                    logoClassName,
+                },
+                i,
+            ) => (
                 <div
                     class:list={[
                         "relative flex flex-col sm:flex-row sm:items-center sm:justify-between p-4",
@@ -92,7 +107,7 @@ const experiences: Experience[] = [
                             <Avatar
                                 src={`companies/${logo}`}
                                 alt="company"
-                                className="bg-bg"
+                                className={logoClassName}
                             />
                             <div>
                                 <p class="before:content-['@'] before:text-text1 font-semibold text-lg flex items-center">

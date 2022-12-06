@@ -1,0 +1,108 @@
+<div id="theme-wrapper" class="theme-wrapper">
+    <slot />
+</div>
+<style is:global>
+    @keyframes themeTransition {
+        0% {
+            clip-path: polygon(
+                0 0,
+                50% 0,
+                100% 0,
+                100% 50%,
+                100% 100%,
+                50% 100%,
+                0 100%,
+                0 50%
+            );
+        }
+        100% {
+            clip-path: polygon(
+                50% 50%,
+                50% 25%,
+                50% 50%,
+                75% 50%,
+                50% 50%,
+                50% 75%,
+                50% 50%,
+                25% 50%
+            );
+        }
+    }
+
+    #theme-wrapper-temp {
+        transition: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        animation: 0.25s themeTransition ease-out reverse;
+    }
+
+    .theme-wrapper.in-transition {
+        pointer-events: none;
+    }
+
+    .theme-wrapper.in-transition * {
+        transition: none !important;
+    }
+
+    :root {
+        --shared-primary: #5d51de;
+        --shared-secondary: #ffb800;
+        --shared-secondaryAlt: #f99016;
+
+        --light-bg: #f9f9fa;
+        --light-bg1: #ffffff;
+        --light-bg2: #f2f2f3;
+        --light-text: #130f1c;
+        --light-text1: #68666e;
+        --light-outline: #dddddf;
+        --light-logofill: #8b898f;
+
+        --dark-bg: #17181c;
+        --dark-bg1: #1e1f23;
+        --dark-bg2: #26272e;
+        --dark-text: #e8e7ea;
+        --dark-text1: #abacb0;
+        --dark-outline: #292b31;
+        --dark-logofill: #8b898f;
+    }
+
+    html,
+    .theme-wrapper {
+        --bg: var(--light-bg);
+        --bg1: var(--light-bg1);
+        --bg2: var(--light-bg2);
+        --text: var(--light-text);
+        --text1: var(--light-text1);
+        --outline: var(--light-outline);
+        --logofill: var(--light-logofill);
+        --primary: var(--shared-primary);
+        --secondary: var(--shared-secondary);
+        --secondaryAlt: var(--shared-secondaryAlt);
+
+        @apply bg-bg text-text;
+    }
+
+    html.dark,
+    .theme-wrapper.dark {
+        --bg: var(--dark-bg);
+        --bg1: var(--dark-bg1);
+        --bg2: var(--dark-bg2);
+        --text: var(--dark-text);
+        --text1: var(--dark-text1);
+        --outline: var(--dark-outline);
+        --logofill: var(--dark-logofill);
+        --primary: var(--shared-primary);
+        --secondary: var(--shared-secondary);
+        --secondaryAlt: var(--shared-secondaryAlt);
+    }
+
+    @media print {
+        #theme-wrapper {
+            background-color: transparent !important;
+        }
+    }
+</style>

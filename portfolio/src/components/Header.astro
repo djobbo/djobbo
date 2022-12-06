@@ -1,13 +1,20 @@
+---
+import { ThemeToggle } from "./ThemeToggle"
+---
+
 <header class="print-hidden w-full px-4 lg:px-16 bg-bg">
     <div
         class="flex justify-between items-center h-20 lg:h-24 px-2 lg:px-8 border-b border-outline"
     >
         <a href="/">djobbo.com</a>
-        <a
-            href="mailto:hi@djobbo.com"
-            class="bg-primary px-4 py-2 rounded text-bg1"
-        >
-            Get in touch
-        </a>
+        <div class="flex items-center gap-2">
+            <ThemeToggle client:load />
+            <a
+                href="mailto:hi@djobbo.com"
+                class="bg-primary px-4 py-2 rounded text-light-bg1"
+            >
+                Get in touch
+            </a>
+        </div>
     </div>
 </header>

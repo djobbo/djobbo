@@ -40,11 +40,13 @@ importers:
       '@playwright/test': ^1.28.1
       '@types/react': ^18.0.21
       '@types/react-dom': ^18.0.6
+      '@types/twemoji': ^13.1.2
       astro: ^1.6.12
       react: ^18.0.0
       react-dom: ^18.0.0
       react-icons: ^4.7.1
       tailwindcss: ^3.0.24
+      twemoji: ^14.0.2
     dependencies:
       '@astrojs/react': 1.2.2_5uumaiclxbdbzaqafclbf6maf4
       '@astrojs/tailwind': 2.1.3_tailwindcss@3.1.8
@@ -56,8 +58,10 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       react-icons: 4.7.1_react@18.2.0
       tailwindcss: 3.1.8
+      twemoji: 14.0.2
     devDependencies:
       '@playwright/test': 1.28.1
+      '@types/twemoji': 13.1.2
 
   widgets:
     specifiers:
@@ -1085,6 +1089,13 @@ packages:
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
+
+  /@types/twemoji/13.1.2:
+    resolution: {integrity: sha512-vPNsrN08aRI2Gmdo+Ds3zZXzUk6igp1Hg+JPCeHavpiUGfgth/tGiHLQxfSrKzPXeRC0zbLs8WaUZSYxRWPbNg==}
+    deprecated: This is a stub types definition. twemoji provides its own type definitions, so you do not need this installed.
+    dependencies:
+      twemoji: 14.0.2
+    dev: true
 
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
@@ -2875,7 +2886,6 @@ packages:
       graceful-fs: 4.2.10
       jsonfile: 4.0.0
       universalify: 0.1.2
-    dev: true
 
   /fs-extra/9.1.0:
     resolution: {integrity: sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==}
@@ -3442,7 +3452,13 @@ packages:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
     optionalDependencies:
       graceful-fs: 4.2.10
-    dev: true
+
+  /jsonfile/5.0.0:
+    resolution: {integrity: sha512-NQRZ5CRo74MhMMC3/3r5g2k4fjodJ/wh8MxjFbCViWKFjxrnudWSY5vomh+23ZaXzAS7J3fBZIR2dV6WbmfM0w==}
+    dependencies:
+      universalify: 0.1.2
+    optionalDependencies:
+      graceful-fs: 4.2.10
 
   /jsonfile/6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
@@ -5481,6 +5497,17 @@ packages:
       turbo-windows-arm64: 1.5.5
     dev: true
 
+  /twemoji-parser/14.0.0:
+    resolution: {integrity: sha512-9DUOTGLOWs0pFWnh1p6NF+C3CkQ96PWmEFwhOVmT3WbecRC+68AIqpsnJXygfkFcp4aXbOp8Dwbhh/HQgvoRxA==}
+
+  /twemoji/14.0.2:
+    resolution: {integrity: sha512-BzOoXIe1QVdmsUmZ54xbEH+8AgtOKUiG53zO5vVP2iUu6h5u9lN15NcuS6te4OY96qx0H7JK9vjjl9WQbkTRuA==}
+    dependencies:
+      fs-extra: 8.1.0
+      jsonfile: 5.0.0
+      twemoji-parser: 14.0.0
+      universalify: 0.1.2
+
   /type-fest/0.13.1:
     resolution: {integrity: sha512-34R7HTnG0XIJcBSn5XhDd7nNFPRcXYRZrBB2O2jdKqYODldSzBAqzsWoZYYvduky73toYS/ESqxPvkDf/F0XMg==}
     engines: {node: '>=10'}
@@ -5591,7 +5618,6 @@ packages:
   /universalify/0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
     engines: {node: '>= 4.0.0'}
-    dev: true
 
   /universalify/2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
