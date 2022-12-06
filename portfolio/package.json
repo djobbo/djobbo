@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "astro dev --port 1104",
         "start": "astro dev",
-        "build": "pnpm playwright install && pnpm resume:gen && astro build",
+        "build": "pnpm playwright install chromium && pnpm resume:gen && astro build",
         "preview": "astro preview",
         "astro": "astro",
         "cv:dev": "astro dev",
