@@ -18,6 +18,10 @@ const projects: ProjectType[] = [
             "Figma",
         ],
         featured: true,
+        links: {
+            github: "https://github.com/djobbo/corehalla",
+            live: "https://corehalla.com",
+        },
     },
     {
         title: "Reaccord",
@@ -26,12 +30,20 @@ const projects: ProjectType[] = [
         image: "/projects/reaccord.png",
         stack: ["React", "NodeJS", "Typescript", "DiscordJS", "Webpack"],
         featured: true,
+        links: {
+            github: "https://github.com/djobbo/reaccord",
+            npm: "https://www.npmjs.com/package/reaccord",
+        },
     },
     {
         title: "Portfolio",
         description: "My current portfolio website and Resume.",
         image: "/projects/portfolio.jpg",
         stack: ["Astro", "React", "Tailwind", "Figma", "Playwright"],
+        links: {
+            github: "https://github.com/djobbo/aki/tree/master/portfolio",
+            live: "https://djobbo.com",
+        },
     },
     {
         title: "BuckoGraphics",
@@ -45,6 +57,9 @@ const projects: ProjectType[] = [
             "Photoshop",
             "Illustrator",
         ],
+        links: {
+            live: "https://bucko.graphics",
+        },
     },
     {
         title: "Dotfiles",
@@ -52,12 +67,18 @@ const projects: ProjectType[] = [
             "My Ubuntu configuration, including custom widgets built with Electron.",
         image: "/projects/dotfiles.png",
         stack: ["Linux", "Bash", "Zsh", "Typescript", "Electron", "Vite"],
+        links: {
+            github: "https://github.com/djobbo/aki",
+        },
     },
     {
         title: "Brawlhalla French League",
-        description: "Brawlhalla French League news website",
+        description: "Brawlhalla French League news website.",
         image: "/projects/bfl.jpg",
         stack: ["React", "NextJS", "SCSS", "Figma", "Contentful CMS"],
+        links: {
+            live: "https://league.brawl.fr",
+        },
     },
 ]
 ---
@@ -66,5 +87,5 @@ const projects: ProjectType[] = [
     Latest projects <Emoji emoji="🚀" />
 </h2>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-    {projects.map((project) => <Project {project} />)}
+    {projects.map((project) => <Project project={project} />)}
 </div>

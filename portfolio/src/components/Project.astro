@@ -1,5 +1,7 @@
 ---
 import Card from "./Card.astro"
+import { SiGithub, SiNpm } from "react-icons/si/index.js"
+import { HiLink } from "react-icons/hi2/index.js"
 
 export type Project = {
     title: string
@@ -7,6 +9,13 @@ export type Project = {
     image: string
     stack: string[]
     featured?: boolean
+    links?:
+        | {
+              github?: string | undefined
+              live?: string | undefined
+              npm?: string | undefined
+          }
+        | undefined
 }
 
 export type Props = {
@@ -14,28 +23,67 @@ export type Props = {
 }
 
 const {
-    project: { title, description, image, stack, featured },
+    project: { title, description, image, stack, featured, links },
 } = Astro.props
 ---
 
-<Card
-    className={`border border-transparent hover:border-secondary transition ${
-        featured ? "border border-primary" : ""
-    }`}
->
-    <h3 class="font-semibold text-xl">{title}</h3>
-    <img
-        src={image}
-        alt={title}
-        class="w-full aspect-video rounded border border-outline object-cover object-center mt-2"
-    />
-    <p class="mt-2">{description}</p>
+<div>
+    <Card
+        className={`border border-transparent hover:border-secondary transition ${
+            featured ? "border border-primary" : ""
+        } flex flex-col justify-between gap-4 ${links ? "h-full" : ""}`}
+    >
+        <div>
+            <h3 class="font-semibold text-xl">{title}</h3>
+            <img
+                src={image}
+                alt={title}
+                class="w-full aspect-video rounded border border-outline object-cover object-center mt-2"
+            />
+            <p class="mt-2">{description}</p>
 
-    <ul class="flex gap-1 flex-wrap text-xs uppercase text-text1 mt-2">
+            <ul class="flex gap-1 flex-wrap text-xs text-text1 mt-2">
+                {
+                    stack.map((tech) => (
+                        <li class="border border-outline px-1 py-0.5 rounded">
+                            {tech}
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
         {
-            stack.map((tech) => (
-                <li class="border border-outline px-1 rounded">{tech}</li>
-            ))
+            links && (
+                <div class="print-hidden flex items-center justify-end text-text1 gap-4">
+                    {links.github && (
+                        <a
+                            href={links.github}
+                            class="hover:text-text"
+                            target="_blank"
+                        >
+                            <SiGithub className="w-6 h-6" />
+                        </a>
+                    )}
+                    {links.npm && (
+                        <a
+                            href={links.npm}
+                            class="hover:text-text"
+                            target="_blank"
+                        >
+                            <SiNpm className="w-6 h-6" />
+                        </a>
+                    )}
+                    {links.live && (
+                        <a
+                            href={links.live}
+                            class="px-3 py-1 flex gap-1 items-center text-base border border-outline rounded hover:text-text hover:border-text transition"
+                            target="_blank"
+                        >
+                            Visit <HiLink className="w-3 h-3" />
+                        </a>
+                    )}
+                </div>
+            )
         }
-    </ul>
-</Card>
+    </Card>
+</div>

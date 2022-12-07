@@ -14,8 +14,6 @@ export const ThemeToggle = () => {
     )
     const isFirstRender = useRef(true)
 
-    console.log({ isNightMode, isFirstRender })
-
     const { rive, RiveComponent } = useRive({
         src: "/theme_toggle.riv",
         stateMachines: "ThemeToggle",
@@ -56,6 +54,7 @@ export const ThemeToggle = () => {
         clonedThemeWrapper.classList.toggle("dark", isNightMode)
         clonedThemeWrapper.classList.add("in-transition")
         clonedThemeWrapper.id = "theme-wrapper-temp"
+        clonedThemeWrapper.setAttribute("aria-hidden", "true")
         clonedThemeWrapper
             .querySelectorAll("[id]")
             .forEach((el) => el.removeAttribute("id"))
@@ -88,7 +87,7 @@ export const ThemeToggle = () => {
     }, [isNightMode])
 
     return (
-        <label className="relative cursor-pointer w-12 h-6 border border-outline bg-bg2 rounded-full">
+        <label className="relative cursor-pointer w-12 h-6 border border-outline bg-bg2 rounded-full focus-within:outline">
             <div
                 className={`keep-transition absolute top-0 w-6 h-full py-0.5 px-1 transition-[transform,left] delay-200 flex justify-center items-center`}
                 style={
@@ -103,7 +102,7 @@ export const ThemeToggle = () => {
                 type="checkbox"
                 checked={isNightMode}
                 onChange={() => setIsNightMode(!isNightMode)}
-                className="hidden"
+                className="opacity-0 absolute w-0 h-0 max-w-0 max-h-0"
             />
         </label>
     )
