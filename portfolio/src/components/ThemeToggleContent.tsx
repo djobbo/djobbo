@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react"
 import { useRive, useStateMachineInput } from "@rive-app/react-canvas"
 import { useLocalStorage } from "react-use"
 
-export const ThemeToggle = () => {
+export const ThemeToggleContent = () => {
     const [isNightMode = false, setIsNightMode] = useLocalStorage(
         "isNightMode",
         false,
@@ -87,7 +87,7 @@ export const ThemeToggle = () => {
     }, [isNightMode])
 
     return (
-        <label className="relative cursor-pointer w-12 h-6 border border-outline bg-bg2 rounded-full focus-within:outline">
+        <>
             <div
                 className={`keep-transition absolute top-0 w-6 h-full py-0.5 px-1 transition-[transform,left] delay-200 flex justify-center items-center`}
                 style={
@@ -104,6 +104,6 @@ export const ThemeToggle = () => {
                 onChange={() => setIsNightMode(!isNightMode)}
                 className="opacity-0 absolute w-0 h-0 max-w-0 max-h-0"
             />
-        </label>
+        </>
     )
 }
