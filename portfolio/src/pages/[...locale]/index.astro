@@ -1,0 +1,10 @@
+---
+import { locales } from "../../i18n"
+import Index from "../index.astro"
+
+export const getStaticPaths = () => {
+    return locales.map((locale) => ({ params: { locale } }))
+}
+---
+
+<Index />

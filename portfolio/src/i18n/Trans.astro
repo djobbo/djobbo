@@ -1,0 +1,9 @@
+---
+import { getCurrentLocale } from "./i18n"
+
+const currentLocale = getCurrentLocale(Astro)
+
+// Astro doesn't support dynamic slots, so we have to handle each language manually.
+---
+
+{currentLocale === "fr" ? <slot name="fr" /> : <slot />}
