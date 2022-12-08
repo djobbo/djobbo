@@ -10,7 +10,7 @@ test.afterAll(async ({ browser }) => {
 for (const locale of locales) {
     test(`Generate Resume [${locale}]`, async ({ browser }) => {
         const resumePath = "public/resume"
-        const margin = { x: "0.4in", y: "0.2in" } as const
+        const margin = { x: "0.125in", y: "0.125in" } as const
 
         const browserContext = await browser.newContext({
             viewport: {
