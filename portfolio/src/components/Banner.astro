@@ -8,24 +8,28 @@ import { i18n } from "../i18n"
 const t = i18n(Astro)
 
 type Social = {
-    name: string
+    label: string
+    title: string
     href: string
     Icon: IconType
 }
 
 const socials: Social[] = [
     {
-        name: "linkedin.com/in/djobbo",
+        label: "linkedin",
+        title: "linkedin.com/in/djobbo",
         href: "https://linkedin.com/in/djobbo",
         Icon: SiLinkedin,
     },
     {
-        name: "github.com/djobbo",
+        label: "github",
+        title: "github.com/djobbo",
         href: "https://github.com/djobbo",
         Icon: SiGithub,
     },
     {
-        name: "hi@djobbo.com",
+        label: "email",
+        title: "hi@djobbo.com",
         href: "mailto:hi@djobbo.com",
         Icon: SiGmail,
     },
@@ -58,7 +62,7 @@ const socials: Social[] = [
         </div>
         <div class="flex items-center sm:gap-2 mt-2 text-sm">
             {
-                ["Frontend", "Backend", t("Logomarks"), "UI"].map(
+                ["Frontend", "Backend", t["Logomarks"](), "UI"].map(
                     (skill, i) => (
                         <>
                             {i !== 0 && (
@@ -77,15 +81,18 @@ const socials: Social[] = [
         class="h-full text-sm flex sm:flex-col justify-between text-end gap-6 sm:gap-3"
     >
         {
-            socials.map(({ name, href, Icon }) => (
+            socials.map(({ label, title, href, Icon }) => (
                 <li>
                     <a
                         href={href}
                         target="_blank"
                         class="group flex items-center justify-end gap-3"
+                        aria-label={t["Link to my {name:string}"]({
+                            name: label,
+                        })}
                     >
                         <span class="hidden sm:block text-text1 group-hover:text-primary transition">
-                            {name}
+                            {title}
                         </span>
                         <Icon className="w-6 h-6 sm:w-5 sm:h-5 group-hover:text-primary transition" />
                     </a>

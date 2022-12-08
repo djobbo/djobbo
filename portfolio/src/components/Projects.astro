@@ -8,7 +8,7 @@ const t = i18n(Astro)
 const projects: ProjectType[] = [
     {
         title: "Corehalla",
-        description: t("projects:corehalla:description"),
+        description: t["projects:corehalla:description"](),
         image: "/projects/corehalla.jpg",
         stack: [
             "React",
@@ -29,7 +29,7 @@ const projects: ProjectType[] = [
     },
     {
         title: "Reaccord",
-        description: t("projects:reaccord:description"),
+        description: t["projects:reaccord:description"](),
         image: "/projects/reaccord.png",
         stack: ["React", "NodeJS", "TypeScript", "DiscordJS", "Webpack"],
         featured: true,
@@ -40,7 +40,7 @@ const projects: ProjectType[] = [
     },
     {
         title: "Portfolio",
-        description: t("projects:portfolio:description"),
+        description: t["projects:portfolio:description"](),
         image: "/projects/portfolio.jpg",
         stack: [
             "Astro",
@@ -58,7 +58,7 @@ const projects: ProjectType[] = [
     },
     {
         title: "BuckoGraphics",
-        description: t("projects:bucko:description"),
+        description: t["projects:bucko:description"](),
         image: "/projects/bucko.jpg",
         stack: [
             "React",
@@ -75,7 +75,7 @@ const projects: ProjectType[] = [
     },
     {
         title: "Dotfiles",
-        description: t("projects:dotfiles:description"),
+        description: t["projects:dotfiles:description"](),
         image: "/projects/dotfiles.png",
         stack: ["Bash", "Python", "TypeScript", "Electron", "Vite", "Linux"],
         links: {
@@ -84,7 +84,7 @@ const projects: ProjectType[] = [
     },
     {
         title: "Brawlhalla French League",
-        description: t("projects:bfl:description"),
+        description: t["projects:bfl:description"](),
         image: "/projects/bfl.jpg",
         stack: [
             "React",
@@ -106,7 +106,7 @@ const projects: ProjectType[] = [
         What I've built
         <Fragment slot="fr">Mes dernières créations</Fragment>
     </Trans>
-    <Emoji emoji="🚀" />
+    <Emoji emoji="👨‍💻" />
 </h2>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
     {projects.map((project) => <Project project={project} />)}

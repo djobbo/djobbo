@@ -6,7 +6,7 @@ const currentLocale = getCurrentLocale(Astro)
 ---
 
 <div
-    class="relative print-hidden w-full h-[40vh] min-h-[400px] flex flex-col justify-center items-center z-10"
+    class="relative print:hidden w-full h-[40vh] min-h-[400px] flex flex-col justify-center items-center z-10"
 >
     <Dots
         className="absolute top-0 left-0 right-0 -z-10"
@@ -57,14 +57,14 @@ const currentLocale = getCurrentLocale(Astro)
         </a>
     </div>
 </div>
-<p class="print-hidden text-end text-text1 text-xs pb-8">
+<p class="print:hidden text-end text-text1 text-xs pb-8">
     <Trans>
         *<span class="font-semibold">unforgettable</span> in French
     </Trans>
 </p>
 <a
     href="#about-me"
-    class="print-hidden flex flex-col items-center gap-2 pb-8 cursor-default"
+    class="print:hidden flex flex-col items-center gap-2 pb-8 cursor-default"
 >
     <span class="cursor-pointer text-xs text-text1 uppercase">
         <Trans>

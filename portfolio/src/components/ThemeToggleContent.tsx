@@ -99,6 +99,7 @@ export const ThemeToggleContent = () => {
                 <RiveComponent />
             </div>
             <input
+                id='theme-toggle'
                 type="checkbox"
                 checked={isNightMode}
                 onChange={() => setIsNightMode(!isNightMode)}

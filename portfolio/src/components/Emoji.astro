@@ -1,5 +1,4 @@
 ---
-import twemoji from "twemoji"
 export type Props = {
     emoji: string
     className?: string
@@ -8,20 +7,13 @@ export type Props = {
 const { emoji, className } = Astro.props
 ---
 
-{
-    twemoji && (
-        <span
-            class={className ?? "inline-block"}
-            set:html={twemoji?.parse(emoji)}
-        />
-    )
-}
+<span class:list={["emoji", className ?? "inline-block"]} aria-hidden="true"
+    >{emoji}</span
+>
 
-<style is:global>
-    img.emoji {
-        height: 0.9em;
-        width: 0.9em;
-        margin: 0 0.05em 0 0.1em;
-        vertical-align: -0.1em;
+<style>
+    .emoji {
+        font-family: "Noto Color Emoji", sans-serif;
+        font-size: 0.8em;
     }
 </style>

@@ -1,6 +1,6 @@
 import type { AstroGlobal } from 'astro'
 import { locales, baseLocale } from './i18n-util'
-import type { Locales, TranslationFunctions} from './i18n-types'
+import type { Locales} from './i18n-types'
 import L from './i18n-node'
 
 export const getCurrentLocale = (astro: Readonly<AstroGlobal>): Locales => {
@@ -9,9 +9,5 @@ export const getCurrentLocale = (astro: Readonly<AstroGlobal>): Locales => {
         : baseLocale
 }
 
-type I18nKey = keyof TranslationFunctions
-
 export const i18n =
-    (astro: Readonly<AstroGlobal>) =>
-        (key: I18nKey) => L[getCurrentLocale(astro)][key]()
-
+    (astro: Readonly<AstroGlobal>) => L[getCurrentLocale(astro)]

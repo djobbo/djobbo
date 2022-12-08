@@ -41,10 +41,10 @@ type Lang = {
 }
 
 const languages: Lang[] = [
-    { id: "fr", name: "Français", level: t("Native") },
-    { id: "en", name: "English", level: t("Advanced") },
-    { id: "de", name: "Deutsch", level: t("Rusty A2") },
-    { id: "ja", name: "日本語", level: t("Beginner") },
+    { id: "fr", name: "Français", level: t["Native"]() },
+    { id: "en", name: "English", level: t["Advanced"]() },
+    { id: "de", name: "Deutsch", level: t["Rusty A2"]() },
+    { id: "ja", name: "日本語", level: t["Beginner"]() },
 ]
 ---
 
@@ -144,7 +144,7 @@ const languages: Lang[] = [
         <div class="w-full lg:max-w-xs mt-3">
             <TechStack />
             <SectionTitle
-                title={t("Spoken Languages")}
+                title={t["Spoken Languages"]()}
                 Icon={HiFlag}
                 className="mt-8 mb-8"
             />
@@ -170,7 +170,7 @@ const languages: Lang[] = [
                 }
             </ul>
             <SectionTitle
-                title={t("Hobbys")}
+                title={t["Hobbys"]()}
                 Icon={HiPuzzlePiece}
                 className="mt-8 mb-4"
             />

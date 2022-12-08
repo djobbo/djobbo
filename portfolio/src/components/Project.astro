@@ -54,12 +54,13 @@ const {
         </div>
         {
             links && (
-                <div class="print-hidden flex items-center justify-end text-text1 gap-4">
+                <div class="print:hidden flex items-center justify-end text-text1 gap-4">
                     {links.github && (
                         <a
                             href={links.github}
                             class="hover:text-text"
                             target="_blank"
+                            aria-label="Link to Github"
                         >
                             <SiGithub className="w-6 h-6" />
                         </a>
@@ -69,6 +70,7 @@ const {
                             href={links.npm}
                             class="hover:text-text"
                             target="_blank"
+                            aria-label="Link to NPM"
                         >
                             <SiNpm className="w-6 h-6" />
                         </a>
@@ -78,6 +80,7 @@ const {
                             href={links.live}
                             class="px-3 py-1 flex gap-1 items-center text-base border border-outline rounded hover:text-text hover:border-text transition"
                             target="_blank"
+                            aria-label="Visit"
                         >
                             Visit <HiLink className="w-3 h-3" />
                         </a>

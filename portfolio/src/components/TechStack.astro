@@ -34,7 +34,7 @@ type Tech = {
 
 const stack: { name: string; stack: Tech[] }[] = [
     {
-        name: t("Languages:programming"),
+        name: t["Languages:programming"](),
         stack: [
             { name: "HTML5", Icon: SiHtml5 },
             { name: "CSS3", Icon: SiCss3 },
@@ -45,7 +45,7 @@ const stack: { name: string; stack: Tech[] }[] = [
         ],
     },
     {
-        name: t("Libraries & Frameworks"),
+        name: t["Libraries & Frameworks"](),
         stack: [
             { name: "React", Icon: SiReact },
             { name: "Tailwind", Icon: SiTailwindcss },
@@ -56,7 +56,7 @@ const stack: { name: string; stack: Tech[] }[] = [
         ],
     },
     {
-        name: t("Tools"),
+        name: t["Tools"](),
         stack: [
             { name: "VS Code", Icon: SiVisualstudiocode },
             { name: "Figma", Icon: SiFigma },

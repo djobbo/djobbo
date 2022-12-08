@@ -27,7 +27,11 @@ const fr: Translation = {
 	'projects:portfolio:description': "Mon portfolio et CV.",
 	'projects:bucko:description': "Startup de design que je développe avec un ami.",
 	'projects:dotfiles:description': "Ma configuration Ubuntu, incluant des widgets customisés avec Electron.",
-	"projects:bfl:description": "Site d'actus de la Brawlhalla French League."
+	"projects:bfl:description": "Site d'actus de la Brawlhalla French League.",
+	"Get in touch": "Contactez-moi",
+	"Toggle dark mode": "Activer/désactiver le mode sombre",
+	'Link to my {name:string}': `Lien vers mon {name}`,
+	'meta:description': "Salut! Moi c'est Djobbo, Ingénieur Frontend et UI Designer. Bienvenue sur mon portfolio!",
 }
 
 export default fr

@@ -1,14 +1,16 @@
 ---
 import { HiPencilSquare } from "react-icons/hi2/index.js"
-import { getCurrentLocale, baseLocale, Trans } from "../i18n"
+import { getCurrentLocale, baseLocale, Trans, i18n } from "../i18n"
 import Avatar from "./Avatar.astro"
 import LanguageSwitcher from "./LanguageSwitcher.astro"
 import ThemeToggle from "./ThemeToggle.astro"
 
+const t = i18n(Astro)
+
 const currentLocale = getCurrentLocale(Astro)
 ---
 
-<header class="print-hidden w-full px-4 lg:px-16 bg-bg">
+<header class="print:hidden w-full px-4 lg:px-16 bg-bg">
     <div
         class="flex gap-8 justify-between items-center h-20 lg:h-24 px-2 lg:px-8 border-b border-outline"
     >
@@ -41,14 +43,12 @@ const currentLocale = getCurrentLocale(Astro)
                 href="mailto:hi@djobbo.com"
                 class="bg-primary px-4 py-2 rounded text-light-bg1 hidden sm:block"
             >
-                <Trans>
-                    Get in touch
-                    <Fragment slot="fr">Contactez-moi</Fragment>
-                </Trans>
+                {t["Get in touch"]()}
             </a>
             <a
                 href="mailto:hi@djobbo.com"
                 class="bg-primary p-3.5 rounded-full text-light-bg1 sm:hidden"
+                aria-label={t["Get in touch"]()}
             >
                 <HiPencilSquare className="w-4 h-4" />
             </a>

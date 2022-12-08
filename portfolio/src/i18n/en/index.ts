@@ -27,7 +27,11 @@ const en: BaseTranslation = {
 	'projects:portfolio:description': "My current portfolio website and Resume.",
 	'projects:bucko:description': "Design startup I'm building with a friend.",
 	'projects:dotfiles:description': "My Ubuntu configuration, including custom widgets built with Electron.",
-	"projects:bfl:description": "Brawlhalla French League news website."
+	"projects:bfl:description": "Brawlhalla French League news website.",
+	"Get in touch": "Get in touch",
+	"Toggle dark mode": "Toggle dark mode",
+	'Link to my {name:string}': `Link to my {name}`,
+	'meta:description': "Hi there! I'm Djobbo, a Frontend Engineer and UI Designer. Welcome to my portfolio website!",
 }
 
 export default en

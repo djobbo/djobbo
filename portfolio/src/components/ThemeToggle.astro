@@ -1,8 +1,13 @@
 ---
 import { ThemeToggleContent } from "./ThemeToggleContent"
+import { i18n } from "../i18n"
+
+const t = i18n(Astro)
 ---
 
 <label
+    for="theme-toggle"
+    aria-label={t["Toggle dark mode"]()}
     class="relative cursor-pointer w-12 h-6 border border-outline bg-bg2 rounded-full focus-within:outline"
 >
     <ThemeToggleContent client:only="react" />
