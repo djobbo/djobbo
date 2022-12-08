@@ -1,6 +1,6 @@
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { Locales, locales } from '../i18n';
-import { HiChevronDown } from 'react-icons/hi2';
+import { HiChevronDown } from 'react-icons/hi2/index.js';
 
 type LanguageSwitcherContentProps = {
     currentLocale: string;
