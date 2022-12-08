@@ -1,6 +1,7 @@
 ---
 import { HiPencilSquare } from "react-icons/hi2/index.js"
 import { getCurrentLocale, baseLocale, Trans } from "../i18n"
+import Avatar from "./Avatar.astro"
 import LanguageSwitcher from "./LanguageSwitcher.astro"
 import ThemeToggle from "./ThemeToggle.astro"
 
@@ -13,16 +14,19 @@ const currentLocale = getCurrentLocale(Astro)
     >
         <a
             href={currentLocale === baseLocale ? "/" : `/${currentLocale}`}
-            class="group whitespace-nowrap leading-5"
+            class="group whitespace-nowrap leading-5 flex items-center gap-2"
         >
-            <span class="block">Djobbo Maïga</span>
-            <span class="text-text1 text-xs">
-                <span class="group-hover:hidden">エレガント</span>
-                <span class="hidden group-hover:inline-block w-full">
-                    <Trans>
-                        Elegant design
-                        <Fragment slot="fr">Design élégant</Fragment>
-                    </Trans>
+            <Avatar src="/logo.png" alt="logo" className="border-bg" />
+            <span>
+                <span class="block">Djobbo Maïga</span>
+                <span class="text-text1 text-xs">
+                    <span class="group-hover:hidden">エレガント</span>
+                    <span class="hidden group-hover:inline-block w-full">
+                        <Trans>
+                            Elegant design
+                            <Fragment slot="fr">Design élégant</Fragment>
+                        </Trans>
+                    </span>
                 </span>
             </span>
         </a>
