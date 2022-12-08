@@ -13,10 +13,18 @@ const currentLocale = getCurrentLocale(Astro)
     >
         <a
             href={currentLocale === baseLocale ? "/" : `/${currentLocale}`}
-            class="flex-1 whitespace-nowrap leading-5"
+            class="group whitespace-nowrap leading-5"
         >
             <span class="block">Djobbo Maïga</span>
-            <span class="text-text1 text-xs">Solve problems with elegance</span>
+            <span class="text-text1 text-xs">
+                <span class="group-hover:hidden">エレガント</span>
+                <span class="hidden group-hover:inline-block w-full">
+                    <Trans>
+                        Elegant design
+                        <Fragment slot="fr">Design élégant</Fragment>
+                    </Trans>
+                </span>
+            </span>
         </a>
         <div class="flex justify-end items-center gap-3 sm:gap-6">
             <div
