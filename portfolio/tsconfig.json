@@ -4,5 +4,9 @@
         "jsx": "react-jsx",
         "jsxImportSource": "react"
     },
-    "include": ["src/**/*", "generateResume.spec.ts"]
+    "include": [
+        "src/**/*",
+        "generateResume.spec.ts",
+        "generateGithubBanner.spec.ts"
+    ]
 }
