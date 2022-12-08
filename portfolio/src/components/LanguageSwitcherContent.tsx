@@ -23,7 +23,7 @@ const LanguageSwitcherContent = ({currentLocale, currentPath}:LanguageSwitcherCo
     <div className="relative inline-block text-left">
       <DropdownMenuPrimitive.Root>
         <DropdownMenuPrimitive.Trigger asChild>
-        <button className="flex items-center h-6 gap-2 border border-outline bg-bg2 pr-2 rounded-full">
+        <button className="flex items-center w-12 h-6 gap-2 border border-outline bg-bg2 pr-2 rounded-full">
                     <img
                         src={`/flags/${currentLocale}.png`}
                         alt={currentLocale}
