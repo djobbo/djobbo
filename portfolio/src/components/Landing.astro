@@ -1,6 +1,8 @@
 ---
-import Trans from "../i18n/Trans.astro"
+import { Trans, getCurrentLocale } from "../i18n"
 import Dots from "./Dots.astro"
+
+const currentLocale = getCurrentLocale(Astro)
 ---
 
 <div
@@ -35,23 +37,37 @@ import Dots from "./Dots.astro"
     </h1>
     <p class="group text-text1 text-xs mt-6 text-center hover:w-full">
         <span class="group-hover:hidden"
-            >最高のデザインを目指して頑張りましょう</span
-        >
+            >最高のデザインを目指して頑張りましょう
+        </span>
         <span class="hidden group-hover:block w-full">
-            Let's build the ultimate design together!
+            <Trans>
+                Let's build the ultimate design together!
+                <Fragment slot="fr">
+                    Construisons ensemble le design de demain!
+                </Fragment>
+            </Trans>
         </span>
     </p>
     <div class="flex flex-col sm:flex-row gap-x-8 gap-y-4 mt-12">
         <a
             href="#projects"
             class="w-48 py-4 bg-text text-bg border border-transparent text-center"
-            >View projects</a
         >
+            <Trans>
+                View projects
+                <Fragment slot="fr">Voir mes projets</Fragment>
+            </Trans>
+        </a>
         <a
-            href="/resume.pdf"
+            href={`/resume-${currentLocale}.pdf`}
             target="_blank"
-            class="w-48 py-4 border border-outline text-center bg-bg">Resume</a
+            class="w-48 py-4 border border-outline text-center bg-bg"
         >
+            <Trans>
+                Resume
+                <Fragment slot="fr">Mon CV</Fragment>
+            </Trans>
+        </a>
     </div>
 </div>
 <p class="print-hidden text-end text-text1 text-xs pb-8">
@@ -64,7 +80,10 @@ import Dots from "./Dots.astro"
     class="print-hidden flex flex-col items-center gap-2 pb-8 cursor-default"
 >
     <span class="cursor-pointer text-xs text-text1 uppercase">
-        More about me
+        <Trans>
+            More about me
+            <Fragment slot="fr">En savoir plus</Fragment>
+        </Trans>
     </span>
     <svg
         width="10"

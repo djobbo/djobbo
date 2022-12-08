@@ -19,6 +19,9 @@ import { TechStackArrow } from "../components/TechStackArrow"
 import Projects from "../components/Projects.astro"
 import Separator from "../components/Separator.astro"
 import Emoji from "../components/Emoji.astro"
+import { i18n, Trans } from "../i18n"
+
+const t = i18n(Astro)
 
 const logos = [
     LudopodLogo,
@@ -38,10 +41,10 @@ type Lang = {
 }
 
 const languages: Lang[] = [
-    { id: "fr", name: "Français", level: "Native" },
-    { id: "uk", name: "English", level: "Advanced" },
-    { id: "de", name: "Deutsch", level: "Rusty A2" },
-    { id: "ja", name: "日本語", level: "Beginner" },
+    { id: "fr", name: "Français", level: t("Native") },
+    { id: "en", name: "English", level: t("Advanced") },
+    { id: "de", name: "Deutsch", level: t("Rusty A2") },
+    { id: "ja", name: "日本語", level: t("Beginner") },
 ]
 ---
 
@@ -51,35 +54,73 @@ const languages: Lang[] = [
         <div>
             <Banner />
             <p class="my-10 leading-8 text-sm md:text-base md:leading-8">
-                <span class="flex text-4xl text-primary font-semibold mb-1"
-                    >Hi there <Emoji
+                <span class="flex text-4xl text-primary font-semibold mb-1">
+                    <Trans>
+                        Hi there
+                        <Fragment slot="fr">Salut</Fragment>
+                    </Trans>
+                    <Emoji
                         emoji="👋"
                         className="inline-block waving-hand ml-1"
                     />,
                 </span>
-                I’m <span class="font-semibold">Djobbo</span>, a Fullstack
-                engineer with 4+ years of web development experience.
-                <br />
-                Currently focusing on Frontend and UI Design, I use <span
-                    class="font-semibold">React</span
-                >, <span class="font-semibold">Typescript</span>
-                and <span class="font-semibold">Tailwind</span> to build visually
-                appealing and accessible applications.
-                <br />
-                Over my programming journey, I’ve used a variety of languages, frameworks
-                and tools such as <span class="font-semibold">NodeJS</span>,
-                <span class="font-semibold">NextJS</span>, <span
-                    class="font-semibold">Figma</span
-                >, <span class="font-semibold">Python</span> and <a
-                    href="#stack"
-                    id="view-stack"
-                    class="font-semibold text-primary">more</a
-                >!
+                <Trans>
+                    I’m <span class="font-semibold">Djobbo</span>, a self taught
+                    Fullstack engineer with 4+ years of web development
+                    experience.
+                    <br />
+                    Currently focusing on Frontend and UI Design, I use <span
+                        class="font-semibold">React</span
+                    >, <span class="font-semibold">Typescript</span>
+                    and <span class="font-semibold">Tailwind</span> to build visually
+                    appealing and accessible applications.
+                    <br />
+                    Over my programming journey, I’ve used a variety of languages,
+                    frameworks and tools such as <span class="font-semibold"
+                        >NodeJS</span
+                    >,
+                    <span class="font-semibold">NextJS</span>, <span
+                        class="font-semibold">Figma</span
+                    >, <span class="font-semibold">Python</span> and <a
+                        href="#stack"
+                        id="view-stack"
+                        class="font-semibold text-primary">more</a
+                    >!
+                    <Fragment slot="fr">
+                        Moi c'est <span class="font-semibold">Djobbo</span>,
+                        ingénieur Fullstack autodidacte avec 4+ ans d'expérience
+                        en développement web.
+                        <br />
+                        Ayant une préference pour le Frontend et l'UI Design, j'utilise
+                        <span class="font-semibold">React</span>, <span
+                            class="font-semibold">Typescript</span
+                        >
+                        et <span class="font-semibold">Tailwind</span>
+                        pour construire des applications accessibles et visuellement
+                        attrayantes.
+                        <br />
+                        Tout au long de mon parcours, j'ai utilisé des langages,
+                        outils et frameworks divers tels que <span
+                            class="font-semibold">NodeJS</span
+                        >,
+                        <span class="font-semibold">NextJS</span>, <span
+                            class="font-semibold">Figma</span
+                        >, <span class="font-semibold">Python</span> et <a
+                            href="#stack"
+                            id="view-stack"
+                            class="font-semibold text-primary">bien plus</a
+                        >!
+                    </Fragment>
+                </Trans>
             </p>
             <p class="text-xs text-text1 text-center sm:text-end">
-                I also design logomarks, here is some of my work <span
-                    class="inline-block">🙌</span
-                >
+                <Trans>
+                    I also design logomarks, here is some of my work
+                    <Fragment slot="fr">
+                        Je design aussi des logos, en voici quelques uns
+                    </Fragment>
+                </Trans>
+                <span class="inline-block">🙌</span>
             </p>
             <ul
                 class="mt-4 grid grid-cols-4 justify-items-center sm:flex sm:justify-between text-logofill flex-wrap md:flex-nowrap gap-y-4"
@@ -103,7 +144,7 @@ const languages: Lang[] = [
         <div class="w-full lg:max-w-xs mt-3">
             <TechStack />
             <SectionTitle
-                title="Languages"
+                title={t("Spoken Languages")}
                 Icon={HiFlag}
                 className="mt-8 mb-8"
             />
@@ -129,7 +170,7 @@ const languages: Lang[] = [
                 }
             </ul>
             <SectionTitle
-                title="Hobbys"
+                title={t("Hobbys")}
                 Icon={HiPuzzlePiece}
                 className="mt-8 mb-4"
             />

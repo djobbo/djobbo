@@ -1,19 +1,35 @@
 ---
+import { getCurrentLocale, baseLocale, Trans } from "../i18n"
+import LanguageSwitcher from "./LanguageSwitcher.astro"
 import ThemeToggle from "./ThemeToggle.astro"
+
+const currentLocale = getCurrentLocale(Astro)
 ---
 
 <header class="print-hidden w-full px-4 lg:px-16 bg-bg">
     <div
         class="flex justify-between items-center h-20 lg:h-24 px-2 lg:px-8 border-b border-outline"
     >
-        <a href="/">djobbo.com</a>
+        <a
+            href={currentLocale === baseLocale ? "/" : `/${currentLocale}`}
+            class="leading-5"
+        >
+            <span class="block">Djobbo Maïga</span>
+            <span class="text-text1 text-xs">Solve problems with elegance</span>
+        </a>
         <div class="flex items-center gap-6">
-            <ThemeToggle />
+            <div class="flex items-center gap-3">
+                <ThemeToggle />
+                <LanguageSwitcher />
+            </div>
             <a
                 href="mailto:hi@djobbo.com"
                 class="bg-primary px-4 py-2 rounded text-light-bg1"
             >
-                Get in touch
+                <Trans>
+                    Get in touch
+                    <Fragment slot="fr">Contactez-moi</Fragment>
+                </Trans>
             </a>
         </div>
     </div>

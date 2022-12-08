@@ -3,6 +3,9 @@ import Avatar from "./Avatar.astro"
 import Card from "./Card.astro"
 import { SiLinkedin, SiGithub, SiGmail } from "react-icons/si/index.js"
 import type { IconType } from "react-icons"
+import { i18n } from "../i18n"
+
+const t = i18n(Astro)
 
 type Social = {
     name: string
@@ -43,7 +46,7 @@ const socials: Social[] = [
                     className="-ml-6 group-hover:-ml-3 transition-all"
                 />
             </div>
-            <span class="font-semibold text-base line-h">Djobbo Maiga</span>
+            <span class="font-semibold text-base line-h">Djobbo Maïga</span>
             <div class="flex items-center gap-1 text-xs text-text1">
                 <img
                     src="/flags/fr.png"
@@ -55,16 +58,18 @@ const socials: Social[] = [
         </div>
         <div class="flex items-center sm:gap-2 mt-2 text-sm">
             {
-                ["Frontend", "Backend", "Logomarks", "UI"].map((skill, i) => (
-                    <>
-                        {i !== 0 && (
-                            <div class="bg-primary w-1 h-1 rotate-45" />
-                        )}
-                        <span class="flex items-center px-2 py-1 font-semibold text-text1 rounded-full">
-                            {skill}
-                        </span>
-                    </>
-                ))
+                ["Frontend", "Backend", t("Logomarks"), "UI"].map(
+                    (skill, i) => (
+                        <>
+                            {i !== 0 && (
+                                <div class="bg-primary w-1 h-1 rotate-45" />
+                            )}
+                            <span class="flex items-center px-2 py-1 font-semibold text-text1 rounded-full">
+                                {skill}
+                            </span>
+                        </>
+                    ),
+                )
             }
         </div>
     </div>

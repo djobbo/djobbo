@@ -21,13 +21,13 @@
         "cli-progress": "^3.11.2",
         "cli-spinners": "^2.7.0",
         "ora": "^6.1.2",
-        "prettier": "^2.8.0",
+        "prettier": "^2.8.1",
         "prettier-plugin-astro": "^0.7.0",
         "strip-ansi": "^7.0.1",
         "ts-node": "^10.9.1",
         "tsconfig-paths": "^4.1.0",
         "turbo": "^1.5.5",
-        "typescript": "^4.8.4",
+        "typescript": "^4.9.3",
         "zx": "^7.1.0"
     }
 }

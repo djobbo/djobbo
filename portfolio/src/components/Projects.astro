@@ -1,12 +1,14 @@
 ---
+import { Trans, i18n } from "../i18n"
 import Emoji from "./Emoji.astro"
 import Project, { Project as ProjectType } from "./Project.astro"
+
+const t = i18n(Astro)
 
 const projects: ProjectType[] = [
     {
         title: "Corehalla",
-        description:
-            "Website used to track the stats of millions of Brawlhalla players.",
+        description: t("projects:corehalla:description"),
         image: "/projects/corehalla.jpg",
         stack: [
             "React",
@@ -27,8 +29,7 @@ const projects: ProjectType[] = [
     },
     {
         title: "Reaccord",
-        description:
-            "Custom React renderer that lets you write Discord bots with React & JSX.",
+        description: t("projects:reaccord:description"),
         image: "/projects/reaccord.png",
         stack: ["React", "NodeJS", "TypeScript", "DiscordJS", "Webpack"],
         featured: true,
@@ -39,7 +40,7 @@ const projects: ProjectType[] = [
     },
     {
         title: "Portfolio",
-        description: "My current portfolio website and Resume.",
+        description: t("projects:portfolio:description"),
         image: "/projects/portfolio.jpg",
         stack: [
             "Astro",
@@ -48,6 +49,7 @@ const projects: ProjectType[] = [
             "Tailwind",
             "Figma",
             "Playwright",
+            "Rive",
         ],
         links: {
             github: "https://github.com/djobbo/aki/tree/master/portfolio",
@@ -56,7 +58,7 @@ const projects: ProjectType[] = [
     },
     {
         title: "BuckoGraphics",
-        description: "Design startup I'm building with a friend.",
+        description: t("projects:bucko:description"),
         image: "/projects/bucko.jpg",
         stack: [
             "React",
@@ -73,8 +75,7 @@ const projects: ProjectType[] = [
     },
     {
         title: "Dotfiles",
-        description:
-            "My Ubuntu configuration, including custom widgets built with Electron.",
+        description: t("projects:dotfiles:description"),
         image: "/projects/dotfiles.png",
         stack: ["Bash", "Python", "TypeScript", "Electron", "Vite", "Linux"],
         links: {
@@ -83,7 +84,7 @@ const projects: ProjectType[] = [
     },
     {
         title: "Brawlhalla French League",
-        description: "Brawlhalla French League news website.",
+        description: t("projects:bfl:description"),
         image: "/projects/bfl.jpg",
         stack: [
             "React",
@@ -101,7 +102,11 @@ const projects: ProjectType[] = [
 ---
 
 <h2 id="projects" class="text-2xl mt-12 mb-8 text-center font-semibold">
-    Latest projects <Emoji emoji="🚀" />
+    <Trans>
+        Latest projects
+        <Fragment slot="fr">Mes derniers projets</Fragment>
+    </Trans>
+    <Emoji emoji="🚀" />
 </h2>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
     {projects.map((project) => <Project project={project} />)}

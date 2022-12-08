@@ -1,0 +1,30 @@
+---
+import { getCurrentLocale } from "../i18n"
+import LanguageSwitcherContent from "./LanguageSwitcherContent"
+
+const currentLocale = getCurrentLocale(Astro)
+const currentUrl = new URL(Astro.request.url)
+const currentPath = currentUrl.pathname
+---
+
+<style>
+    @keyframes hello {
+        0% {
+            transform: translate(-110%);
+            z-index: 1;
+        }
+        50% {
+            transform: translate(-50%, -50%) rotateZ(180deg);
+            z-index: 0;
+        }
+        100% {
+            transform: translate(-50%, -50%) rotateZ(360deg);
+            z-index: 0;
+        }
+    }
+</style>
+<LanguageSwitcherContent
+    currentLocale={currentLocale}
+    currentPath={currentPath}
+    client:load
+/>

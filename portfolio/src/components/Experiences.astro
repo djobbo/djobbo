@@ -4,6 +4,9 @@ import { HiBriefcase, HiLink } from "react-icons/hi2/index.js"
 import Card from "./Card.astro"
 import Avatar from "./Avatar.astro"
 import ExperienceTags from "./ExperienceTags.astro"
+import { i18n } from "../i18n"
+
+const t = i18n(Astro)
 
 type Experience = {
     company: string
@@ -20,52 +23,52 @@ const experiences: Experience[] = [
     {
         company: "Klaxoon",
         link: { title: "klaxoon.com", href: "https://klaxoon.com" },
-        title: "Frontend Engineer",
+        title: t("Frontend Engineer"),
         logo: "Klaxoon.png",
-        tags: ["Fulltime"],
-        date: "Jan 2022 - Present",
+        tags: [t("Fulltime")],
+        date: `Jan 2022 - ${t("Present")}`,
         stack: ["React", "TypeScript", "Node.js", "Jest"],
     },
     {
         company: "Corehalla",
         link: { title: "corehalla.com", href: "https://corehalla.com" },
-        title: "Fullstack Engineer - UI Designer",
+        title: `${t("Fullstack Engineer")} - ${t("UI Designer")}`,
         logo: "Corehalla.png",
-        tags: ["Open Source", "Personal Project"],
-        date: "2018 - Present",
+        tags: ["Open Source", t("Personal Project")],
+        date: `2018 - ${t("Present")}`,
         stack: ["React", "NextJS", "Tailwind", "Supabase"],
     },
     {
         company: "BuckoGraphics",
         link: { title: "bucko.graphics", href: "https://bucko.graphics" },
-        title: "Logomark Designer",
+        title: t("Logomark Designer"),
         logo: "BuckoGraphics.png",
-        tags: ["Personal Project"],
-        date: "2020 - Present",
+        tags: [t("Personal Project")],
+        date: `2020 - ${t("Present")}`,
         stack: ["Figma", "Illustrator", "Photoshop"],
         logoClassName: "bg-light-bg",
     },
     {
         company: "Ludopod",
-        title: "Hobbyist Game Developer",
+        title: t("Hobbyist Game Developer"),
         logo: "Ludopod.png",
-        tags: ["Personal Project"],
+        tags: [t("Personal Project")],
         date: "2016 - 2018",
         stack: ["Unity", "C#", "Cinema 4D", "Photoshop"],
         logoClassName: "bg-light-bg",
     },
     {
         company: "ÉtoileAlençonnaise",
-        title: "Men's Artistic Gymnastics Coach",
+        title: t("Men's Artistic Gymnastics Coach"),
         logo: "EtoileAlencon.png",
-        tags: ["Volontary Work"],
+        tags: [t("Volontary Work")],
         date: "2012 - 2016",
     },
 ]
 ---
 
 <SectionTitle
-    title="Experience & Education"
+    title={t("Experience & Education")}
     Icon={HiBriefcase}
     className="mt-12 mb-4"
 />

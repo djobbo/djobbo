@@ -1,6 +1,6 @@
 import { PlaywrightTestConfig, devices } from "@playwright/test"
 
-// Use process.env.PORT by default and fallback to port 3000
+// Use process.env.PORT by default and fallback to port 1104
 const PORT = process.env.PORT || 1104
 
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
@@ -12,7 +12,7 @@ const config: PlaywrightTestConfig = {
     retries: 2,
     outputDir: "test-results/",
     webServer: {
-        command: "pnpm run dev",
+        command: "pnpm dev",
         url: baseURL,
         timeout: 120 * 1000,
         reuseExistingServer: !process.env.CI,
