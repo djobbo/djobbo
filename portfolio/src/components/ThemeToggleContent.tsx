@@ -1,16 +1,11 @@
 import { useEffect, useRef } from "react"
 import { useRive, useStateMachineInput } from "@rive-app/react-canvas"
-import { useLocalStorage } from "react-use"
+import {useLocalStorage} from 'usehooks-ts'
 
 export const ThemeToggleContent = () => {
-    const [isNightMode = false, setIsNightMode] = useLocalStorage(
+    const [isNightMode = false, setIsNightMode] = useLocalStorage<boolean>(
         "isNightMode",
         false,
-        {
-            raw: false,
-            serializer: (value) => value.toString(),
-            deserializer: (value) => value === "true",
-        },
     )
     const isFirstRender = useRef(true)
 

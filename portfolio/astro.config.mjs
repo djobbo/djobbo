@@ -7,7 +7,7 @@ export default defineConfig({
     integrations: [tailwind(), react()],
     vite: {
         ssr: {
-            noExternal: ["@radix-ui/react-dropdown-menu"],
+            noExternal: ["@radix-ui/react-dropdown-menu", "usehooks-ts"],
         },
     },
 })
