@@ -2,6 +2,7 @@
 import Card from "./Card.astro"
 import { SiGithub, SiNpm } from "react-icons/si/index.js"
 import { HiLink } from "react-icons/hi2/index.js"
+import { Image } from "@astrojs/image/components"
 
 export type Project = {
     title: string
@@ -35,10 +36,13 @@ const {
     >
         <div>
             <h3 class="font-semibold text-xl">{title}</h3>
-            <img
+            <Image
                 src={image}
                 alt={title}
                 class="w-full aspect-video rounded border border-outline object-cover object-center mt-2"
+                width={600}
+                aspectRatio={16 / 9}
+                format="webp"
             />
             <p class="mt-2">{description}</p>
 
