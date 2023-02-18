@@ -1,6 +1,6 @@
 # Hi there 👋, I'm Djobbo!
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&vCenter=true&width=600&lines=+I'm+a+fullstack+web+engineer+and+UI/Logo+designer;Welcome+to+my+profile+!)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%23FF5D01&vCenter=true&width=600&lines=+I'm+a+fullstack+web+engineer+and+UI/Logo+designer;Welcome+to+my+profile+!)](https://git.io/typing-svg)
 
 ![InfoBanner](/images/banner.png)
 
@@ -26,8 +26,6 @@
     <img src="https://count.getloli.com/get/@djobbo.github.readme">
 </p>
 
----
-
 <h2 align="center">💻 Technologies I love</h2>
 
 Languages  
@@ -42,8 +40,6 @@ Design Tools
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=figma&logoColor=white) ![Photoshop](https://img.shields.io/badge/Adobe%20Photoshop-31A8FF?style=flat&logo=adobe-photoshop&logoColor=white) ![Illustrator](https://img.shields.io/badge/Adobe%20Illustrator-FF9A00?style=flat&logo=adobe-illustrator&logoColor=white)
 
 <br/>
-
----
 
 <h2 align="center">📈 My github stats</h2>
 
