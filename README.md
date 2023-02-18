@@ -53,7 +53,7 @@ Design Tools
 
 <p align="center"> 
 <a href="https://github.com/ryo-ma/github-profile-trophy">
-    <img src="https://github-profile-trophy.vercel.app/?username=djobbo" alt="Github trophies" />
+    <img src="https://github-profile-trophy.vercel.app/?username=djobbo&column=-1" alt="Github trophies" />
 </a>
 </p>
 
